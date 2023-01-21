@@ -1,20 +1,17 @@
 import { createTheme } from "@mui/material/styles";
+import { amber, orange } from '@mui/material/colors';
 
 
-const Colors = {
-    primary: '#f9c301',
-    secondary: '#e54f29',
+export const Colors = {
+    primary: { main: amber[500], ligth: amber[300], dark: amber[700] },
+    secondary: { main: orange[900], ligth: orange[800] },
 }
 
 
 const theme = createTheme({
     palette: {
-        primary: {
-            main: Colors.primary
-        },
-        secondary: {
-            main: Colors.secondary
-        },
+        primary: Colors.primary,
+        secondary: Colors.secondary,
         background: {
             default: '#fff'
         }
@@ -36,14 +33,14 @@ const theme = createTheme({
                         backgroundColor: 'transparent',
                         borderColor: 'transparent',
                         '&:hover': {
-                            color: Colors.secondary,
+                            color: Colors.secondary.main,
                             backgroundColor: 'transparent',
                         },
                         '&:active': {
-                            color: Colors.secondary,
+                            color: Colors.secondary.main,
                         },
                         '&:focus': {
-                            color: Colors.secondary,
+                            color: Colors.secondary.main,
                         },
                     },
                 },
