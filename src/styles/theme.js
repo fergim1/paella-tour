@@ -17,7 +17,8 @@ const theme = createTheme({
         }
     },
     typography: {
-        fontFamily: 'Inter, Avenir, Helvetica, Arial, sans-serif'
+        fontFamily: 'Inter, Avenir, Helvetica, Arial, sans-serif',
+        h1 : { fontSize: '24px'},
     },
     components: {
         MuiButton: {

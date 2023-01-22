@@ -8,15 +8,34 @@ import {
  } from "../../styles/home";
 
  import ArrowDropDownCircleIcon from '@mui/icons-material/ArrowDropDownCircle';
+import { useContext } from "react";
+import { AppContext } from "../../context";
+import { useLanguage } from "../../hooks/useLanguage";
+
+
+const textSection = {
+    english: {
+        subtitle: 'A delicious way to discover'
+    },
+    spanish: {
+        subtitle: 'Un delicioso camino para descubrir'
+    }
+}
+
 const Home = () => {
+    const {language} = useContext(AppContext)
+    const text = useLanguage(language, textSection)
+    
+
 
   return (
       <HomeContainer>
         <Offset />
         <HomeContent>
             <HomeText variant="subtitle">
-                A delicious way to discover <br></br>
+                { text.subtitle }
                 <HomeTextAlicante variant='span'>
+                <br></br>
                 Alicante
                 </HomeTextAlicante>
             </HomeText>

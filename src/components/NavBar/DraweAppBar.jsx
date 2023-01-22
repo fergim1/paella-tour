@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { AppBar, Box,CssBaseline, IconButton, Toolbar, Typography, Button, useScrollTrigger, Slide } from '@mui/material';
 
@@ -7,6 +7,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import logo from '../../assets/logo.png'
 
 import { SideBar } from './SideBar';
+
+import { SelectLanguage } from './SelectLanguage';
 
 
 const navItems = ['Itinerary', 'Book Now', 'Private Tour', 'Who we are', 'FAQ', 'Contact'];
@@ -21,6 +23,9 @@ function HideOnScroll({children}) {
 
 function DrawerAppBar(props) {
   const [mobileOpen, setMobileOpen] = useState(false);
+
+
+
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -53,6 +58,9 @@ function DrawerAppBar(props) {
                             </Button>
                         ))}
                     </Box>
+
+                    <SelectLanguage />
+
                 </Toolbar>
             </AppBar>
         </HideOnScroll>
