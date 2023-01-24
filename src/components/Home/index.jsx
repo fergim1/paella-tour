@@ -1,13 +1,13 @@
 import { 
-    Offset,
     HomeContainer,
     HomeContent,
     HomeText,
     HomeTextAlicante,
-    HomeButton
+    HomeButton,
+    HomeBackground,
  } from "../../styles/home";
 
- import ArrowDropDownCircleIcon from '@mui/icons-material/ArrowDropDownCircle';
+import ArrowDropDownCircleIcon from '@mui/icons-material/ArrowDropDownCircle';
 import { useContext } from "react";
 import { AppContext } from "../../context";
 import { useLanguage } from "../../hooks/useLanguage";
@@ -25,12 +25,11 @@ const textSection = {
 const Home = () => {
     const {language} = useContext(AppContext)
     const text = useLanguage(language, textSection)
-    
 
-
-  return (
-      <HomeContainer>
-        <Offset />
+return (
+    <HomeContainer id='Home'>
+        <HomeBackground >
+        </HomeBackground>
         <HomeContent>
             <HomeText variant="subtitle">
                 { text.subtitle }
@@ -43,8 +42,9 @@ const Home = () => {
                 See itinerary
             </HomeButton>
         </HomeContent>
-      </HomeContainer>
-  )
+
+    </HomeContainer>
+)
 }
 
 export { Home }

@@ -1,4 +1,4 @@
-import { Box, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemText, Typography} from '@mui/material';
+import { Box, Divider, Drawer, IconButton, Link, List, ListItem, ListItemButton, ListItemText, Typography} from '@mui/material';
 
 import logoDrawer from '../../../assets/logo-drawer.png'
 import { AppContext } from '../../../context';
@@ -8,7 +8,7 @@ import SpanishFlag from '../../../assets/flags/SpanishFlag';
 import { Stack } from '@mui/system';
 
 
-const SideBar = ({ mobileOpen, handleDrawerToggle,navItems, window }) => {
+const SideBar = ({ mobileOpen, handleDrawerToggle, navItems, window }) => {
     const { setLanguage }  = useContext(AppContext)
 
     const setSpanish = () => {
@@ -35,9 +35,11 @@ const SideBar = ({ mobileOpen, handleDrawerToggle,navItems, window }) => {
                     <ListItem key={item} disablePadding>
                         <ListItemButton sx={{ textAlign: 'center'}}>
                             <ListItemText>
-                                <Typography sx={{ color: 'white', fontSize: '20px', fontWeight: 'bold', letterSpacing: '4px', my:1 }}>
-                                    {item}
-                                </Typography>
+                                <Link href={`#${item}`} sx={{textDecoration: 'none'}}>
+                                    <Typography sx={{ color: 'white', fontSize: '20px', fontWeight: 'bold', letterSpacing: '4px', my:1 }}>
+                                        {item}
+                                    </Typography>
+                                </Link>
                             </ListItemText>
                         </ListItemButton>
                     </ListItem>

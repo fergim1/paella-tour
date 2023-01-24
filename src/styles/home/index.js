@@ -8,25 +8,37 @@ import homeMobile from '../../../imagenes/home-mobile.jpg'
 import { trackingInContractBck, textFocusIn} from "../animation";
 
 
-export const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
-
 export const HomeContainer = styled(Box)(({theme})=> ({
+    display: 'flex',
+    justifyContent: 'center',
+    alignContent: 'center',
+    top:'0px',
+    position:'relative',
+    margin: '0',
+    width: '100%',
+    height: '100vh',
+    padding: '0',
+}))
+
+
+export const HomeBackground = styled(Box)(({ theme})=> ({
     position: 'absolute',
-    top: '0',
+    top: '0px',
     right: '0',
     bottom: '0',
     left: '0',
     width: '100%',
-    height: '100vh',
-    padding: '0px 0px',
     overflow: 'hidden',
     backgroundImage: `url(${ homeDesktop })`,
-    [theme.breakpoints.down('md')]: {
-        backgroundImage: `url(${ homeMobile })`,
-    },
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: 'cover',
+    // height: 'calc(100vh - 70px)',
+
+    [theme.breakpoints.down('md')]: {
+        backgroundImage: `url(${ homeMobile })`,
+    },
+
 }))
 
 export const HomeContent = styled(Box)(()=> ({
@@ -43,6 +55,8 @@ export const HomeContent = styled(Box)(()=> ({
 export const HomeText = styled(Typography)(({ theme })=>({
     fontSize: '40px',
     fontFamily: 'Work Sans, sans-serif',
+    textAlign: 'center',
+    lineHeight: '0',
     color: 'white',
     fontWeight: 'bold',
     textShadow: '1px 1px 1px gray',

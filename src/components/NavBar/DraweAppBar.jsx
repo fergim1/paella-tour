@@ -1,6 +1,6 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 
-import { AppBar, Box,CssBaseline, IconButton, Toolbar, Typography, Button, useScrollTrigger, Slide } from '@mui/material';
+import { AppBar, Box,CssBaseline, IconButton, Toolbar, Button, useScrollTrigger, Slide } from '@mui/material';
 
 import MenuIcon from '@mui/icons-material/Menu';
 
@@ -24,18 +24,24 @@ function HideOnScroll({children}) {
 function DrawerAppBar(props) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
-
-
-
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
 
+  const handleClickScroll = (item) => {
+    document.getElementById(item).scrollIntoView({block: "start", behavior: "smooth"})
+
+  }
+
+  const scroollToTop = () => {
+    document.getElementById('Home').scrollIntoView('alignToTop')
+  }
+
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex' }} >
         <CssBaseline />
         <HideOnScroll {...props}>
-            <AppBar component="nav">
+            <AppBar component="nav" >
                 <Toolbar sx={{backgroundColor: 'black'}} >
                     <IconButton
                     color="secondary"
@@ -47,13 +53,17 @@ function DrawerAppBar(props) {
                         <MenuIcon />
                     </IconButton>
 
-                    <Box sx={{ my: 1, flexGrow: {xs: 1}, display: { xs: 'block', sm: 'flex' }}} >
-                        <img src={ logo } width='100px' alt='logo-paella-tour'/>
+                    <Box sx={{ my: 1, flexGrow: {xs: 1}, display: { xs: 'grid'}, placeContent: {xs: 'center', sm: 'start'}}} >
+                        <img onClick={scroollToTop} src={ logo } width='100px' alt='logo-paella-tour'/>
                     </Box>
 
                     <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                         {navItems.map((item) => (
-                            <Button key={item} variant='customItemsNav' >
+                            <Button
+                                onClick={() => handleClickScroll(item)}
+                                key={item}
+                                variant='customItemsNav'
+                            >
                                 {item}
                             </Button>
                         ))}
@@ -70,7 +80,7 @@ function DrawerAppBar(props) {
             handleDrawerToggle={handleDrawerToggle} 
             navItems={navItems}
         />
-      <Toolbar />
+        <Toolbar />
     </Box>
   );
 }
