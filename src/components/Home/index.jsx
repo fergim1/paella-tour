@@ -5,6 +5,11 @@ import {
     HomeTextAlicante,
     HomeButton,
     HomeBackground,
+    SmokeWrap,
+    SmokeImage1,
+    SmokeImage2,
+    SmokeImage3,
+
  } from "../../styles/home";
 
 import ArrowDropDownCircleIcon from '@mui/icons-material/ArrowDropDownCircle';
@@ -12,6 +17,9 @@ import { useContext } from "react";
 import { AppContext } from "../../context";
 import { useLanguage } from "../../hooks/useLanguage";
 
+import smoke from '../../../imagenes/smoke.png'
+import { useTheme } from "@emotion/react";
+import { useMediaQuery } from "@mui/material";
 
 const textSection = {
     english: {
@@ -25,11 +33,32 @@ const textSection = {
 const Home = () => {
     const {language} = useContext(AppContext)
     const text = useLanguage(language, textSection)
-
+    const theme = useTheme()
+    const moibleOrTablet = useMediaQuery(theme.breakpoints.down('md'))
+    
+    console.log(moibleOrTablet)
 return (
     <HomeContainer id='Home'>
         <HomeBackground >
         </HomeBackground>
+        {
+            moibleOrTablet
+            &&
+            <>
+            <SmokeWrap>
+                <SmokeImage1 src={smoke} alt='smoke' />
+            </SmokeWrap>
+
+            <SmokeWrap>
+                <SmokeImage2 src={smoke} alt='smoke' />
+            </SmokeWrap>
+
+            <SmokeWrap>
+                <SmokeImage3 src={smoke} alt='smoke' />
+            </SmokeWrap>
+            </>
+        }
+
         <HomeContent>
             <HomeText variant="subtitle">
                 { text.subtitle }

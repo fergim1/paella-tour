@@ -39,8 +39,6 @@ const Contact = () => {
     const {language} = useContext(AppContext)
     const text = useLanguage(language, textSection)
 
-    console.log(text.title)
-
 
     return (
         <ContactContainer id='Contact' sx={{mt: '20px'}}>

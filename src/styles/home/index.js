@@ -5,7 +5,7 @@ import homeDesktop from '../../../imagenes/home-desktop.jpg'
 import homeMobile from '../../../imagenes/home-mobile.jpg'
 
 //// Animations
-import { trackingInContractBck, textFocusIn} from "../animation";
+import { trackingInContractBck, textFocusIn, smoke1, smoke3, smoke2} from "../animation";
 
 
 export const HomeContainer = styled(Box)(({theme})=> ({
@@ -40,6 +40,40 @@ export const HomeBackground = styled(Box)(({ theme})=> ({
     },
 
 }))
+////////////////////////////////////////////////////////////////
+/////////////////////////////////// Smoke
+export const SmokeWrap = styled(Box)(()=> ({
+        position: 'absolute',
+        transform: 'translateX(-50%)',
+        left: '56%',
+        bottom: '45%',
+}))
+
+export const SmokeImage1 = styled('img')(({src})=> ({
+    src: `url(${src})`,
+    filter: 'blur(5px)',
+    transformOrigin: '50% 50%',
+    animation: `${smoke1} 3s linear infinite`,
+    animationDelay: '0.5s',
+}))
+
+export const SmokeImage2 = styled('img')(({src})=> ({
+    src: `url(${src})`,
+    filter: 'blur(5px)',
+    transformOrigin: '50% 50%',
+    animation: `${smoke2} 3s linear infinite`,
+    animationDelay: '1.5s',
+}))
+
+export const SmokeImage3 = styled('img')(({src})=> ({
+    src: `url(${src})`,
+    filter: 'blur(5px)',
+    transformOrigin: '50% 50%',
+    animation: `${smoke3} 4s linear infinite`,
+    animationDelay: '2.5s',
+}))
+////////////////////////////////// End Smoke
+////////////////////////////////////////////////////////////////
 
 export const HomeContent = styled(Box)(()=> ({
     position: 'absolute',
@@ -47,7 +81,7 @@ export const HomeContent = styled(Box)(()=> ({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    bottom: '40%',
+    bottom: '20%',
     right: '0',
     left: '0'
 }))
