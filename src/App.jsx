@@ -5,6 +5,7 @@ import { Home } from './components/Home'
 import { DrawerAppBar } from './components/NavBar/DraweAppBar'
 import { Container } from '@mui/material'
 import { Contact } from './components/Contact/Index'
+import { FrequentlyAskedQuestions } from './components/FAQ'
 
 
 
@@ -25,6 +26,7 @@ function App() {
             >
                 <DrawerAppBar />
                 <Home />
+                <FrequentlyAskedQuestions />
                 <Contact />
             </Container>
         </ThemeProvider>

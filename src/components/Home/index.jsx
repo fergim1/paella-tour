@@ -36,7 +36,6 @@ const Home = () => {
     const theme = useTheme()
     const moibleOrTablet = useMediaQuery(theme.breakpoints.down('md'))
     
-    console.log(moibleOrTablet)
 return (
     <HomeContainer id='Home'>
         <HomeBackground >
@@ -45,19 +44,20 @@ return (
             moibleOrTablet
             &&
             <>
-            <SmokeWrap>
-                <SmokeImage1 src={smoke} alt='smoke' />
-            </SmokeWrap>
+                <SmokeWrap>
+                    <SmokeImage1 src={smoke} alt='smoke' />
+                </SmokeWrap>
 
-            <SmokeWrap>
-                <SmokeImage2 src={smoke} alt='smoke' />
-            </SmokeWrap>
+                <SmokeWrap>
+                    <SmokeImage2 src={smoke} alt='smoke' />
+                </SmokeWrap>
 
-            <SmokeWrap>
-                <SmokeImage3 src={smoke} alt='smoke' />
-            </SmokeWrap>
+                <SmokeWrap>
+                    <SmokeImage3 src={smoke} alt='smoke' />
+                </SmokeWrap>
             </>
         }
+
 
         <HomeContent>
             <HomeText variant="subtitle">

@@ -54,6 +54,8 @@ export const FormContent = styled(Paper)(({theme}) => ({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    borderRadius: '12px',
+    backgroundColor: '#fbfbfd',
 
     [theme.breakpoints.down('sm')]: {
         width: '80vw',
