@@ -2,7 +2,7 @@ import {useContext} from 'react';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { FAQAccordion, FAQAnswer, FAQContainer, FAQQuestion, FAQTitle, FAQWraper } from '../../styles/FAQ';
+import { FAQAccordion, FAQTextAnswer, FAQContainer, FAQTextQuestion, FAQTitle, FAQWraper } from '../../styles/FAQ';
 import {AppContext} from '../../context/index'
 import { useLanguage } from '../../hooks/useLanguage';
 
@@ -91,10 +91,10 @@ function FrequentlyAskedQuestions() {
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon color='secondary' />}
                         >
-                            <FAQQuestion>{oneFaq.question}</FAQQuestion>
+                            <FAQTextQuestion>{oneFaq.question}</FAQTextQuestion>
                         </AccordionSummary>
                         <AccordionDetails>
-                            <FAQAnswer> {oneFaq.answer} </FAQAnswer>
+                            <FAQTextAnswer> {oneFaq.answer} </FAQTextAnswer>
                         </AccordionDetails>
                 </FAQAccordion>
                 )})

@@ -52,7 +52,7 @@ export const FAQAccordion = styled(Accordion)(()=> ({
     padding: '12px',
 }))
 
-export const FAQQuestion = styled(Typography)(({theme})=> ({
+export const FAQTextQuestion = styled(Typography)(({theme})=> ({
     fontSize: '16px',
     fontWeight: 'bold',
     [theme.breakpoints.down('md')]: {
@@ -60,6 +60,7 @@ export const FAQQuestion = styled(Typography)(({theme})=> ({
     }
 }))
 
-export const FAQAnswer = styled(Typography)(({theme})=> ({
+export const FAQTextAnswer = styled(Typography)(({theme})=> ({
     fontSize: '14px',
+    color: '#787976',
 }))
