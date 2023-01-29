@@ -3,8 +3,8 @@ import { amber, orange } from '@mui/material/colors';
 
 
 export const Colors = {
-    primary: { main: amber[500], ligth: amber[300], dark: amber[700] },
-    secondary: { main: orange[900], ligth: orange[800] },
+    primary: { main: '#f9c301'},
+    secondary: { main: '#e8502b' },
 }
 
 

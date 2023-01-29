@@ -6,6 +6,7 @@ import { DrawerAppBar } from './components/NavBar/DraweAppBar'
 import { Container } from '@mui/material'
 import { Contact } from './components/Contact/Index'
 import { FrequentlyAskedQuestions } from './components/FAQ'
+import { BookNow } from './components/BookNow'
 
 
 
@@ -26,6 +27,7 @@ function App() {
             >
                 <DrawerAppBar />
                 <Home />
+                <BookNow />
                 <FrequentlyAskedQuestions />
                 <Contact />
             </Container>
