@@ -1,67 +1,68 @@
 import { useEffect, useState } from "react";
 import {  BookNowTitle, BookNowWrapperTimeQty, BookNowGridContainer, BookNowGridItemCalendar, BookNowGridItemDetails, BookNowContainter, BookNowButtonTime, BookNowStackTimes, BookNowTitleDate, BokNowSubtitle, BookNowTextQuantity, BookNowTextTotal, BookNowButton, BookNowSpan } from "../../styles/book-now"
 
-import moment from 'moment';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
+import moment from 'moment';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 
-// import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
-import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 
 import { FormControl, MenuItem, Select, Stack, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 
-const times = ['12:00', '19:00']
-const quantities = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10' ]
+import { TIMES, QUANTITIES, DISABLED_DAYS } from '../../constants'
 
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
+
+const initialTicket = {
+    date: moment().format(),
+    time: false,
+    quantity: 1
+}
+
 const BookNow = () => {
-
-    const initialTicket = {
-        date: moment().format(),
-        time: false,
-        quantity: 1
-    }
-
     const [ticket, setTicket] = useState(initialTicket);
 
-    const dateFormated = moment(ticket.date).format("dddd, Do MMMM YYYY")
+    const disabledDays = (date) => {
+        return DISABLED_DAYS.map((el) => moment(el).format()).includes(date.format())
+    }
 
-    const hangleChangeTicket = (e) => {
-        setTicket({
-            ...ticket,
-            [e.target.name] : e.target.value
-        })
+    const hangleChangeQuantity = (e) => {
+        setTicket({ ...ticket, quantity : e.target.value })
     }
 
     const handleChangeTime = (time) => {
-        setTicket({
-            ...ticket,
-            time
-        })
+        setTicket({ ...ticket, time })
     }
+
+    const hangleChangeDate = (newValue) => {
+        setTicket({...ticket, date: newValue});
+    }
+
+    const dateFormated = moment(ticket.date).format("dddd, Do MMMM YYYY")
+
     useEffect(() => {
         if (ticket.time){
-            const timeFiltered = times.filter(el => el === ticket.time)
-            const othersTime = times.filter(el => el !== ticket.time)
-
+            const timeFiltered = TIMES.filter(el => el === ticket.time)
+            const othersTime = TIMES.filter(el => el !== ticket.time)
             document.getElementById(timeFiltered[0]).style.backgroundColor = "#f9c301"
-
             othersTime.map((el) => (
                 document.getElementById(el).style.backgroundColor = "#f8f8f8"
             ))
         }
     }, [ticket.time])
 
+    const handleBuyTicket = () => {
+        console.log(ticket)
 
-    console.log(ticket)
+    }
+
     return (
         <BookNowContainter id='Book Now' sx={{mt: '20px'}}>
-
-{/*--------------------------------  GRID 1: LEFT - TOP -------------------------------- */}
             <BookNowGridContainer id='Book Now' container spacing={1} >
 
+{/*--------------------------------  GRID 1: LEFT - TOP -------------------------------- */}
                 <BookNowGridItemCalendar item xs={12} sm={6}>
                     <Stack spacing={2} direction='column' sx={{width: '100%',justifyContent: 'center', alignItems: 'center'}} >
                         <Stack spacing={{xs: 0, md: 4}} direction={{xs: 'column', md: 'row'}} sx={{alignItems: 'center'}}>
@@ -72,36 +73,29 @@ const BookNow = () => {
                             </Stack>
                         </Stack>
 
-
                         <LocalizationProvider dateAdapter={AdapterMoment} >
                             <StaticDatePicker
                                 displayStaticWrapperAs="desktop"
                                 openTo='day'
-                                // label="Date"
                                 value={ticket.date}
                                 minDate={moment().format()}
                                 name='date'
-                                onChange={(newValue) => {
-                                    setTicket({...ticket, date: newValue});
-                                }}
-                                clereable
+                                onChange={(newValue) => hangleChangeDate(newValue)}
                                 renderInput={(params) => <TextField {...params} />}
+                                shouldDisableDate={disabledDays}
                             />
                         </LocalizationProvider>
                     </Stack>
                 </BookNowGridItemCalendar>
 {/*--------------------------------  End of GRID 1: LEFT - TOP -------------------------------- */}
 
-
-
 {/*--------------------------------  GRID 2: RIGHT - BOTTOM -------------------------------- */}
                 <BookNowGridItemDetails item xs={12} sm={6}>
-
                     <BookNowWrapperTimeQty direction='column' spacing={4} >
-                        <BookNowTitleDate> {dateFormated} </BookNowTitleDate>
+                        <BookNowTitleDate> { dateFormated } </BookNowTitleDate>
                             <BookNowStackTimes direction='row' spacing={1} >
                                 {
-                                    times.map((el)=> (
+                                    TIMES.map((el)=> (
                                         <BookNowButtonTime id={el} component="button" key={el} onClick={() => handleChangeTime(el)}>
                                             {el} hs
                                         </BookNowButtonTime>
@@ -129,9 +123,9 @@ const BookNow = () => {
                                         name='quantity'
                                         value={ticket.quantity}
                                         label="Quantity"
-                                        onChange={hangleChangeTicket}
+                                        onChange={hangleChangeQuantity}
                                     >
-                                        {quantities.map((el)=> (
+                                        {QUANTITIES.map((el)=> (
                                             <MenuItem key={el} value={el}> {el} </MenuItem>
                                         ))}
                                     </Select>
@@ -141,24 +135,20 @@ const BookNow = () => {
                             <Box sx={{display: 'flex'}}>
                                 <BookNowTextTotal > Total:  € {ticket.quantity * 80}  </BookNowTextTotal>
                             </Box>
-
-
                         </Stack>
+
                         <BookNowButton
                             endIcon={<ShoppingCartIcon/>}
+                            onClick={handleBuyTicket}
                         >
                             Buy TICKETS
                         </BookNowButton>
 
-
                     </BookNowWrapperTimeQty>
-
                 </BookNowGridItemDetails>
 {/*--------------------------------  End of GRID 2: RIGHT - BOTTOM -------------------------------- */}
 
             </BookNowGridContainer>
-
-
         </BookNowContainter>
     )
 }
