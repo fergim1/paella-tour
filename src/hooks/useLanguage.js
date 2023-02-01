@@ -1,14 +1,8 @@
 export const useLanguage = (language, info) => {
-    if(language === 'ENG'){
+    if(language === 'en'){
         return info.english
     }
-    if (language === 'ESP'){
+    if (language === 'es'){
         return info.spanish
     }
-    // if (language === 'FRA'){
-    //     return info.french
-    // }
-    // if (language === 'ITA'){
-    //     return info.italian
-    // }
     } 

@@ -1,5 +1,4 @@
 import { createTheme } from "@mui/material/styles";
-import { amber, orange } from '@mui/material/colors';
 
 
 export const Colors = {
@@ -45,14 +44,10 @@ const theme = createTheme({
                         },
                     },
                 },
-                // {
-                //     props: { variant: '' },
-                //     style: {
-                //     },
-                // },
             ],
         },
       },
-})
+    },
+)
 
 export { theme }

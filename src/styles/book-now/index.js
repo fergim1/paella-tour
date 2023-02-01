@@ -1,60 +1,62 @@
 import styled from "@emotion/styled";
-import { Button, Grid, Link, Stack, Typography } from "@mui/material";
-import { Box } from "@mui/system";
+import {
+    Button,
+    Grid,
+    Box,
+    Stack,
+    Typography,
+    IconButton,
+    FormControl,
+    Select,
+    MenuItem
+} from "@mui/material";
 
 
-export const BookNowContainter = styled(Box)(()=>({
+
+export const Containter = styled(Box)(()=>({
     width: '100%',
     height: '100vh',
     flexGrow: '1',
 }))
 
-export const BookNowGridContainer = styled(Grid)(({})=> ({
+export const GridContainer = styled(Grid)(({})=> ({
 }))
 
-export const BookNowGridItemCalendar = styled(Grid)(({theme})=> ({
+//////////////////////////////////////////////////////////////////
+////////////////////////  LEFT - TOP  ////////////////////////
+export const GridItemLeftTop = styled(Grid)(({theme})=> ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     height: '100vh',
     alignItems: 'center',
-    // paddingRight: '10%',
-    [theme.breakpoints.down('md')]: {
-        // paddingRight: '35px',
-    },
     [theme.breakpoints.down('sm')]: {
-        height: '55vh',
+        height: '60vh',
         alignItems: 'center',
         padding: '0',
     },
 }))
 
-export const BookNowGridItemDetails = styled(Grid)(({theme})=> ({
+export const WrapperLeftTop = styled(Stack)(()=> ({
+    width: '100%',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100vw',
-    height: '100vh',
-
-    alignItems: 'start',
-    padding: '0px',
-
-    [theme.breakpoints.down('sm')]: {
-        height: '45vh',
-        padding: '0 0 0 0',
-        margin: '0 0',
-        alignItems: 'center',
-
-    },
 }))
-export const BookNowTitle = styled(Typography)(({theme})=> ({
+
+export const WrapperTitleAndSubtitle = styled(Stack)(()=> ({
+    alignItems: 'center',
+    flexDirection: 'column',
+}))
+
+export const TitleBookNow = styled(Typography)(({theme})=> ({
     fontSize: '40px',
     fontWeight: '800',
     letterSpacing: '-0.06em',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
-    backgroundImage: 'linear-gradient(90deg,#e8502b, #f9c301 )',
+    backgroundImage: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
     fontFamily: "'Inter', sans-serif",
     WebkitFontSmoothing: 'antialiased',
     lineHeight: '1',
@@ -68,7 +70,12 @@ export const BookNowTitle = styled(Typography)(({theme})=> ({
     }
 }))
 
-export const BokNowSubtitle = styled(Typography)(({theme})=> ({
+export const WrapperSubtitles = styled(Stack)(()=> ({
+    flexDirection: 'column',
+    alignItems: 'center',
+}))
+
+export const SubtitlePrice = styled(Typography)(({theme})=> ({
     fontSize: '20px',
     textAlign: 'center',
     fontWeight: '800',
@@ -79,7 +86,7 @@ export const BokNowSubtitle = styled(Typography)(({theme})=> ({
     }
 }))
 
-export const BookNowSpan = styled(Typography)(({theme})=> ({
+export const SubtitleDescription = styled(Typography)(({theme})=> ({
     fontSize: '16px',
     textAlign: 'center',
     fontWeight: '400',
@@ -90,20 +97,41 @@ export const BookNowSpan = styled(Typography)(({theme})=> ({
     }
 }))
 
+//////////////////////////////////////////////////////////////////
+////////////////////////  RIGHT - BOTTOM  ////////////////////////
+export const GridItemRightBottom = styled(Grid)(({theme})=> ({
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: '100vh',
+    alignItems: 'start',
+    padding: '0px',
+    [theme.breakpoints.down('sm')]: {
+        height: '40vh',
+        padding: '0 0 0 0',
+        margin: '0 0',
+        alignItems: 'center',
+    },
+}))
 
-
-
-export const BookNowWrapperTimeQty = styled(Stack)(({theme})=> ({
+export const WrapperRightBottom = styled(Stack)(({theme})=> ({
     backgroundColor: '#e6e6e6',
     borderRadius: '30px',
     padding: '0px 30px 0px 30px',
-    width: '80%',
-    maxWidth: '550px',
+    width: '90%',
+    maxWidth: '450px',
     height: '70%',
     maxHeight: '450px',
     justifyContent: 'center',
     alignItems: 'center',
+    flexDirection: 'column',
+    [theme.breakpoints.down('md')]: {
+        width: '95%'
+    },
     [theme.breakpoints.down('sm')]: {
+        justifyContent: 'start',
         bottom: '0',
         borderTopLeftRadius: '30px',
         borderTopRightRadius: '30px',
@@ -111,94 +139,141 @@ export const BookNowWrapperTimeQty = styled(Stack)(({theme})=> ({
         borderBottomLeftRadius: '0px',
         height: '100%',
         width: '100%',
+        maxWidth: '100%',
         justofyContent: 'space-around',
-        padding: '0 5px 0 5px',
+        padding: '30px 5px 0 5px',
     }
 }))
 
-// export const BookNowWrapperTitle = styled(Stack)(()=> ({
-
-// }))
-
-export const BookNowTitleDate = styled(Typography)(({theme})=> ({
-    margin: '0',
-    color: '#666666',
-    fontSize: '25px',
-    fontWeight: 'bold',
-    textAlign: 'center',
-    // borderBottom: '3px solid #d1d1d1',
-    [theme.breakpoints.down('md')]: {
-        fontSize: '20px',
-        margin: '14px 0 0 20px',
-    }
-}))
-
-
-export const BookNowStackTimes = styled(Stack)(({theme})=> ({
-    flexWrap: 'wrap',
+export const WrapperInfo = styled(Stack)(({theme})=> ({
     width: '90%',
-    height: '20%',
-    marginTop: '16px',
-    display: 'flex',
-    justifyContent: 'center',
+    height: '50px',
     alignItems: 'center',
+    justifyContent:'center',
+    flexDirection: 'row',
     [theme.breakpoints.down('md')]: {
         width: '100%',
+    },
+    [theme.breakpoints.down('sm')]: {
+        width: '90%',
+    },
+}))
+
+export const WrapperIcon = styled(Box)(() => ({
+    width: '15%',
+    display: 'grid',
+    placeContent: 'center',
+}))
+
+export const Icon = styled(IconButton)(() => ({
+    fontSize: 'large',
+    color: '#616161',
+    padding: '4px',
+}))
+
+export const WrapperDetail = styled(Box)(() => ({
+    width: '85%',
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'row',
+}))
+
+export const WrapperButtom = styled(Stack)(({theme})=> ({
+    width: '85%',
+    height: '50px',
+    alignItems: 'center',
+    justifyContent:'center',
+    margin: '8px 0 0 0',
+    padding: '0',
+    // border: '2px solid red',
+    [theme.breakpoints.down('md')]: {
+        width: '70%',
+    },
+    [theme.breakpoints.down('sm')]: {
+        width: '90%',
+
     }
 }))
 
-export const BookNowButtonTime = styled(Button)(({theme})=> ({
-    backgroundColor: '#f8f8f8',
+export const TextDate = styled(Typography)(({theme})=> ({
+    margin: '0',
+    color: '#666666',
+    fontSize: '18px',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '18px',
+        margin: '0',
+    }
+}))
+
+export const Timetable = styled(Button)(({theme})=> ({
+    backgroundColor: '#d8d8d8',
     textTransform: 'lowercase',
-    fontSize: '13px',
-    border: '2px solid transparent ',
-    borderRadius: '6px',
-    color: '#6d6d6d' ,
-    width:'75px',
-    height:'25px',
+    fontSize: '14px',
+    borderRadius: '4px',
+    color: '#666666' ,
+    width:'80px',
+    height:'26px',
+    marginLeft: '12px',
     '&:hover': {
-        border: '2px solid #f9c301',
+        border: `2px solid ${theme.palette.primary.main}`,
     },
     [theme.breakpoints.down('md')]: {
-        fontSize: '12px',
-        width:'70px',
-        height:'20px',
+        width:'80px',
+        height:'26px',
     }
 }))
 
-export const BookNowTextQuantity = styled(Typography)(({theme})=> ({
+export const FormControlQuantity = styled(FormControl)(()=> ({
+}))
+
+export const SelectQuantity = styled(Select)(({theme})=> ({
+    width: '40px',
+    height: '20px',
+    borderBottom: 'none',
+    marginRight: '32px',
+    '& .MuiInput-input': {
+        padding: '6px'
+    },
+    [theme.breakpoints.down('md')]: {
+        marginRight: '16px'
+    },
+    [theme.breakpoints.down('sm')]: {
+       marginRight: '32px',
+    }
+}))
+
+export const MenuItemQuantity = styled(MenuItem)(()=> ({
+}))
+
+export const TextQuantity = styled(Typography)(()=> ({
     margin: '0px 12px 0 0px',
     color: '#3c3c3c',
-    [theme.breakpoints.down('md')]: {
-    }
 }))
 
-export const BookNowTextTotal = styled(Typography)(({theme})=> ({
+export const TextTotal = styled(Typography)(()=> ({
     margin: '0px 12px 0 0px',
     color: '#3c3c3c',
     fontWeight: 'bold',
-    [theme.breakpoints.down('md')]: {
-    }
+
 }))
 
-
-export const BookNowButton = styled(Button)(({theme})=> ({
-    backgroundColor: theme.palette.primary.main,
+export const ButtomBuyTicket = styled(Button)(({theme})=> ({
+    background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
     color: 'white',
-    borderRadius: '8px',
+    borderRadius: '20px',
     fontWeight: 'bold',
-    margin: '20px',
     width:'100%',
     height:'40px',
+    marginTop: '40px',
     '&:focus': {
-        backgroundColor: '#c39902',
+        background: theme.palette.secondary.main,
     },
-    '&:hover': {
-        backgroundColor: '#c39902',
-    },
-    [theme.breakpoints.down('md')]: {
-        width:'80%',
-        margin: '20px',
-        
+    [theme.breakpoints.down('sm')]: {
+        marginTop: '15px'
     }
+
+
+
 }))

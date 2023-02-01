@@ -1,31 +1,107 @@
-import { useEffect, useState } from "react";
-import {  BookNowTitle, BookNowWrapperTimeQty, BookNowGridContainer, BookNowGridItemCalendar, BookNowGridItemDetails, BookNowContainter, BookNowButtonTime, BookNowStackTimes, BookNowTitleDate, BokNowSubtitle, BookNowTextQuantity, BookNowTextTotal, BookNowButton, BookNowSpan } from "../../styles/book-now"
+import { useContext, useEffect, useState } from "react";
+import {
+    Containter,
+    GridContainer,
+    //  TOP - LEFT
+    GridItemLeftTop,
+    WrapperLeftTop,
+    WrapperTitleAndSubtitle,
+    TitleBookNow,
+    WrapperSubtitles,
+    SubtitlePrice,
+    SubtitleDescription,
 
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+    //  RIGHT - BOTTOM
+    GridItemRightBottom,
+    WrapperRightBottom,
+    WrapperInfo,
+    WrapperIcon,
+    Icon,
+    TextDate,
+    WrapperDetail,
+    Timetable,
+    FormControlQuantity,
+    SelectQuantity,
+    MenuItemQuantity,
+    TextQuantity,
+    TextTotal,
+    WrapperButtom,
+    ButtomBuyTicket,
+} from "../../styles/book-now"
+
+////////////// Context /////////////////////////////////////////////
+import { AppContext } from "../../context";
+import { useLanguage } from "../../hooks/useLanguage";
+
+////////////// DatePicker///////////////////////////////////////////
+import {  LocalizationProvider  } from '@mui/x-date-pickers';
 import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
-import moment from 'moment';
-import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import { TextField } from "@mui/material";
 
+////////////// Day js /////////////////////////////////////////////
+import dayjs from 'dayjs'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import 'dayjs/locale/es';
+import 'dayjs/locale/en';
 
-import { FormControl, MenuItem, Select, Stack, TextField } from "@mui/material";
-import { Box } from "@mui/system";
+////////////// Icons ///////////////////////////////////////////////
+import InsertInvitationIcon from '@mui/icons-material/InsertInvitation';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import LocalActivityIcon from '@mui/icons-material/LocalActivity';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
+////////////// Constants ///////////////////////////////////////////
 import { TIMES, QUANTITIES, DISABLED_DAYS } from '../../constants'
 
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+////////////// Text of BookNowPage ///////////////////////////////////////////
+const textSection = {
+    english: {
+        title: 'Book Now',
+        subtitle: '80 € per guest',
+        span: ' Include all food and drink ',
+        guest: 'Guest :',
+        total: 'Total:  € ',
+        buttonText: 'Buy TICKETS',
+
+    },
+    spanish: {
+        title: 'Reservar',
+        subtitle: '80 € por persona',
+        span: ' Incluye bebida y comida ',
+        guest: 'Cantidad :',
+        total: 'Total:  € ',
+        buttonText: 'Comprar TICKETS',
+    }
+}
 
 
 const initialTicket = {
-    date: moment().format(),
+    date: dayjs().format(),
     time: false,
     quantity: 1
 }
 
-const BookNow = () => {
+const BookNowPage = () => {
     const [ticket, setTicket] = useState(initialTicket);
+    const { language } = useContext(AppContext)
+    const text = useLanguage(language, textSection)
+    const [locale, setLocale] = useState(language);
+    const [dateFormated , setDateFormated] = useState(dayjs(initialTicket.date).format("dddd, D MMMM YYYY"))
+
+    useEffect(() => {
+        if(language==='en') {
+            setLocale('en')
+            setDateFormated(dayjs(ticket.date).locale('en').format("dddd, D MMMM YYYY"))
+        }
+        if(language==='es') {
+            setLocale('es')
+            setDateFormated(dayjs(ticket.date).locale('es').format("dddd, D MMMM YYYY"))
+        }
+    }, [language, ticket.date ])
+
 
     const disabledDays = (date) => {
-        return DISABLED_DAYS.map((el) => moment(el).format()).includes(date.format())
+        return DISABLED_DAYS.map((el) => dayjs(el).format()).includes(date.format())
     }
 
     const hangleChangeQuantity = (e) => {
@@ -40,117 +116,134 @@ const BookNow = () => {
         setTicket({...ticket, date: newValue});
     }
 
-    const dateFormated = moment(ticket.date).format("dddd, Do MMMM YYYY")
-
     useEffect(() => {
         if (ticket.time){
-            const timeFiltered = TIMES.filter(el => el === ticket.time)
+            const timeSelected = TIMES.filter(el => el === ticket.time)
             const othersTime = TIMES.filter(el => el !== ticket.time)
-            document.getElementById(timeFiltered[0]).style.backgroundColor = "#f9c301"
+            document.getElementById(timeSelected[0]).style.backgroundColor = "#f9c301"
             othersTime.map((el) => (
-                document.getElementById(el).style.backgroundColor = "#f8f8f8"
+                document.getElementById(el).style.backgroundColor = "#d8d8d8"
             ))
         }
     }, [ticket.time])
 
     const handleBuyTicket = () => {
-        console.log(ticket)
+        const ticketReady = {
+                    ...ticket,
+                    date: dayjs(ticket.date).format("dddd, D MMMM YYYY")
+                }
+        console.log(ticketReady)
 
     }
 
+
     return (
-        <BookNowContainter id='Book Now' sx={{mt: '20px'}}>
-            <BookNowGridContainer id='Book Now' container spacing={1} >
+        <Containter id='Book Now' sx={{mt: '20px'}}>
+            <GridContainer id='Book Now' container spacing={1} >
 
-{/*--------------------------------  GRID 1: LEFT - TOP -------------------------------- */}
-                <BookNowGridItemCalendar item xs={12} sm={6}>
-                    <Stack spacing={2} direction='column' sx={{width: '100%',justifyContent: 'center', alignItems: 'center'}} >
-                        <Stack spacing={{xs: 0, md: 4}} direction={{xs: 'column', md: 'row'}} sx={{alignItems: 'center'}}>
-                            <BookNowTitle>Book Now</BookNowTitle>
-                            <Stack spacing={0} direction='column' sx={{alignItems: {xs: 'center', md: 'end'}}}>
-                                <BokNowSubtitle> 80 € per guest </BokNowSubtitle>
-                                <BookNowSpan> Include all food and drink </BookNowSpan>
-                            </Stack>
-                        </Stack>
+{/*--------------------------------  GRID LEFT - TOP -------------------------------- */}
+                <GridItemLeftTop item xs={12} sm={6}>
+                    <WrapperLeftTop spacing={2}>
+                        <WrapperTitleAndSubtitle>
+                            <TitleBookNow>{text.title}</TitleBookNow>
+                            <WrapperSubtitles >
+                                <SubtitlePrice> {text.subtitle} </SubtitlePrice>
+                                <SubtitleDescription>{text.span}</SubtitleDescription>
+                            </WrapperSubtitles>
+                        </WrapperTitleAndSubtitle>
 
-                        <LocalizationProvider dateAdapter={AdapterMoment} >
+                        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={locale} >
                             <StaticDatePicker
+                                dayOfWeekFormatter={(day) => `${day}.`}
                                 displayStaticWrapperAs="desktop"
                                 openTo='day'
                                 value={ticket.date}
-                                minDate={moment().format()}
+                                minDate={dayjs().format()}
                                 name='date'
                                 onChange={(newValue) => hangleChangeDate(newValue)}
                                 renderInput={(params) => <TextField {...params} />}
                                 shouldDisableDate={disabledDays}
                             />
                         </LocalizationProvider>
-                    </Stack>
-                </BookNowGridItemCalendar>
-{/*--------------------------------  End of GRID 1: LEFT - TOP -------------------------------- */}
+                    </WrapperLeftTop>
+                </GridItemLeftTop>
+{/*--------------------------------  End of GRID LEFT - TOP -------------------------------- */}
 
-{/*--------------------------------  GRID 2: RIGHT - BOTTOM -------------------------------- */}
-                <BookNowGridItemDetails item xs={12} sm={6}>
-                    <BookNowWrapperTimeQty direction='column' spacing={4} >
-                        <BookNowTitleDate> { dateFormated } </BookNowTitleDate>
-                            <BookNowStackTimes direction='row' spacing={1} >
+{/*--------------------------------  GRID RIGHT - BOTTOM -------------------------------- */}
+                <GridItemRightBottom item xs={12} sm={6}>
+                    <WrapperRightBottom spacing={{xs: 0, sm: 2}} >
+
+                        <WrapperInfo >
+                            <WrapperIcon >
+                                <Icon>
+                                    <InsertInvitationIcon />
+                                </Icon>
+                            </WrapperIcon>
+                            <WrapperDetail >
+                                <TextDate> { dateFormated } </TextDate>
+                            </WrapperDetail>
+                        </WrapperInfo>
+
+                        <WrapperInfo>
+                            <WrapperIcon >
+                                <Icon>
+                                    <AccessTimeIcon />
+                                </Icon>
+                            </WrapperIcon>
+                            <WrapperDetail >
                                 {
                                     TIMES.map((el)=> (
-                                        <BookNowButtonTime id={el} component="button" key={el} onClick={() => handleChangeTime(el)}>
+                                        <Timetable id={el} key={el} onClick={() => handleChangeTime(el)}>
                                             {el} hs
-                                        </BookNowButtonTime>
+                                        </Timetable>
                                     ))
                                 }
-                            </BookNowStackTimes>
+                            </WrapperDetail>
+                        </WrapperInfo>
 
-                        <Stack direction='row' spacing={5} sx={{marginTop: '16px', justifyContent: 'center', alignItems: 'center'}}>
-                            <Box sx={{display: 'flex'}}>
-                                <BookNowTextQuantity > Quantity: </BookNowTextQuantity>
+                        <WrapperInfo >
+                            <WrapperIcon >
+                                <Icon>
+                                    <LocalActivityIcon/>
+                                </Icon>
+                            </WrapperIcon>
+                            <WrapperDetail >
+                                <TextQuantity > {text.guest} </TextQuantity>
+                                    <FormControlQuantity size='small'>
+                                        <SelectQuantity
+                                            variant="standard"
+                                            labelId="quantity-label"
+                                            id="quantity"
+                                            name='quantity'
+                                            value={ticket.quantity}
+                                            label="Quantity"
+                                            onChange={hangleChangeQuantity}
+                                        >
+                                            {QUANTITIES.map((el)=> (
+                                                <MenuItemQuantity key={el} value={el}> {el} </MenuItemQuantity>
+                                            ))}
+                                        </SelectQuantity>
+                                    </FormControlQuantity>
+                                    <TextTotal >{ text.total} {ticket.quantity * 80}  </TextTotal>
+                            </WrapperDetail>
+                        </WrapperInfo>
 
-                                <FormControl size='small'>
-                                    <Select
-                                        sx={{  
-                                            width: '40px',
-                                            height: '20px',
-                                            borderBottom: 'none',
-                                            '& .MuiInput-input': {
-                                                padding: '6px'
-                                            }
-                                        }}
-                                        variant="standard"
-                                        labelId="quantity-label"
-                                        id="quantity"
-                                        name='quantity'
-                                        value={ticket.quantity}
-                                        label="Quantity"
-                                        onChange={hangleChangeQuantity}
-                                    >
-                                        {QUANTITIES.map((el)=> (
-                                            <MenuItem key={el} value={el}> {el} </MenuItem>
-                                        ))}
-                                    </Select>
-                                </FormControl> 
+                        <WrapperButtom >
+                            <ButtomBuyTicket
+                                endIcon={<ShoppingCartIcon/>}
+                                onClick={handleBuyTicket}
+                            >
+                                {text.buttonText}
+                            </ButtomBuyTicket>
+                        </WrapperButtom>
 
-                            </Box>
-                            <Box sx={{display: 'flex'}}>
-                                <BookNowTextTotal > Total:  € {ticket.quantity * 80}  </BookNowTextTotal>
-                            </Box>
-                        </Stack>
+                    </WrapperRightBottom>
+                </GridItemRightBottom>
+{/*--------------------------------  End of GRID RIGHT - BOTTOM -------------------------------- */}
 
-                        <BookNowButton
-                            endIcon={<ShoppingCartIcon/>}
-                            onClick={handleBuyTicket}
-                        >
-                            Buy TICKETS
-                        </BookNowButton>
-
-                    </BookNowWrapperTimeQty>
-                </BookNowGridItemDetails>
-{/*--------------------------------  End of GRID 2: RIGHT - BOTTOM -------------------------------- */}
-
-            </BookNowGridContainer>
-        </BookNowContainter>
+            </GridContainer>
+        </Containter>
     )
 }
 
-export { BookNow }
+export { BookNowPage }

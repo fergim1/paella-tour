@@ -26,8 +26,8 @@ const SelectLanguage = ({theme}) => {
               displayEmpty
               onChange={handleLanguage}
             >
-                <MenuItem value='ENG'> <EnglishFlag/> </MenuItem>
-                <MenuItem value='ESP'> <SpanishFlag/> </MenuItem>
+                <MenuItem value='en'> <EnglishFlag/> </MenuItem>
+                <MenuItem value='es'> <SpanishFlag/> </MenuItem>
 
             </Select>
         </FormControl>
