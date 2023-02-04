@@ -7,6 +7,7 @@ import { Container } from '@mui/material'
 import { Contact } from './components/Contact/Index'
 import { FrequentlyAskedQuestions } from './components/FAQ'
 import { BookNowPage } from './components/BookNow'
+import { ItineraryPage } from './components/Itinerary'
 
 
 
@@ -27,6 +28,7 @@ function App() {
             >
                 <DrawerAppBar />
                 <Home />
+                <ItineraryPage />
                 <BookNowPage />
                 <FrequentlyAskedQuestions />
                 <Contact />
