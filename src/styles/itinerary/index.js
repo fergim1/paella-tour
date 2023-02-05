@@ -2,9 +2,6 @@ import styled from "@emotion/styled";
 import { Box, Button, Typography } from "@mui/material";
 import { Stack } from "@mui/system";
 
-//// Animations
-// import {slideAnimation} from "../animation";
-
 
 export const ContainerItinerary = styled(Box)(()=> ({
     width: '100%',
@@ -27,7 +24,7 @@ export const WrapperBackground = styled(Box)(({src, theme})=> ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'end',
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9)), url(${ src })`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url(${ src })`,
         backgroundPosition: "center",
     }
 }))
@@ -44,7 +41,7 @@ export const WrapperInfo = styled(Stack)(({theme})=> ({
     }
 }))
 
-export const WrapperCaption = styled(Stack)(({theme})=> ({
+export const WrapperCaption = styled(Stack)(()=> ({
     width: 'auto',
     maxWidth: '247px',
     backgroundColor: '#f9c301ba',
@@ -54,8 +51,7 @@ export const WrapperCaption = styled(Stack)(({theme})=> ({
 
 }))
 
-
-export const WrapperArrows = styled(Stack)(({theme})=> ({
+export const WrapperArrows = styled(Stack)(()=> ({
     flexDirection: 'row',
     justifyContent: 'start',
     width: '100%',
@@ -92,9 +88,6 @@ export const ArrowNext = styled(Button)(({theme})=> ({
     background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
     borderRadius: '20px',
     color: 'white',
-    '&:hover': {
-        backgroundColor: theme.palette.secondary.main,
-    }
 }))
 
 export const TextArrow = styled(Typography)(()=> ({
@@ -115,7 +108,7 @@ export const Caption = styled(Typography)(({theme})=> ({
     }
 }))
 
-export const Title = styled(Typography)(({theme})=> ({
+export const TitleStop = styled(Typography)(({theme})=> ({
     fontSize: '36px',
     fontWeight: 'bold',
     backgroundColor: 'transparent',
@@ -127,6 +120,26 @@ export const Title = styled(Typography)(({theme})=> ({
         fontSize: '32px'
     }
 }))
+
+export const TitleItineraty = styled(Typography)(({theme})=> ({
+    fontSize: '40px',
+    fontWeight: '800',
+    letterSpacing: '-0.06em',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    backgroundImage: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
+    fontFamily: "'Inter', sans-serif",
+    WebkitFontSmoothing: 'antialiased',
+    lineHeight: '1',
+    letterSpacing: '-.06em',
+    marginBottom: '10px',
+    padding: '0',
+    [theme.breakpoints.down('md')]: {
+        fontSize: '36px',
+    },
+}))
+
+TitleItineraty
 
 export const Description = styled(Typography)(({theme})=> ({
     fontSize: '14px',

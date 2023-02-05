@@ -8,7 +8,8 @@ import homeMobile from '../../../imagenes/home-mobile.jpg'
 import { trackingInContractBck, textFocusIn, smoke1, smoke3, smoke2} from "../animation";
 
 
-export const HomeContainer = styled(Box)(({theme})=> ({
+
+export const ContainerHome = styled(Box)(({theme})=> ({
     display: 'flex',
     justifyContent: 'center',
     alignContent: 'center',
@@ -21,7 +22,7 @@ export const HomeContainer = styled(Box)(({theme})=> ({
 }))
 
 
-export const HomeBackground = styled(Box)(({ theme})=> ({
+export const BackgroundHome = styled(Box)(({ theme})=> ({
     position: 'absolute',
     top: '0px',
     right: '0',
@@ -33,49 +34,51 @@ export const HomeBackground = styled(Box)(({ theme})=> ({
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: 'cover',
-    // height: 'calc(100vh - 70px)',
-
     [theme.breakpoints.down('md')]: {
         backgroundImage: `url(${ homeMobile })`,
     },
-
 }))
-////////////////////////////////////////////////////////////////
-/////////////////////////////////// Smoke
-export const SmokeWrap = styled(Box)(()=> ({
+
+/////////// Smoke on mobile /////////////////////////////////////////
+export const WrapperSmoke = styled(Box)(()=> ({
         position: 'absolute',
         transform: 'translateX(-50%)',
         left: '56%',
         bottom: '45%',
 }))
 
-export const SmokeImage1 = styled('img')(({src})=> ({
+export const ImageSmoke1 = styled('img')(({src})=> ({
     src: `url(${src})`,
     filter: 'blur(5px)',
+    width: '90%',
+    height: '90%',
+    // filter: 'brightness(135%)',
     transformOrigin: '50% 50%',
     animation: `${smoke1} 3s linear infinite`,
     animationDelay: '0.5s',
 }))
 
-export const SmokeImage2 = styled('img')(({src})=> ({
+export const ImageSmoke2 = styled('img')(({src})=> ({
     src: `url(${src})`,
     filter: 'blur(5px)',
+    width: '90%',
+    height: '90%',
     transformOrigin: '50% 50%',
     animation: `${smoke2} 3s linear infinite`,
     animationDelay: '1.5s',
 }))
 
-export const SmokeImage3 = styled('img')(({src})=> ({
+export const ImageSmoke3 = styled('img')(({src})=> ({
     src: `url(${src})`,
     filter: 'blur(5px)',
+    width: '90%',
+    height: '90%',
     transformOrigin: '50% 50%',
     animation: `${smoke3} 4s linear infinite`,
     animationDelay: '2.5s',
 }))
-////////////////////////////////// End Smoke
-////////////////////////////////////////////////////////////////
 
-export const HomeContent = styled(Box)(()=> ({
+export const Content = styled(Box)(()=> ({
     position: 'absolute',
     display: 'flex',
     flexDirection: 'column',
@@ -114,17 +117,18 @@ export const HomeTextAlicante = styled(Typography)(({ theme })=>({
     },
 }))
 
-export const HomeButton = styled(Button)(({theme})=> ({
-    backgroundColor: 'black',
+export const ButtonHome = styled(Button)(({theme})=> ({
+    width: '180px',
+    height: '40px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    cursor: 'pointer',
+    background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
+    borderRadius: '20px',
     color: 'white',
-    fontWeight: 'bold',
     marginTop: '20px',
-    width: '200px',
-    borderRadius: '106px',
-    '&:hover': {
-        color: 'black'
-    }
-
+    fontWeight: 'bold',
 }))
 
 

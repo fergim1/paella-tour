@@ -63,7 +63,7 @@ export const TitleBookNow = styled(Typography)(({theme})=> ({
     letterSpacing: '-.06em',
     [theme.breakpoints.down('md')]: {
         margin: '0',
-        fontSize: '35px',
+        fontSize: '36px',
     },
     [theme.breakpoints.down('sm')]: {
         paddingTop: '20px',
@@ -185,7 +185,6 @@ export const WrapperButtom = styled(Stack)(({theme})=> ({
     justifyContent:'center',
     margin: '8px 0 0 0',
     padding: '0',
-    // border: '2px solid red',
     [theme.breakpoints.down('md')]: {
         width: '70%',
     },
@@ -211,7 +210,7 @@ export const Timetable = styled(Button)(({theme})=> ({
     backgroundColor: '#d8d8d8',
     textTransform: 'lowercase',
     fontSize: '14px',
-    borderRadius: '4px',
+    borderRadius: '20px',
     color: '#666666' ,
     width:'80px',
     height:'26px',
@@ -273,7 +272,4 @@ export const ButtomBuyTicket = styled(Button)(({theme})=> ({
     [theme.breakpoints.down('sm')]: {
         marginTop: '15px'
     }
-
-
-
 }))

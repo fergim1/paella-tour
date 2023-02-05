@@ -1,17 +1,22 @@
 import { useContext, useState } from "react";
+
+////////////// Context /////////////////////////////////////////////
 import { AppContext } from "../../context";
+
+///////////////////// Components Styles ///////////////////////////////////
 import {
   ArrowPrev,
   ArrowNext,
   ContainerItinerary,
   WrapperBackground,
-  Title,
+  TitleStop,
   Caption,
   Description,
   WrapperInfo,
   WrapperArrows,
   WrapperCaption,
   TextArrow,
+  TitleItineraty,
 } from "../../styles/itinerary"
 
 ///////////////////// Icons ///////////////////////////////////
@@ -43,17 +48,16 @@ const ItineraryPage = () => {
 
   return (
     <ContainerItinerary id='Itinerary'>
-          
-
 
               <WrapperBackground src={textInfo.imgSRC} >
 
                   <WrapperInfo>
+                    <TitleItineraty>{textInfo.title}</TitleItineraty>
                             <WrapperCaption>
                                 <Caption> {textInfo.caption} </Caption>
                             </WrapperCaption>
 
-                            <Title> {textInfo.title} </Title>
+                            <TitleStop> {textInfo.titleStop} </TitleStop>
 
                             <Description> {textInfo.description}  </Description>
 

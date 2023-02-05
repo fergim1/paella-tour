@@ -3,11 +3,10 @@ import { Accordion, Box, Paper, Typography } from "@mui/material";
 
 
 
-export const FAQContainer = styled(Box)(({theme})=> ({
+export const ContainerFAQ = styled(Box)(()=> ({
     width: '100%',
     minHeight: '100vh',
     maxHeight: 'auto',
-    // height: '100vh',
     margin: '0',
     padding: '0',
     display: 'flex',
@@ -16,15 +15,10 @@ export const FAQContainer = styled(Box)(({theme})=> ({
     alignItems: 'center',
     padding: '30px 0px',
     backgroundColor:'#faebd7',
-    // backgroundImage: `url(${ FAQbackground })`,
-    // backgroundRepeat: "no-repeat",
-    // backgroundPosition: "center",
-    // backgroundSize: 'cover',
 }))
 
-export const FAQWraper = styled(Paper)(({theme})=> ({
-    
-    borderRadius: '12px',
+export const Wrapper = styled(Paper)(({theme})=> ({
+    borderRadius: '20px',
     backgroundColor: '#fbfbfd',
     width: '60%',
     height: 'auto',
@@ -38,21 +32,30 @@ export const FAQWraper = styled(Paper)(({theme})=> ({
     }
 }))
 
-export const FAQTitle = styled(Typography)(({theme})=> ({
-    fontSize: '24px',
-    fontWeight: 'bold',
-    marginBottom: '24px',
+export const Title = styled(Typography)(({theme})=> ({
+    fontSize: '40px',
+    fontWeight: '800',
+    letterSpacing: '-0.06em',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    backgroundImage: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
+    fontFamily: "'Inter', sans-serif",
+    WebkitFontSmoothing: 'antialiased',
+    lineHeight: '1',
+    letterSpacing: '-.06em',
+    margin: '32px',
+    padding: '0',
     [theme.breakpoints.down('md')]: {
-        marginBottom: '12px'
-    }
+        fontSize: '36px',
+    },
 }))
 
-export const FAQAccordion = styled(Accordion)(()=> ({
+export const AccordionQuestion = styled(Accordion)(()=> ({
     width: '95%',
     padding: '12px',
 }))
 
-export const FAQTextQuestion = styled(Typography)(({theme})=> ({
+export const Question = styled(Typography)(({theme})=> ({
     fontSize: '16px',
     fontWeight: 'bold',
     [theme.breakpoints.down('md')]: {
@@ -60,7 +63,7 @@ export const FAQTextQuestion = styled(Typography)(({theme})=> ({
     }
 }))
 
-export const FAQTextAnswer = styled(Typography)(({theme})=> ({
+export const Answer = styled(Typography)(({theme})=> ({
     fontSize: '14px',
     color: '#787976',
 }))

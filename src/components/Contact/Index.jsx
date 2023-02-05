@@ -1,101 +1,97 @@
 
-import { Button, FormControl, FormGroup, FormHelperText, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField, Typography } from "@mui/material";
-import { ContactContainer, GridContainer, GridItemText, GridItemForm, FormContent, BoxIsologo, ImageIsologo } from "../../styles/contact"
+///////////////////// Material UI Components ///////////////////////////////////
+import { FormHelperText, IconButton, InputAdornment } from "@mui/material";
+
+///////////////////// Components Styles ///////////////////////////////////
+import {
+    ContainerContact,
+    GridContainer,
+    GridItemLeftTop,
+    Title,
+    SubTitle,
+    WrapperIsologo,
+    ImageIsologo,
+    GridItemRightBottom,
+    TitleContact,
+    WrapperForm,
+    FormGroupContact,
+    FormControlContact,
+    ButtomContactForm,
+    InputLabelForm,
+    OutlinedInputForm,
+    TextAreaForm,
+} from "../../styles/contact"
+
+////////////// Icons /////////////////////////////////////////////
 import EmailIcon from '@mui/icons-material/Email';
 import PersonIcon from '@mui/icons-material/Person';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
+
+////////////// Logo /////////////////////////////////////////////
 import isoLogo from '../../assets/logo-drawer.png'
+
+////////////// Context /////////////////////////////////////////////
 import { useContext } from "react";
 import { AppContext } from "../../context";
 import { useLanguage } from "../../hooks/useLanguage";
 
-const textSection = {
-    english: {
-        title: 'Love to hear from you,',
-        subtitle: 'Get in touch ',
-        formTitle: 'Contact us',
-        inputName: 'Name *',
-        inputEmail: 'Email *',
-        inputMessage: 'Message *',
-        inputMessageTextHelp: '* All fields are required',
-        buttonText: 'Just send',
-
-    },
-    spanish: {
-        title: 'Nos encantaría saber de ti,',
-        subtitle: 'Escríbenos',
-        formTitle: 'Contacto',
-        inputName: 'Nombre *',
-        inputEmail: 'Email *',
-        inputMessage: 'Mensaje *',
-        inputMessageTextHelp: '* Todos los campos son requeridos',
-        buttonText: 'Enviar',
+////////////// Text of ContactPage ///////////////////////////////////////////
+import { textContact } from '../../constants/index'
 
 
-    }
-}
 
-const Contact = () => {
+const ContactPage = () => {
     const {language} = useContext(AppContext)
-    const text = useLanguage(language, textSection)
-
+    const text = useLanguage(language, textContact)
 
     return (
-        <ContactContainer id='Contact' sx={{mt: '20px'}}>
+        <ContainerContact id='Contact'>
             <GridContainer container spacing={2} >
 
-                <GridItemText sx={{lineHeight: '0'}}item xs={12} sm={6} >
-                    <h2>{text.title}</h2><br></br>
-                    <h2>{text.subtitle} 👋 </h2>
-                    <BoxIsologo>
+                <GridItemLeftTop item xs={12} sm={6} >
+                    <Title>{text.title}</Title><br></br>
+                    <SubTitle >{text.subtitle} 👋 </SubTitle>
+                    <WrapperIsologo>
                         <ImageIsologo src={isoLogo} alt='isologo-paella-tour'/>
-                    </BoxIsologo>
-                </GridItemText>
+                    </WrapperIsologo>
+                </GridItemLeftTop>
 
+                <GridItemRightBottom item xs={12} sm={6} >
+                    <WrapperForm elevation={2} >
+                        <TitleContact > {text.formTitle} </TitleContact>
 
-                <GridItemForm item xs={12} sm={6} >
-                    <FormContent elevation={2} >
-                    <Typography variant="h4" sx={{mt: '16px', mb: '24px'}}>{text.formTitle}</Typography>
-
-                        <FormGroup sx={{ width: '90%'}}>
-
-                            <FormControl variant="outlined" sx={{mb: '10px'}}>
-                                <InputLabel  color='secondary' htmlFor="name" >{text.inputName}</InputLabel>
-                                <OutlinedInput
+                        <FormGroupContact >
+                            <FormControlContact variant="outlined" >
+                                <InputLabelForm color='secondary' htmlFor="name" >{text.inputName}</InputLabelForm>
+                                <OutlinedInputForm
                                     label={text.inputName}
                                     color='secondary'
                                     endAdornment={
                                         <InputAdornment position="end">
-                                            <IconButton
-                                                aria-label="Name"
-                                                edge="end"
-                                                >
+                                            <IconButton aria-label="Name" edge="end" >
                                                     <PersonIcon />
                                             </IconButton>
                                         </InputAdornment>
                                     }
                                 />
-                            </FormControl>
+                            </FormControlContact>
 
-                            <FormControl variant="outlined" sx={{mb: '10px'}}>
-                                <InputLabel  color='secondary' htmlFor="email" >{text.inputEmail}</InputLabel>
-                                <OutlinedInput
+                            <FormControlContact variant="outlined" sx={{mb: '10px'}}>
+                                <InputLabelForm color='secondary' htmlFor="email" >{text.inputEmail}</InputLabelForm>
+                                <OutlinedInputForm
                                     label={text.inputEmail}
                                     color='secondary'
                                     endAdornment={
                                         <InputAdornment position="end">
-                                            <IconButton
-                                                aria-label="email"
-                                                edge="end"
-                                                >
+                                            <IconButton aria-label="email" edge="end" >
                                                     <EmailIcon />
                                             </IconButton>
                                         </InputAdornment>
                                     }
                                 />
-                            </FormControl>
+                            </FormControlContact>
 
-                            <TextField 
+                            <TextAreaForm
                                 color='secondary'
                                 id="outlined-multiline-static"
                                 label={text.inputMessage}
@@ -104,22 +100,17 @@ const Contact = () => {
                             />
                             <FormHelperText>{text.inputMessageTextHelp}</FormHelperText>
 
-                            <Button
-                                endIcon={<ArrowOutwardIcon/>}
-                                sx={{mt: '10px', mb: '30px', color: 'white', fontWeight: 'bold'}}
-                                variant="contained"
-                                size="large"
-                            >
+                            <ButtomContactForm endIcon={<ArrowOutwardIcon/>} >
                                 {text.buttonText}
-                            </Button>
-                        </FormGroup>
+                            </ButtomContactForm>
+                        </FormGroupContact>
 
-                    </FormContent>
-                </GridItemForm>
+                    </WrapperForm>
+                </GridItemRightBottom>
 
             </GridContainer>
-        </ContactContainer>
+        </ContainerContact>
     )
 }
 
-export { Contact }
+export { ContactPage }

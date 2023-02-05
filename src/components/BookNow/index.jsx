@@ -54,25 +54,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { TIMES, QUANTITIES, DISABLED_DAYS } from '../../constants'
 
 ////////////// Text of BookNowPage ///////////////////////////////////////////
-const textSection = {
-    english: {
-        title: 'Book Now',
-        subtitle: '80 € per guest',
-        span: ' Include all food and drink ',
-        guest: 'Guest :',
-        total: 'Total:  € ',
-        buttonText: 'Buy TICKETS',
-
-    },
-    spanish: {
-        title: 'Reservar',
-        subtitle: '80 € por persona',
-        span: ' Incluye bebida y comida ',
-        guest: 'Cantidad :',
-        total: 'Total:  € ',
-        buttonText: 'Comprar TICKETS',
-    }
-}
+import { textBookNow } from '../../constants/index'
 
 
 const initialTicket = {
@@ -84,7 +66,7 @@ const initialTicket = {
 const BookNowPage = () => {
     const [ticket, setTicket] = useState(initialTicket);
     const { language } = useContext(AppContext)
-    const text = useLanguage(language, textSection)
+    const text = useLanguage(language, textBookNow)
     const [locale, setLocale] = useState(language);
     const [dateFormated , setDateFormated] = useState(dayjs(initialTicket.date).format("dddd, D MMMM YYYY"))
 

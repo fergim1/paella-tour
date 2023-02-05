@@ -1,13 +1,13 @@
 import { AppProvider } from './context'
 import { ThemeProvider } from '@mui/material/styles'
 import { theme } from './styles/theme'
-import { Home } from './components/Home'
-import { DrawerAppBar } from './components/NavBar/DraweAppBar'
 import { Container } from '@mui/material'
-import { Contact } from './components/Contact/Index'
-import { FrequentlyAskedQuestions } from './components/FAQ'
-import { BookNowPage } from './components/BookNow'
+import { DrawerAppBar } from './components/NavBar/DraweAppBar'
+import { HomePage } from './components/Home'
 import { ItineraryPage } from './components/Itinerary'
+import { BookNowPage } from './components/BookNow'
+import { FrequentlyAskedQuestions } from './components/FAQ'
+import { ContactPage } from './components/Contact/Index'
 
 
 
@@ -27,11 +27,11 @@ function App() {
                 }}
             >
                 <DrawerAppBar />
-                <Home />
+                <HomePage />
                 <ItineraryPage />
                 <BookNowPage />
                 <FrequentlyAskedQuestions />
-                <Contact />
+                <ContactPage />
             </Container>
         </ThemeProvider>
     </AppProvider>

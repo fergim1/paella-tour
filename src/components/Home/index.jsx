@@ -1,65 +1,71 @@
 import { 
-    HomeContainer,
-    HomeContent,
+    ContainerHome,
+    Content,
     HomeText,
     HomeTextAlicante,
-    HomeButton,
-    HomeBackground,
-    SmokeWrap,
-    SmokeImage1,
-    SmokeImage2,
-    SmokeImage3,
-
+    ButtonHome,
+    BackgroundHome,
+    WrapperSmoke,
+    ImageSmoke1,
+    ImageSmoke2,
+    ImageSmoke3,
  } from "../../styles/home";
 
-import ArrowDropDownCircleIcon from '@mui/icons-material/ArrowDropDownCircle';
+ //////////  Media Query   /////////////////////////
+ import { useTheme } from "@emotion/react";
+ import { useMediaQuery } from "@mui/material";
+
+//////////  Context   /////////////////////////
 import { useContext } from "react";
 import { AppContext } from "../../context";
+
+//////////  Hooks   /////////////////////////
 import { useLanguage } from "../../hooks/useLanguage";
 
+//////////  Smoke Image   /////////////////////////
 import smoke from '../../../imagenes/smoke.png'
-import { useTheme } from "@emotion/react";
-import { useMediaQuery } from "@mui/material";
 
-const textSection = {
-    english: {
-        subtitle: 'A delicious way to discover'
-    },
-    spanish: {
-        subtitle: 'Un delicioso camino para descubrir'
-    }
-}
+//////////  UI Icons   /////////////////////////
+import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 
-const Home = () => {
+////////////////// Texts Book Now  ///////////////////////////////////
+import { textHome } from "../../constants";
+
+
+
+const HomePage = () => {
     const {language} = useContext(AppContext)
-    const text = useLanguage(language, textSection)
+    const text = useLanguage(language, textHome)
     const theme = useTheme()
     const moibleOrTablet = useMediaQuery(theme.breakpoints.down('md'))
-    
+
+    const handleSeeItinerary = () => {
+        document.getElementById('Itinerary').scrollIntoView({behavior: 'smooth'})
+    }
 return (
-    <HomeContainer id='Home'>
-        <HomeBackground >
-        </HomeBackground>
+    <ContainerHome id='Home'>
+        <BackgroundHome >
+        </BackgroundHome>
         {
             moibleOrTablet
             &&
             <>
-                <SmokeWrap>
-                    <SmokeImage1 src={smoke} alt='smoke' />
-                </SmokeWrap>
+                <WrapperSmoke>
+                    <ImageSmoke1 src={smoke} alt='smoke' />
+                </WrapperSmoke>
 
-                <SmokeWrap>
-                    <SmokeImage2 src={smoke} alt='smoke' />
-                </SmokeWrap>
+                <WrapperSmoke>
+                    <ImageSmoke2 src={smoke} alt='smoke' />
+                </WrapperSmoke>
 
-                <SmokeWrap>
-                    <SmokeImage3 src={smoke} alt='smoke' />
-                </SmokeWrap>
+                <WrapperSmoke>
+                    <ImageSmoke3 src={smoke} alt='smoke' />
+                </WrapperSmoke>
             </>
         }
 
 
-        <HomeContent>
+        <Content>
             <HomeText variant="subtitle">
                 { text.subtitle }
                 <HomeTextAlicante variant='span'>
@@ -67,13 +73,17 @@ return (
                 Alicante
                 </HomeTextAlicante>
             </HomeText>
-            <HomeButton variant="contained" endIcon={<ArrowDropDownCircleIcon />}>
-                See itinerary
-            </HomeButton>
-        </HomeContent>
+            <ButtonHome 
+                onClick={handleSeeItinerary} 
+                // variant="contained"
+                endIcon={<KeyboardDoubleArrowDownIcon />}
+            >
+                {text.button}
+            </ButtonHome>
+        </Content>
 
-    </HomeContainer>
+    </ContainerHome>
 )
 }
 
-export { Home }
+export { HomePage }
