@@ -8,6 +8,7 @@ import { ItineraryPage } from './components/Itinerary'
 import { BookNowPage } from './components/BookNow'
 import { FrequentlyAskedQuestions } from './components/FAQ'
 import { ContactPage } from './components/Contact/Index'
+import { FooterPage } from './components/Footer'
 
 
 
@@ -32,6 +33,7 @@ function App() {
                 <BookNowPage />
                 <FrequentlyAskedQuestions />
                 <ContactPage />
+                <FooterPage />
             </Container>
         </ThemeProvider>
     </AppProvider>

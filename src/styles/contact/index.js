@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
-import { Button, FormControl, FormGroup, Grid, InputLabel, OutlinedInput, Paper, TextField, Typography } from "@mui/material";
-import { Box } from "@mui/system";
+import { Box, Button, FormControl, FormGroup, Grid, InputLabel, OutlinedInput, Paper, TextField, Typography } from "@mui/material";
 
 
 export const ContainerContact = styled(Box)(()=> ({
@@ -13,6 +12,7 @@ export const ContainerContact = styled(Box)(()=> ({
 export const GridContainer = styled(Grid)(()=> ({
 }))
 
+//////////////  GRID LEFT TOP //////////////////////////////
 export const GridItemLeftTop = styled(Grid)(({theme})=> ({
     display: 'grid',
     placeContent: 'center',
@@ -67,6 +67,7 @@ export const ImageIsologo = styled('img')(({src, theme})=> ({
   }
 }))
 
+//////////////  GRID RIGHT BOTTOM //////////////////////////////
 export const GridItemRightBottom = styled(Grid)(({theme})=> ({
     width: '100vw',
     display: 'grid',
@@ -103,15 +104,23 @@ export const FormControlContact = styled(FormControl)(() => ({
 }))
 
 export const InputLabelForm = styled(InputLabel)(({theme}) => ({
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '14px',
+    },
 }))
 
 export const OutlinedInputForm = styled(OutlinedInput)(({theme}) => ({
-    borderRadius: '20px'
+    borderRadius: '20px',
+    [theme.breakpoints.down('sm')]: {
+        height: '50px',
+    },
 }))
 
 export const TextAreaForm = styled(TextField)(({theme}) => ({
     borderRadius: '20px',
-    '.MuiInputBase-root': {borderRadius: '20px'},
+    '.MuiInputBase-root': {borderRadius: '20px', fontSize: '14px'},
+    '.MuiFormLabel-root': { fontSize: '14px'}
+
 }))
 
 export const ButtomContactForm = styled(Button)(({theme})=> ({

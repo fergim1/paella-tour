@@ -1,17 +1,34 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
-import { AppBar, Box,CssBaseline, IconButton, Toolbar, Button, useScrollTrigger, Slide } from '@mui/material';
+///////////////////// Material UI Components ///////////////////////////////////
+import {
+    AppBar,
+    Box,
+    CssBaseline,
+    IconButton,
+    Toolbar,
+    Button,
+    useScrollTrigger,
+    Slide
+  } from '@mui/material';
 
+  ////////////// Context /////////////////////////////////////////////
+  import { AppContext } from '../../context';
+  import { useLanguage } from '../../hooks/useLanguage';
+
+  //////////  UI Icons ///////////////////////////////////////////////
 import MenuIcon from '@mui/icons-material/Menu';
 
+  //////////  Logo ///////////////////////////////////////////////
 import logo from '../../assets/logo.png'
 
-import { SideBar } from './SideBar';
-
+  //////////  Components //////////////////////////////////////////////
+import { SideBar } from '../SideBar/index';
 import { SelectLanguage } from './SelectLanguage';
 
+  ////////////// Text of NavItems ///////////////////////////////////////////
+import { Sections } from '../../constants/index'
 
-const navItems = ['Itinerary', 'Book Now', 'Private Tour', 'Who we are', 'FAQ', 'Contact'];
 
 function HideOnScroll({children}) {
     return (
@@ -21,8 +38,13 @@ function HideOnScroll({children}) {
     );
 }
 
+
+
 function DrawerAppBar(props) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const {language} = useContext(AppContext)
+  const navItems = useLanguage(language, Sections)
+
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -78,7 +100,6 @@ function DrawerAppBar(props) {
         <SideBar
             mobileOpen={mobileOpen}
             handleDrawerToggle={handleDrawerToggle} 
-            navItems={navItems}
         />
         <Toolbar />
     </Box>

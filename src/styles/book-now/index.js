@@ -45,9 +45,12 @@ export const WrapperLeftTop = styled(Stack)(()=> ({
     alignItems: 'center',
 }))
 
-export const WrapperTitleAndSubtitle = styled(Stack)(()=> ({
+export const WrapperTitleAndSubtitle = styled(Stack)(({theme})=> ({
     alignItems: 'center',
     flexDirection: 'column',
+    [theme.breakpoints.down('sm')]: {
+        paddingTop: '20px',
+    }
 }))
 
 export const TitleBookNow = styled(Typography)(({theme})=> ({
@@ -94,6 +97,9 @@ export const SubtitleDescription = styled(Typography)(({theme})=> ({
     color: '#a8a8a8',
     [theme.breakpoints.down('md')]: {
         marginBottom: '20px',
+    },
+    [theme.breakpoints.down('sm')]: {
+        marginBottom: '0px',
     }
 }))
 
