@@ -6,6 +6,7 @@ import { DrawerAppBar } from './components/NavBar/DraweAppBar'
 import { HomePage } from './components/Home'
 import { ItineraryPage } from './components/Itinerary'
 import { BookNowPage } from './components/BookNow'
+import { PrivateTourPage } from './components/PrivateTour'
 import { FrequentlyAskedQuestions } from './components/FAQ'
 import { ContactPage } from './components/Contact/Index'
 import { FooterPage } from './components/Footer'
@@ -31,6 +32,7 @@ function App() {
                 <HomePage />
                 <ItineraryPage />
                 <BookNowPage />
+                <PrivateTourPage />
                 <FrequentlyAskedQuestions />
                 <ContactPage />
                 <FooterPage />

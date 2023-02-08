@@ -103,20 +103,16 @@ export const FormControlContact = styled(FormControl)(() => ({
     marginBottom: '10px'
 }))
 
-export const InputLabelForm = styled(InputLabel)(({theme}) => ({
-    [theme.breakpoints.down('sm')]: {
-        fontSize: '14px',
-    },
+export const InputLabelForm = styled(InputLabel)(() => ({
+    fontSize: '14px',
 }))
 
-export const OutlinedInputForm = styled(OutlinedInput)(({theme}) => ({
+export const OutlinedInputForm = styled(OutlinedInput)(() => ({
     borderRadius: '20px',
-    [theme.breakpoints.down('sm')]: {
-        height: '50px',
-    },
+    height: '46px',
 }))
 
-export const TextAreaForm = styled(TextField)(({theme}) => ({
+export const TextAreaForm = styled(TextField)(() => ({
     borderRadius: '20px',
     '.MuiInputBase-root': {borderRadius: '20px', fontSize: '14px'},
     '.MuiFormLabel-root': { fontSize: '14px'}

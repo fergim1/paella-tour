@@ -20,13 +20,13 @@ import { useContext } from 'react';
 import {AppContext} from '../../context/index'
 import { useLanguage } from '../../hooks/useLanguage';
 
-////////////// Text of BookNowPage ///////////////////////////////////////////
-import { textItinerary } from '../../constants/index'
+////////////// Text of FAQs ///////////////////////////////////////////
+import { textFAQ } from '../../constants/index'
 
 
 function FrequentlyAskedQuestions() {
     const {language} = useContext(AppContext)
-    const text = useLanguage(language, textItinerary)
+    const text = useLanguage(language, textFAQ)
 
   return (
     <ContainerFAQ id='FAQ'>

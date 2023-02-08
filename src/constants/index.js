@@ -139,10 +139,43 @@ export const DISABLED_DAYS = ["2023-02-02", "2023-02-03", "2023-02-05", "2023-03
 /////////////////////////////////////////////////////////////////////
 
 
+////////////// PRIVATE TOUR ///////////////////////////////////////////
+//////////////////////////////////// PRIVATE TOUR /////////////////////
+export const textPrivateTour = {
+  english: {
+      title: 'Private Tour',
+      subtitle: 'We can not make your trip eternal, but unforgettable',
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+      titleForm: 'Drop us a line',
+      inputName: 'Name *',
+      inputEmail: 'Email *',
+      inputMessage: 'Message *',
+      inputMessageTextHelp: '* All fields are required',
+      buttonText: 'Just send',
 
-//////////////  ITINERARY  /////////////////////////////////////////
-/////////////////////////////////////  ITINERARY  //////////////////
-export const textItinerary = {
+  },
+  spanish: {
+      title: 'Tour Privado',
+      subtitle: 'No podemos hacer que tu viaje sea eterno, pero si inolvidable',
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+      titleForm: 'Escríbanos',
+      inputName: 'Nombre *',
+      inputEmail: 'Email *',
+      inputMessage: 'Mensaje *',
+      inputMessageTextHelp: '* Todos los campos son requeridos',
+      buttonText: 'Enviar',
+
+
+  }
+}
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+
+
+
+//////////////  FAQ  /////////////////////////////////////////
+/////////////////////////////////////  FAQ  //////////////////
+export const textFAQ = {
   english: {
       title: 'FAQ!',
       FAQ:
