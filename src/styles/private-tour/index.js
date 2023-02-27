@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Box, Button, FormControl, FormGroup, Grid, InputLabel, OutlinedInput, Paper, Stack, TextField, Typography } from "@mui/material";
+import { Box, Grid, Paper, Stack, Typography } from "@mui/material";
 
 
 export const ContainerPrivateTour = styled(Box)(()=> ({
@@ -18,6 +18,7 @@ export const GridContainer = styled(Grid)(({theme})=> ({
    
 }))
 
+//////////////  GRID LEFT TOP //////////////////////////////
 //////////////  GRID LEFT TOP //////////////////////////////
 export const GridItemLeftTop = styled(Grid)(({theme})=> ({
     display: 'flex',
@@ -90,6 +91,7 @@ export const Text = styled(Typography)(({theme})=> ({
 }))
 
 //////////////  GRID RIGHT BOTTOM //////////////////////////////
+//////////////  GRID RIGHT BOTTOM //////////////////////////////
 export const GridItemRightBottom = styled(Grid)(({theme})=> ({
     width: '100vw',
     display: 'grid',
@@ -116,58 +118,4 @@ export const PaperForm = styled(Paper)(({theme}) => ({
     },
 }))
 
-export const TitleForm = styled(Typography)(({theme})=> ({
-    fontSize: '20px',
-    fontWeight: 'bold',
-    textTransform: 'uppercase',
-    margin: '20px',
-    color: '#4f4f4f',
-    [theme.breakpoints.down('sm')]: {
-        fontSize: '16px',
-    }
-}))
 
-export const FormGroupContact = styled(FormGroup)(() => ({
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'start',
-    width: '90%',
-
-}))
-
-export const FormControlContact = styled(FormControl)(() => ({
-    marginBottom: '10px',
-    width: '100%',
-}))
-
-export const InputLabelForm = styled(InputLabel)(() => ({
-    fontSize: '14px',
-}))
-
-export const OutlinedInputForm = styled(OutlinedInput)(() => ({
-    borderRadius: '20px',
-    height: '46px',
-}))
-
-export const TextAreaForm = styled(TextField)(() => ({
-    width: '100%',
-    borderRadius: '20px',
-    '.MuiInputBase-root': {borderRadius: '20px', fontSize: '14px'},
-    '.MuiFormLabel-root': { fontSize: '14px'}
-
-}))
-
-export const ButtomContactForm = styled(Button)(({theme})=> ({
-    background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
-    color: '#4f4f4f',
-    borderRadius: '20px',
-    fontWeight: 'bold',
-    width:'100%',
-    height:'40px',
-    margin: '20px 0px',
-    '&:focus': {
-        background: theme.palette.secondary.main,
-    },
-    [theme.breakpoints.down('sm')]: {
-    }
-}))

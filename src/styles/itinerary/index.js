@@ -139,8 +139,6 @@ export const TitleItineraty = styled(Typography)(({theme})=> ({
     },
 }))
 
-TitleItineraty
-
 export const Description = styled(Typography)(({theme})=> ({
     fontSize: '14px',
     backgroundColor: 'transparent',

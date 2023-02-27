@@ -23,21 +23,33 @@ import {
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-////////////////// Text info for each STEP ///////////////////////////////////
-import { STOPS2 } from "../../constants";
+////////////////// Text info for each STEP & url Cloudinary image ///////////////////////////////////
+import { textItinerary } from "../../constants";
 
 ////////////////// Hooks ///////////////////////////////////
 import { useLanguageItinerary } from "../../hooks/useLanguage";
 
+////////////////// Media Query ///////////////////////////////////
+import { useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+
+
 
 const ItineraryPage = () => {
-   const [activeSlide, setActiveSlide] = useState(0);
-   const { language } = useContext(AppContext)
+////////////////// Index Slide ///////////////////////////////////
+  const [activeSlide, setActiveSlide] = useState(0);
 
+////////////////// Context ///////////////////////////////////
+  const { language } = useContext(AppContext)
 
-  const textInfo = useLanguageItinerary(language, STOPS2, activeSlide)
+////////////////// Hook ///////////////////////////////////
+  const textInfo = useLanguageItinerary(language, textItinerary, activeSlide)
 
+////////////////// Media Query ///////////////////////////////////
+  const theme = useTheme()
+	const onMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
+////////////////// Functions ///////////////////////////////////
     const handleMove = (direction) => {
       if(direction==='right') {
         setActiveSlide(prev => prev +1)
@@ -46,10 +58,11 @@ const ItineraryPage = () => {
       }
     }
 
+
   return (
     <ContainerItinerary id='Itinerary'>
 
-              <WrapperBackground src={textInfo.imgSRC} >
+              <WrapperBackground src={onMobile ? textInfo.imgMobile : textInfo.imgDesktop} >
 
                   <WrapperInfo>
                     <TitleItineraty>{textInfo.title}</TitleItineraty>

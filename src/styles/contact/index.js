@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Box, Button, FormControl, FormGroup, Grid, InputLabel, OutlinedInput, Paper, TextField, Typography } from "@mui/material";
+import { Box, Grid, Paper, Typography } from "@mui/material";
 
 
 export const ContainerContact = styled(Box)(()=> ({
@@ -13,17 +13,18 @@ export const GridContainer = styled(Grid)(()=> ({
 }))
 
 //////////////  GRID LEFT TOP //////////////////////////////
+//////////////  GRID LEFT TOP //////////////////////////////
 export const GridItemLeftTop = styled(Grid)(({theme})=> ({
     display: 'grid',
     placeContent: 'center',
     height: '100vh',
     lineHeight: '0',
     [theme.breakpoints.down('sm')]: {
-        height: '30vh',
+        height: '40vh',
     },
 }))
 
-export const TitleContact = styled(Typography)(({theme})=> ({
+export const TitleSection = styled(Typography)(({theme})=> ({
     fontSize: '40px',
     fontWeight: '800',
     letterSpacing: '-0.06em',
@@ -41,13 +42,13 @@ export const TitleContact = styled(Typography)(({theme})=> ({
     },
 }))
 
-export const SubTitle = styled(Typography)(()=> ({
+export const SubtitleOne = styled(Typography)(()=> ({
     fontSize: '24px',
     fontWeight: 'bold',
     color: 'black',
 }))
 
-export const Title = styled(Typography)(()=> ({
+export const SubtitleTwo = styled(Typography)(()=> ({
     fontSize: '24px',
     fontWeight: 'bold',
     color: 'black',
@@ -68,13 +69,14 @@ export const ImageIsologo = styled('img')(({src, theme})=> ({
 }))
 
 //////////////  GRID RIGHT BOTTOM //////////////////////////////
+//////////////  GRID RIGHT BOTTOM //////////////////////////////
 export const GridItemRightBottom = styled(Grid)(({theme})=> ({
     width: '100vw',
     display: 'grid',
     placeContent: 'center',
     height: '100vh',
     [theme.breakpoints.down('sm')]: {
-        height: '70vh',
+        height: '60vh',
     },
 }))
 
@@ -93,46 +95,4 @@ export const WrapperForm = styled(Paper)(({theme}) => ({
         width: '90vw',
     },
 
-}))
-
-export const FormGroupContact = styled(FormGroup)(() => ({
-    width: '90%'
-}))
-
-export const FormControlContact = styled(FormControl)(() => ({
-    marginBottom: '10px'
-}))
-
-export const InputLabelForm = styled(InputLabel)(() => ({
-    fontSize: '14px',
-}))
-
-export const OutlinedInputForm = styled(OutlinedInput)(() => ({
-    borderRadius: '20px',
-    height: '46px',
-}))
-
-export const TextAreaForm = styled(TextField)(() => ({
-    borderRadius: '20px',
-    '.MuiInputBase-root': {borderRadius: '20px', fontSize: '14px'},
-    '.MuiFormLabel-root': { fontSize: '14px'}
-
-}))
-
-export const ButtomContactForm = styled(Button)(({theme})=> ({
-    marginBottom: '30px',
-    marginTop: '10px',
-    background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
-    color: 'white',
-    borderRadius: '20px',
-    fontWeight: 'bold',
-    width:'100%',
-    height:'40px',
-    marginTop: '40px',
-    '&:focus': {
-        background: theme.palette.secondary.main,
-    },
-    [theme.breakpoints.down('sm')]: {
-        marginTop: '15px'
-    }
 }))

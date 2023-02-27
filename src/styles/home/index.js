@@ -1,12 +1,10 @@
 import { Box, Button, styled, Typography } from "@mui/material";
 
-//// Images
-import homeDesktop from '../../../imagenes/home-desktop.jpg'
-import homeMobile from '../../../imagenes/home-mobile.jpg'
+//////////////  url Cloudinary Image  ///////////////////////////////////////////
+import { urlImages } from '../../constants'
 
 //// Animations
 import { trackingInContractBck, textFocusIn, smoke1, smoke3, smoke2} from "../animation";
-
 
 
 export const ContainerHome = styled(Box)(({theme})=> ({
@@ -30,12 +28,12 @@ export const BackgroundHome = styled(Box)(({ theme})=> ({
     left: '0',
     width: '100%',
     overflow: 'hidden',
-    backgroundImage: `url(${ homeDesktop })`,
+    backgroundImage: `url(${ urlImages.homeDesktop })`,
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: 'cover',
     [theme.breakpoints.down('md')]: {
-        backgroundImage: `url(${ homeMobile })`,
+        backgroundImage: `url(${ urlImages.homeMobile })`,
     },
 }))
 

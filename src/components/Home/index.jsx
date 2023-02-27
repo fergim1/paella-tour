@@ -1,4 +1,4 @@
-import { 
+import {
     ContainerHome,
     Content,
     HomeText,
@@ -22,8 +22,8 @@ import { AppContext } from "../../context";
 //////////  Hooks   /////////////////////////
 import { useLanguage } from "../../hooks/useLanguage";
 
-//////////  Smoke Image   /////////////////////////
-import smoke from '../../../imagenes/smoke.png'
+//////////////  Image Smoke: url Cloudinary  ///////////////////////////
+import { urlImages } from '../../constants'
 
 //////////  UI Icons   /////////////////////////
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
@@ -51,15 +51,15 @@ return (
             &&
             <>
                 <WrapperSmoke>
-                    <ImageSmoke1 src={smoke} alt='smoke' />
+                    <ImageSmoke1 src={urlImages.smoke} alt='smoke' />
                 </WrapperSmoke>
 
                 <WrapperSmoke>
-                    <ImageSmoke2 src={smoke} alt='smoke' />
+                    <ImageSmoke2 src={urlImages.smoke} alt='smoke' />
                 </WrapperSmoke>
 
                 <WrapperSmoke>
-                    <ImageSmoke3 src={smoke} alt='smoke' />
+                    <ImageSmoke3 src={urlImages.smoke} alt='smoke' />
                 </WrapperSmoke>
             </>
         }

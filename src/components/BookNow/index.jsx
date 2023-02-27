@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
     Containter,
     GridContainer,
@@ -19,49 +19,64 @@ import {
     Icon,
     TextDate,
     WrapperDetail,
+    TextDetail,
     Timetable,
     FormControlQuantity,
     SelectQuantity,
     MenuItemQuantity,
-    TextQuantity,
     TextTotal,
     WrapperButtom,
     ButtomBuyTicket,
 } from "../../styles/book-now"
 
-////////////// Context /////////////////////////////////////////////
+////////////// Context //////////////////////////////////////////////////////
+import { useContext } from 'react';
 import { AppContext } from "../../context";
 import { useLanguage } from "../../hooks/useLanguage";
 
-////////////// DatePicker///////////////////////////////////////////
+////////////// DatePicker////////////////////////////////////////////////////
 import {  LocalizationProvider  } from '@mui/x-date-pickers';
 import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 import { TextField } from "@mui/material";
 
-////////////// Day js /////////////////////////////////////////////
+////////////// Day js ///////////////////////////////////////////////////////
 import dayjs from 'dayjs'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import 'dayjs/locale/es';
 import 'dayjs/locale/en';
 
-////////////// Icons ///////////////////////////////////////////////
+////////////// Icons /////////////////////////////////////////////////////////
 import InsertInvitationIcon from '@mui/icons-material/InsertInvitation';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import LocalActivityIcon from '@mui/icons-material/LocalActivity';
+import WatchLaterIcon from '@mui/icons-material/WatchLater';
+import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
-////////////// Constants ///////////////////////////////////////////
+////////////// Constants /////////////////////////////////////////////////////
 import { TIMES, QUANTITIES, DISABLED_DAYS } from '../../constants'
 
 ////////////// Text of BookNowPage ///////////////////////////////////////////
 import { textBookNow } from '../../constants/index'
 
+////////////// Axios /////////////////////////////////////////////////////////
+import { axiosStripe } from "../../hooks/axiosStripe";
+
+////////////// International Phone Number Input /////////////////////////////
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
+import { InputPhoneWithFlags } from "../../styles/book-now"
+
+////////////// Alert ////////////////////////////////////////////////////////
+import { AlertInfo } from './Alert'
 
 const initialTicket = {
+    id: 1,
     date: dayjs().format(),
     time: false,
-    quantity: 1
+    quantity: 1,
+    phone: '',
 }
+
 
 const BookNowPage = () => {
     const [ticket, setTicket] = useState(initialTicket);
@@ -69,6 +84,8 @@ const BookNowPage = () => {
     const text = useLanguage(language, textBookNow)
     const [locale, setLocale] = useState(language);
     const [dateFormated , setDateFormated] = useState(dayjs(initialTicket.date).format("dddd, D MMMM YYYY"))
+    const [phoneInput, setPhoneInput ] = useState()
+    const [alertOpen, setAlertOpen] = useState(false)
 
     useEffect(() => {
         if(language==='en') {
@@ -99,6 +116,11 @@ const BookNowPage = () => {
     }
 
     useEffect(() => {
+        setTicket({ ...ticket, phone: phoneInput })
+    }, [phoneInput])
+    
+
+    useEffect(() => {
         if (ticket.time){
             const timeSelected = TIMES.filter(el => el === ticket.time)
             const othersTime = TIMES.filter(el => el !== ticket.time)
@@ -109,13 +131,22 @@ const BookNowPage = () => {
         }
     }, [ticket.time])
 
-    const handleBuyTicket = () => {
+    const handleBuyTicket = async (ticket) => {
+        if (!ticket.phone || ticket.time === false){
+            return setAlertOpen(!alertOpen)
+        }
         const ticketReady = {
                     ...ticket,
                     date: dayjs(ticket.date).format("dddd, D MMMM YYYY")
                 }
-        console.log(ticketReady)
-
+        const info = {
+                id: ticket.id,
+                date: ticketReady.date,
+                time: ticket.time,
+                quantity: ticket.quantity,
+                phone: ticket.phone
+            }
+       await axiosStripe(info)
     }
 
 
@@ -169,10 +200,12 @@ const BookNowPage = () => {
                         <WrapperInfo>
                             <WrapperIcon >
                                 <Icon>
-                                    <AccessTimeIcon />
+                                    <WatchLaterIcon />
                                 </Icon>
                             </WrapperIcon>
                             <WrapperDetail >
+                            <TextDetail > {text.time} </TextDetail>
+
                                 {
                                     TIMES.map((el)=> (
                                         <Timetable id={el} key={el} onClick={() => handleChangeTime(el)}>
@@ -190,7 +223,7 @@ const BookNowPage = () => {
                                 </Icon>
                             </WrapperIcon>
                             <WrapperDetail >
-                                <TextQuantity > {text.guest} </TextQuantity>
+                                <TextDetail > {text.quantity} </TextDetail>
                                     <FormControlQuantity size='small'>
                                         <SelectQuantity
                                             variant="standard"
@@ -206,14 +239,42 @@ const BookNowPage = () => {
                                             ))}
                                         </SelectQuantity>
                                     </FormControlQuantity>
-                                    <TextTotal >{ text.total} {ticket.quantity * 80}  </TextTotal>
+                                    <TextTotal >Total € {ticket.quantity * 80}</TextTotal>
                             </WrapperDetail>
                         </WrapperInfo>
+
+
+
+                        <WrapperInfo>
+                            <WrapperIcon >
+                                <Icon>
+                                    <PhoneIphoneIcon />
+                                </Icon>
+                            </WrapperIcon>
+                            <WrapperDetail >
+                            <TextDetail > {text.phone}</TextDetail>
+                            <PhoneInput
+                                international
+                                defaultCountry="ES"
+                                style={{
+                                    backgroundColor: '#d8d8d8',
+                                    borderRadius: '20px',
+                                    padding: '0 0 0 18px',
+                                }}
+                                // limitMaxLength={true}
+                                inputComponent={InputPhoneWithFlags}
+                                value={phoneInput}
+                                onChange={setPhoneInput}
+                            />
+                            </WrapperDetail>
+                        </WrapperInfo>
+
+
 
                         <WrapperButtom >
                             <ButtomBuyTicket
                                 endIcon={<ShoppingCartIcon/>}
-                                onClick={handleBuyTicket}
+                                onClick={ () => handleBuyTicket(ticket) }
                             >
                                 {text.buttonText}
                             </ButtomBuyTicket>
@@ -222,7 +283,16 @@ const BookNowPage = () => {
                     </WrapperRightBottom>
                 </GridItemRightBottom>
 {/*--------------------------------  End of GRID RIGHT - BOTTOM -------------------------------- */}
-
+            {
+                alertOpen
+                &&
+                <AlertInfo 
+                    open={alertOpen}
+                    setOpen={setAlertOpen}
+                    ticket={ticket}
+                    language={language}
+                />
+            }
             </GridContainer>
         </Containter>
     )

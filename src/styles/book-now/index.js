@@ -8,9 +8,9 @@ import {
     IconButton,
     FormControl,
     Select,
-    MenuItem
+    MenuItem,
+    TextField
 } from "@mui/material";
-
 
 
 export const Containter = styled(Box)(()=>({
@@ -166,22 +166,27 @@ export const WrapperInfo = styled(Stack)(({theme})=> ({
 }))
 
 export const WrapperIcon = styled(Box)(() => ({
-    width: '15%',
+    // width: '15%',
+    width: '50px',
     display: 'grid',
     placeContent: 'center',
 }))
 
 export const Icon = styled(IconButton)(() => ({
     fontSize: 'large',
-    color: '#616161',
+    color: '#848484',
     padding: '4px',
 }))
 
 export const WrapperDetail = styled(Box)(() => ({
-    width: '85%',
+    // width: '85%',
+    // justifyContent: 'center',
+    width: '300px',
+    justifyContent: 'space-between',
     display: 'flex',
-    justifyContent: 'center',
     flexDirection: 'row',
+    alignItems: 'center',
+    paddingLeft: '4px'
 }))
 
 export const WrapperButtom = styled(Stack)(({theme})=> ({
@@ -202,7 +207,7 @@ export const WrapperButtom = styled(Stack)(({theme})=> ({
 
 export const TextDate = styled(Typography)(({theme})=> ({
     margin: '0',
-    color: '#666666',
+    color: '#e8502b',
     fontSize: '18px',
     fontWeight: 'bold',
     textAlign: 'center',
@@ -219,14 +224,13 @@ export const Timetable = styled(Button)(({theme})=> ({
     borderRadius: '20px',
     color: '#666666' ,
     width:'80px',
-    height:'26px',
-    marginLeft: '12px',
+    height:'30px',
+    marginRight: '20px',
     '&:hover': {
         border: `2px solid ${theme.palette.primary.main}`,
     },
     [theme.breakpoints.down('md')]: {
         width:'80px',
-        height:'26px',
     }
 }))
 
@@ -252,14 +256,36 @@ export const SelectQuantity = styled(Select)(({theme})=> ({
 export const MenuItemQuantity = styled(MenuItem)(()=> ({
 }))
 
-export const TextQuantity = styled(Typography)(()=> ({
-    margin: '0px 12px 0 0px',
-    color: '#3c3c3c',
+
+export const TextDetail = styled(Typography)(()=> ({
+    color: '#696969',
+    fontSize: '14px',
+}))
+
+export const InputPhoneWithFlags = styled('input')(({theme})=> ({
+    backgroundColor: '#d8d8d8',
+    borderRadius: '20px',
+    border: '2px solid transparent',
+    padding: '7px 0 7px 14px',
+    fontSize: '14px',
+    color: '#666666',
+    maxWidth: '160px',
+    '&:hover': {
+        border: `2px solid ${theme.palette.primary.main}`,
+    },
+    '&:focus': {
+        // background: theme.palette.secondary.main,
+        border: `2px solid ${theme.palette.primary.main}`,
+
+    },
+}))
+
+export const InputPhone = styled(TextField)(()=> ({
 }))
 
 export const TextTotal = styled(Typography)(()=> ({
     margin: '0px 12px 0 0px',
-    color: '#3c3c3c',
+    color: '#666666',
     fontWeight: 'bold',
 
 }))
@@ -279,3 +305,23 @@ export const ButtomBuyTicket = styled(Button)(({theme})=> ({
         marginTop: '15px'
     }
 }))
+
+////////////// Alert ////////////////////////////////////////////////////////
+// export const WrapperAlertText = styled(Stack)(({theme})=> ({
+//     width: '100%',
+//     height: 'auto',
+//     alignItems: 'center',
+//     justifyContent:'start',
+//     flexDirection: 'row',
+//     // [theme.breakpoints.down('md')]: {
+//     //     width: '100%',
+//     // },
+//     // [theme.breakpoints.down('sm')]: {
+//     //     width: '90%',
+//     // },
+// }))
+
+// export const IconAlert = styled(IconButton)(() => ({
+//     color: '#ff4141',
+//     padding: '0 8px 0 0'
+// }))

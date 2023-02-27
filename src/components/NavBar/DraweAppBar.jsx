@@ -75,7 +75,7 @@ function DrawerAppBar(props) {
                         <MenuIcon />
                     </IconButton>
 
-                    <Box sx={{ my: 1, flexGrow: {xs: 1}, display: { xs: 'grid'}, placeContent: {xs: 'center', sm: 'start'}}} >
+                    <Box sx={{ my: 1, flexGrow: {xs: 1}, display: { xs: 'grid'}, placeContent: {xs: 'center', sm: 'start'}, cursor: 'pointer'}} >
                         <img onClick={scroollToTop} src={ logo } width='100px' alt='logo-paella-tour'/>
                     </Box>
 
