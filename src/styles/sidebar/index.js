@@ -1,18 +1,8 @@
 import styled from "@emotion/styled"
-import { Drawer, Stack, Link, Box, List, Divider, Typography, IconButton, ListItem, ListItemButton, ListItemText } from "@mui/material"
+import {  Stack, Link, Box, List, Divider, Typography, IconButton, ListItem, ListItemButton, ListItemText } from "@mui/material"
+import { Link as LinkScroll } from 'react-scroll';
 
 
-// export const BoxDrawer = styled(Box)(()=>({
-// }))
-
-// export const DrawerLeft = styled(Drawer)(({theme, drawerwidth})=>({
-//     display: 'none',
-//     '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerwidth },
-//     '& .MuiPaper-root': { backgroundColor: '#060606'},
-//     [theme.breakpoints.down('sm')]: {
-//         display: 'block',
-//     }
-// }))
 
 export const ContainerDrawer = styled(Box)(()=>({
     height: '100%',
@@ -51,7 +41,7 @@ export const OneItemText = styled(ListItemText)(()=>({
 }))
 
 
- export const LinkItem = styled(Link)(()=>({
+ export const LinkItem = styled(LinkScroll)(()=>({
     textDecoration: 'none',
  }))
 

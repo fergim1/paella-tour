@@ -9,7 +9,8 @@ import {
     FormControl,
     Select,
     MenuItem,
-    TextField
+    TextField,
+    CircularProgress
 } from "@mui/material";
 
 
@@ -297,7 +298,7 @@ export const ButtomBuyTicket = styled(Button)(({theme})=> ({
     fontWeight: 'bold',
     width:'100%',
     height:'40px',
-    marginTop: '40px',
+    marginTop: '0px',
     '&:focus': {
         background: theme.palette.secondary.main,
     },
@@ -306,22 +307,7 @@ export const ButtomBuyTicket = styled(Button)(({theme})=> ({
     }
 }))
 
-////////////// Alert ////////////////////////////////////////////////////////
-// export const WrapperAlertText = styled(Stack)(({theme})=> ({
-//     width: '100%',
-//     height: 'auto',
-//     alignItems: 'center',
-//     justifyContent:'start',
-//     flexDirection: 'row',
-//     // [theme.breakpoints.down('md')]: {
-//     //     width: '100%',
-//     // },
-//     // [theme.breakpoints.down('sm')]: {
-//     //     width: '90%',
-//     // },
-// }))
+export const Spinner= styled(CircularProgress)(({})=> ({
+}))
 
-// export const IconAlert = styled(IconButton)(() => ({
-//     color: '#ff4141',
-//     padding: '0 8px 0 0'
-// }))
+

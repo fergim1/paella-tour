@@ -22,7 +22,8 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
     "react-phone-number-input": "^3.2.19",
-    "react-router-dom": "^6.8.1"
+    "react-router-dom": "^6.8.1",
+    "react-scroll": "^1.8.9"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",

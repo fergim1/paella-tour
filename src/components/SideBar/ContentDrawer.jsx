@@ -42,6 +42,15 @@ const ContentDrawer = ({ handleDrawerToggle}) => {
 
     const itemsInEnglish = [...Sections.english]
 
+    // const handleClickScroll = (index) => {
+    //     console.log(index)
+    //     const allItemsInEnglish = [...Sections.english]
+    //     const itemInEnglish = allItemsInEnglish[index]
+    //     console.log(itemInEnglish)
+    //     // document.getElementById(itemInEnglish).scrollIntoView({block: "start", behavior: "smooth"})
+    //   }
+    
+
 
     const handleLanguage = (language) => {
         setLanguage(language)
@@ -61,8 +70,15 @@ const ContentDrawer = ({ handleDrawerToggle}) => {
                 <OneItem key={item} disablePadding >
                     <OneItemButton >
                         <OneItemText>
-                            <LinkItem href={`#${itemsInEnglish[index]}`} >
-                                <Item >
+                            <LinkItem
+                               to={`${itemsInEnglish[index]}`}
+                               onClick={ handleDrawerToggle }
+                               smooth={true}
+                               duration={500}
+                               spy={true}
+                               exact='true'
+                            >
+                                <Item>
                                     {item}
                                 </Item>
                             </LinkItem>

@@ -28,6 +28,7 @@ import { SelectLanguage } from './SelectLanguage';
 
   ////////////// Text of NavItems ///////////////////////////////////////////
 import { Sections } from '../../constants/index'
+import { height } from '@mui/system';
 
 
 function HideOnScroll({children}) {
@@ -50,9 +51,10 @@ function DrawerAppBar(props) {
     setMobileOpen((prevState) => !prevState);
   };
 
-  const handleClickScroll = (item) => {
-    document.getElementById(item).scrollIntoView({block: "start", behavior: "smooth"})
-
+  const handleClickScroll = (index) => {
+    const allItemsInEnglish = [...Sections.english]
+    const itemInEnglish = allItemsInEnglish[index]
+    document.getElementById(itemInEnglish).scrollIntoView({block: "start", behavior: "smooth"})
   }
 
   const scroollToTop = () => {
@@ -60,7 +62,7 @@ function DrawerAppBar(props) {
   }
 
   return (
-    <Box sx={{ display: 'flex' }} >
+    <Box sx={{ display: 'flex', height: '44px'}} id='es esto??' >
         <CssBaseline />
         <HideOnScroll {...props}>
             <AppBar component="nav" >
@@ -80,9 +82,9 @@ function DrawerAppBar(props) {
                     </Box>
 
                     <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                        {navItems.map((item) => (
+                        {navItems.map((item, index) => (
                             <Button
-                                onClick={() => handleClickScroll(item)}
+                                onClick={() => handleClickScroll(index)}
                                 key={item}
                                 variant='customItemsNav'
                             >

@@ -27,6 +27,7 @@ import {
     TextTotal,
     WrapperButtom,
     ButtomBuyTicket,
+    Spinner,
 } from "../../styles/book-now"
 
 ////////////// Context //////////////////////////////////////////////////////
@@ -86,6 +87,7 @@ const BookNowPage = () => {
     const [dateFormated , setDateFormated] = useState(dayjs(initialTicket.date).format("dddd, D MMMM YYYY"))
     const [phoneInput, setPhoneInput ] = useState()
     const [alertOpen, setAlertOpen] = useState(false)
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         if(language==='en') {
@@ -118,7 +120,7 @@ const BookNowPage = () => {
     useEffect(() => {
         setTicket({ ...ticket, phone: phoneInput })
     }, [phoneInput])
-    
+
 
     useEffect(() => {
         if (ticket.time){
@@ -135,6 +137,7 @@ const BookNowPage = () => {
         if (!ticket.phone || ticket.time === false){
             return setAlertOpen(!alertOpen)
         }
+        setLoading(true)
         const ticketReady = {
                     ...ticket,
                     date: dayjs(ticket.date).format("dddd, D MMMM YYYY")
@@ -147,6 +150,7 @@ const BookNowPage = () => {
                 phone: ticket.phone
             }
        await axiosStripe(info)
+    //    setLoading(false)
     }
 
 
@@ -273,10 +277,10 @@ const BookNowPage = () => {
 
                         <WrapperButtom >
                             <ButtomBuyTicket
-                                endIcon={<ShoppingCartIcon/>}
+                                endIcon={!loading ? <ShoppingCartIcon/> : ''}
                                 onClick={ () => handleBuyTicket(ticket) }
                             >
-                                {text.buttonText}
+                                {!loading ? text.buttonText : <Spinner size='24px'/>}
                             </ButtomBuyTicket>
                         </WrapperButtom>
 

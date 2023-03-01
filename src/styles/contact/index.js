@@ -39,6 +39,7 @@ export const TitleSection = styled(Typography)(({theme})=> ({
     padding: '0',
     [theme.breakpoints.down('md')]: {
         fontSize: '36px',
+        textAlign: 'center',
     },
 }))
 
