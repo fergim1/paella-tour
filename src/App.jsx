@@ -11,7 +11,7 @@ function App() {
   return (
     <AppProvider>
       <ThemeProvider theme={theme}>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div></div>}>
           <HashRouter>´
               <Routes>
                   <Route path='/' element={< OnePage />} />

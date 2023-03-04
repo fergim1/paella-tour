@@ -61,7 +61,7 @@ function DrawerAppBar(props) {
   }
 
   return (
-    <Box sx={{ display: 'flex', height: '44px'}} id='es esto??' >
+    <Box sx={{ display: 'flex', height: '44px'}} >
         <CssBaseline />
         <HideOnScroll {...props}>
             <AppBar component="nav" >

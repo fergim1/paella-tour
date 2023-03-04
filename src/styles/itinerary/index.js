@@ -12,6 +12,7 @@ export const ContainerItinerary = styled(Box)(()=> ({
     height: '100vh',
     display: 'flex',
     justifyContent: 'center',
+
 }))
 
 export const WrapperBackground = styled(Box)(({src, theme})=> ({
@@ -31,6 +32,8 @@ export const ImgOriginal = styled(LazyLoadImage)(({theme})=> ({
     objectFit: 'cover',
     position: 'absolute',
     filter: 'brightness(0.4)',
+    width: '100%',
+    height: '100vh',
     [theme.breakpoints.down('sm')]: {
         filter: 'brightness(1)'
     }
@@ -38,14 +41,13 @@ export const ImgOriginal = styled(LazyLoadImage)(({theme})=> ({
 
 export const FilterLayer = styled('div')(({theme})=> ({
     width: '100%',
-    height: '100%',
+    height: '100vh',
     position: 'absolute',
     backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0,1))',
     [theme.breakpoints.up('sm')]: {
         display: 'none'
     }
 }))
-
 
 export const ImgBlur = styled('img')(()=> ({
     width: '100%',
@@ -60,7 +62,7 @@ export const WrapperInfo = styled(Stack)(({theme})=> ({
     height: '300px',
     position: 'relative',
     [theme.breakpoints.down('sm')]: {
-        marginBottom: '15%',
+        marginBottom: '20%',
         padding: '0 10%'
     }
 }))

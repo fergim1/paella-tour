@@ -1,6 +1,7 @@
 import { keyframes } from "@mui/system";
 
 
+
 export const smoke1 = keyframes`
     0% {
         filter: blur(0px);
@@ -96,7 +97,6 @@ export const smoke3 = keyframes`
         opacity: 0;
     }   
 `
-
 
 export const bounceInTop = keyframes`
 0% {

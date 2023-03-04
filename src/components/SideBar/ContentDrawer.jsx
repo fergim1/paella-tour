@@ -86,6 +86,7 @@ const ContentDrawer = ({ handleDrawerToggle}) => {
                                 duration={500}
                                 spy={true}
                                 exact='true'
+                                offset={0}
                             >
                                 <Item>
                                     {item}
