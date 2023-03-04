@@ -1,15 +1,18 @@
 //////////  MUI ///////////////////////////////////////////////
 import { Container } from '@mui/material'
 
+import { lazy, Suspense } from 'react'
 //////////  Components ///////////////////////////////////////////////
-import { DrawerAppBar } from '../components/NavBar/DraweAppBar'
-import { HomePage } from '../components/Home'
-import { ItineraryPage } from '../components/Itinerary'
-import { BookNowPage } from '../components/BookNow'
-import { PrivateTourPage } from '../components/PrivateTour'
-import { FrequentlyAskedQuestions } from '../components/FAQ'
-import { ContactPage } from '../components/Contact/Index'
-import { FooterPage } from '../components/Footer'
+import DrawerAppBar from '../components/NavBar/DraweAppBar'
+import HomePage from '../components/Home'
+const ItineraryPage = lazy(() => import('../components/Itinerary'))
+const BookNowPage = lazy(() => import('../components/BookNow'))
+const PrivateTourPage = lazy(() => import('../components/PrivateTour'))
+const FrequentlyAskedQuestions = lazy(() => import('../components/FAQ'))
+const ContactPage = lazy(() => import('../components/Contact/Index'))
+const FooterPage = lazy(() => import('../components/Footer'))
+
+
 
 const OnePage = () => {
 
@@ -25,12 +28,15 @@ const OnePage = () => {
             >
                   <DrawerAppBar />
                   <HomePage />
+              <Suspense fallback={<div>Loading</div>}>
                   <ItineraryPage />
                   <BookNowPage />
                   <PrivateTourPage />
                   <FrequentlyAskedQuestions />
                   <ContactPage />
                   <FooterPage />
+              </Suspense>
+
             </Container>
   )
 }

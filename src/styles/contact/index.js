@@ -1,5 +1,10 @@
 import styled from "@emotion/styled";
-import { Box, Grid, Paper, Typography } from "@mui/material";
+import {
+    Box,
+    Grid,
+    Paper,
+    Typography
+} from "@mui/material";
 
 
 export const ContainerContact = styled(Box)(()=> ({

@@ -1,6 +1,10 @@
 import styled from "@emotion/styled";
-import { Box, Button, Typography } from "@mui/material";
-import { Stack } from "@mui/system";
+import { Box, Button, Typography, Stack } from "@mui/material";
+
+
+////////////////// Lazy Load Image  ///////////////////////////////////
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 
 
 export const ContainerItinerary = styled(Box)(()=> ({
@@ -14,19 +18,39 @@ export const WrapperBackground = styled(Box)(({src, theme})=> ({
     width: '100%',
     height: '100%',
     overflow: 'hidden',
-    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${ src })`,
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
-    backgroundSize: 'cover',
     display: 'grid',
     placeContent: 'center',
     [theme.breakpoints.down('sm')]: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'end',
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url(${ src })`,
-        backgroundPosition: "center",
     }
+}))
+
+export const ImgOriginal = styled(LazyLoadImage)(({theme})=> ({
+    objectFit: 'cover',
+    position: 'absolute',
+    filter: 'brightness(0.4)',
+    [theme.breakpoints.down('sm')]: {
+        filter: 'brightness(1)'
+    }
+}))
+
+export const FilterLayer = styled('div')(({theme})=> ({
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0,1))',
+    [theme.breakpoints.up('sm')]: {
+        display: 'none'
+    }
+}))
+
+
+export const ImgBlur = styled('img')(()=> ({
+    width: '100%',
+    height: '100%',
+    position: 'absolute'
 }))
 
 export const WrapperInfo = styled(Stack)(({theme})=> ({
@@ -34,7 +58,7 @@ export const WrapperInfo = styled(Stack)(({theme})=> ({
     justifyContent: 'start',
     width: '500px',
     height: '300px',
-    // animation: `${slideAnimation} 1s ease-in`,
+    position: 'relative',
     [theme.breakpoints.down('sm')]: {
         marginBottom: '15%',
         padding: '0 10%'

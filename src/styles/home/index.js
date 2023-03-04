@@ -1,10 +1,10 @@
 import { Box, Button, styled, Typography } from "@mui/material";
 
-//////////////  url Cloudinary Image  ///////////////////////////////////////////
-import { urlImages } from '../../constants'
+////////////////// Lazy Load Image  ///////////////////////////////////
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
-//// Animations
-import { trackingInContractBck, textFocusIn, smoke1, smoke3, smoke2} from "../animation";
+//////////////////  Animations  /////////////////////////////////////
+import { smoke1, smoke3, smoke2} from "../animation";
 
 
 export const ContainerHome = styled(Box)(({theme})=> ({
@@ -19,7 +19,6 @@ export const ContainerHome = styled(Box)(({theme})=> ({
     padding: '0',
 }))
 
-
 export const BackgroundHome = styled(Box)(({ theme})=> ({
     position: 'absolute',
     top: '0px',
@@ -28,52 +27,16 @@ export const BackgroundHome = styled(Box)(({ theme})=> ({
     left: '0',
     width: '100%',
     overflow: 'hidden',
-    backgroundImage: `url(${ urlImages.homeDesktop })`,
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
-    backgroundSize: 'cover',
-    [theme.breakpoints.down('md')]: {
-        backgroundImage: `url(${ urlImages.homeMobile })`,
-    },
 }))
 
-/////////// Smoke on mobile /////////////////////////////////////////
-export const WrapperSmoke = styled(Box)(()=> ({
-        position: 'absolute',
-        transform: 'translateX(-50%)',
-        left: '56%',
-        bottom: '45%',
+export const ImgOriginal = styled(LazyLoadImage)(()=> ({
+    objectFit: 'cover',
 }))
 
-export const ImageSmoke1 = styled('img')(({src})=> ({
-    src: `url(${src})`,
-    filter: 'blur(5px)',
-    width: '90%',
-    height: '90%',
-    // filter: 'brightness(135%)',
-    transformOrigin: '50% 50%',
-    animation: `${smoke1} 3s linear infinite`,
-    animationDelay: '0.5s',
-}))
-
-export const ImageSmoke2 = styled('img')(({src})=> ({
-    src: `url(${src})`,
-    filter: 'blur(5px)',
-    width: '90%',
-    height: '90%',
-    transformOrigin: '50% 50%',
-    animation: `${smoke2} 3s linear infinite`,
-    animationDelay: '1.5s',
-}))
-
-export const ImageSmoke3 = styled('img')(({src})=> ({
-    src: `url(${src})`,
-    filter: 'blur(5px)',
-    width: '90%',
-    height: '90%',
-    transformOrigin: '50% 50%',
-    animation: `${smoke3} 4s linear infinite`,
-    animationDelay: '2.5s',
+export const ImgBlur = styled('img')(()=> ({
+    width: '100%',
+    height: '100%',
+    zIndex: '100'
 }))
 
 export const Content = styled(Box)(()=> ({
@@ -95,7 +58,6 @@ export const HomeText = styled(Typography)(({ theme })=>({
     color: 'white',
     fontWeight: 'bold',
     textShadow: '1px 1px 1px gray',
-    animation: `${textFocusIn} 2s both`,
     [theme.breakpoints.down('md')]: {
         fontSize: '25px',
     }
@@ -109,7 +71,6 @@ export const HomeTextAlicante = styled(Typography)(({ theme })=>({
     fontWeight: '900',
     textTransform: 'uppercase',
     textShadow: '1px 1px 2px gray',
-    animation: `${trackingInContractBck} 3s both`,
     [theme.breakpoints.down('md')]: {
         fontSize: '45px',
     },
@@ -130,3 +91,41 @@ export const ButtonHome = styled(Button)(({theme})=> ({
 }))
 
 
+///////// Smoke on mobile /////////////////////////////////////////
+export const WrapperSmoke = styled(Box)(()=> ({
+    position: 'absolute',
+    transform: 'translateX(-50%)',
+    left: '60%',
+    bottom: '45%',
+}))
+
+export const ImageSmoke1 = styled('img')(({src})=> ({
+src: `url(${src})`,
+filter: 'blur(5px)',
+width: '50%',
+height: '50%',
+// filter: 'brightness(135%)',
+transformOrigin: '50% 50%',
+animation: `${smoke1} 3s linear infinite`,
+animationDelay: '0.5s',
+}))
+
+export const ImageSmoke2 = styled('img')(({src})=> ({
+src: `url(${src})`,
+filter: 'blur(5px)',
+width: '50%',
+height: '50%',
+transformOrigin: '50% 50%',
+animation: `${smoke2} 3s linear infinite`,
+animationDelay: '1.5s',
+}))
+
+export const ImageSmoke3 = styled('img')(({src})=> ({
+src: `url(${src})`,
+filter: 'blur(5px)',
+width: '50%',
+height: '50%',
+transformOrigin: '50% 50%',
+animation: `${smoke3} 4s linear infinite`,
+animationDelay: '2.5s',
+}))

@@ -76,4 +76,4 @@ const AlertInfo= ({ open, setOpen, ticket }) => {
   );
 }
 
-export { AlertInfo }
+export default AlertInfo

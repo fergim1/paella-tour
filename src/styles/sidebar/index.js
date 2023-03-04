@@ -1,5 +1,16 @@
 import styled from "@emotion/styled"
-import {  Stack, Link, Box, List, Divider, Typography, IconButton, ListItem, ListItemButton, ListItemText } from "@mui/material"
+import {
+    Stack,
+    Link,
+    Box,
+    List,
+    Divider,
+    Typography,
+    IconButton,
+    ListItem,
+    ListItemButton,
+    ListItemText
+} from "@mui/material"
 import { Link as LinkScroll } from 'react-scroll';
 
 
@@ -15,7 +26,7 @@ export const WrapperLogo = styled(Box)(()=>({
 
 export const Logo = styled('img')(()=>({
     width: '150px'
- }))
+}))
 
 export const Line = styled(Divider)(()=>({
     backgroundColor: '#686868',
@@ -28,32 +39,31 @@ export const ListItems = styled(List)(()=>({
     flexDirection:'column',
     justifyContent: 'space-around',
     alignItems: 'center',
- }))
+}))
 
- export const OneItem = styled(ListItem)(()=>({
- }))
+export const OneItem = styled(ListItem)(()=>({
+}))
 
- export const OneItemButton = styled(ListItemButton)(()=>({
+export const OneItemButton = styled(ListItemButton)(()=>({
     textAlign: 'center',
 }))
 
 export const OneItemText = styled(ListItemText)(()=>({
 }))
 
-
- export const LinkItem = styled(LinkScroll)(()=>({
+export const LinkItem = styled(LinkScroll)(()=>({
     textDecoration: 'none',
- }))
+}))
 
- export const Item = styled(Typography)(()=>({
+export const Item = styled(Typography)(()=>({
     color: 'white',
     fontSize: '18px',
     fontWeight: 'bold',
     letterSpacing: '4px',
- }))
+}))
 
- export const Flag = styled(IconButton)(()=>({
- }))
+export const Flag = styled(IconButton)(()=>({
+}))
 
 export const WrapperIcons = styled(Stack)(()=>({
     width: '100%',

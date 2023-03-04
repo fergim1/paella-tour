@@ -28,9 +28,8 @@ import { SelectLanguage } from './SelectLanguage';
 
   ////////////// Text of NavItems ///////////////////////////////////////////
 import { Sections } from '../../constants/index'
-import { height } from '@mui/system';
 
-
+////////////// Slide ///////////////////////////////////////////
 function HideOnScroll({children}) {
     return (
       <Slide appear={false} direction="down" in={!useScrollTrigger()}>
@@ -78,7 +77,7 @@ function DrawerAppBar(props) {
                     </IconButton>
 
                     <Box sx={{ my: 1, flexGrow: {xs: 1}, display: { xs: 'grid'}, placeContent: {xs: 'center', sm: 'start'}, cursor: 'pointer'}} >
-                        <img onClick={scroollToTop} src={ logo } width='100px' alt='logo-paella-tour'/>
+                        <img onClick={scroollToTop} src={ logo } width='100px' alt='logo-paella-tour' loading='lazy'/>
                     </Box>
 
                     <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
@@ -108,4 +107,4 @@ function DrawerAppBar(props) {
   );
 }
 
-export {DrawerAppBar};
+export default DrawerAppBar;

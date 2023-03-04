@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import {
     Containter,
     GridContainer,
@@ -68,7 +68,9 @@ import PhoneInput from 'react-phone-number-input'
 import { InputPhoneWithFlags } from "../../styles/book-now"
 
 ////////////// Alert ////////////////////////////////////////////////////////
-import { AlertInfo } from './Alert'
+const AlertInfo = lazy(() => import('./Alert'))
+
+// import { AlertInfo } from './Alert'
 
 const initialTicket = {
     id: 1,
@@ -290,16 +292,18 @@ const BookNowPage = () => {
             {
                 alertOpen
                 &&
-                <AlertInfo 
-                    open={alertOpen}
-                    setOpen={setAlertOpen}
-                    ticket={ticket}
-                    language={language}
-                />
+                <Suspense fallback={<div></div>}>
+                    <AlertInfo
+                        open={alertOpen}
+                        setOpen={setAlertOpen}
+                        ticket={ticket}
+                        language={language}
+                        />
+                </Suspense>
             }
             </GridContainer>
         </Containter>
     )
 }
 
-export { BookNowPage }
+export default BookNowPage

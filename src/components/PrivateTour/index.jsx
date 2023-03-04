@@ -60,4 +60,4 @@ const PrivateTourPage = () => {
     )
 }
 
-export { PrivateTourPage }
+export default PrivateTourPage

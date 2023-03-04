@@ -33,34 +33,43 @@ import SpanishFlag from '../../assets/flags/SpanishFlag';
 import { SiTripadvisor } from 'react-icons/si';
 import { FiInstagram } from 'react-icons/fi';
 
+////////////// Text of Sections ///////////////////////////////////////////
 import { Sections } from '../../constants/index.js'
+
+////////////// Hooks ///////////////////////////////////////////
 import { useLanguage } from '../../hooks/useLanguage';
 
+////////////// Scroll to Top ///////////////////////////////////////////
+import { animateScroll } from 'react-scroll';
+
+
+////////////// MAIN COMPONENT ///////////////////////////////////////////
+////////////// MAIN COMPONENT ///////////////////////////////////////////
 const ContentDrawer = ({ handleDrawerToggle}) => {
     const { language, setLanguage }  = useContext(AppContext)
     const navItems = useLanguage(language, Sections)
 
     const itemsInEnglish = [...Sections.english]
 
-    // const handleClickScroll = (index) => {
-    //     console.log(index)
-    //     const allItemsInEnglish = [...Sections.english]
-    //     const itemInEnglish = allItemsInEnglish[index]
-    //     console.log(itemInEnglish)
-    //     // document.getElementById(itemInEnglish).scrollIntoView({block: "start", behavior: "smooth"})
-    //   }
-    
-
-
     const handleLanguage = (language) => {
         setLanguage(language)
+    }
+
+    const scrollToTop = () => {
+        animateScroll.scrollToTop()
+        handleDrawerToggle;
     }
 
     return (
     <ContainerDrawer onClick={ handleDrawerToggle }>
 
         <WrapperLogo >
-            <Logo src={ logoDrawer } alt='logo-paella-tour' />
+            <Logo
+                src={ logoDrawer }
+                alt='logo-paella-tour'
+                onClick={scrollToTop}
+                loading='lazy'
+            />
         </WrapperLogo>
 
         <Line />
@@ -71,12 +80,12 @@ const ContentDrawer = ({ handleDrawerToggle}) => {
                     <OneItemButton >
                         <OneItemText>
                             <LinkItem
-                               to={`${itemsInEnglish[index]}`}
-                               onClick={ handleDrawerToggle }
-                               smooth={true}
-                               duration={500}
-                               spy={true}
-                               exact='true'
+                                to={`${itemsInEnglish[index]}`}
+                                onClick={ handleDrawerToggle }
+                                smooth={true}
+                                duration={500}
+                                spy={true}
+                                exact='true'
                             >
                                 <Item>
                                     {item}

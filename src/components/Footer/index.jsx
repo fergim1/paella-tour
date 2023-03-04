@@ -51,11 +51,11 @@ const FooterPage = () => {
             <WrapperContent >
 
                 <WrapperSocialNetworks >
-                    <LinkInstagram href='https://www.instagram.com/paellatour' target="_blank" rel="noreferrer">
+                    <LinkInstagram href='https://www.instagram.com/paellatour' target="_blank" rel="noreferrer" aria-label="Instagram">
                         <FiInstagram/>
                     </LinkInstagram>
 
-                    <LinkTripAdvisor href='https://www.tripadvisor.es/' target="_blank" rel="noreferrer">
+                    <LinkTripAdvisor href='https://www.tripadvisor.es/' target="_blank" rel="noreferrer" aria-label="Tripadvisor">
                         <SiTripadvisor/>
                     </LinkTripAdvisor>
                 </WrapperSocialNetworks>
@@ -87,4 +87,4 @@ const FooterPage = () => {
     )
 }
 
-export { FooterPage }
+export default FooterPage

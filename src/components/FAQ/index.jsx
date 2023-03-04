@@ -24,7 +24,7 @@ import { useLanguage } from '../../hooks/useLanguage';
 import { textFAQ } from '../../constants/index'
 
 
-function FrequentlyAskedQuestions() {
+const FrequentlyAskedQuestions = () => {
     const {language} = useContext(AppContext)
     const text = useLanguage(language, textFAQ)
 
@@ -51,4 +51,4 @@ function FrequentlyAskedQuestions() {
   );
 }
 
-export { FrequentlyAskedQuestions }
+export default FrequentlyAskedQuestions
