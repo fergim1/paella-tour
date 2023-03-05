@@ -70,7 +70,6 @@ import { InputPhoneWithFlags } from "../../styles/book-now"
 ////////////// Alert ////////////////////////////////////////////////////////
 const AlertInfo = lazy(() => import('./Alert'))
 
-// import { AlertInfo } from './Alert'
 
 const initialTicket = {
     id: 1,
@@ -80,17 +79,35 @@ const initialTicket = {
     phone: '',
 }
 
-
+////////////// MAIN COMPONENT - Book Now ///////////////////////////////////////////
+////////////// MAIN COMPONENT - Book Now ///////////////////////////////////////////
 const BookNowPage = () => {
+///////// State Ticket information ///////////////////////////////
     const [ticket, setTicket] = useState(initialTicket);
+
+///////// Context ////////////////////////////////////////////////
     const { language } = useContext(AppContext)
+
+///////// Hook to set language of text ///////////////////////////
     const text = useLanguage(language, textBookNow)
+
+///////// Locale to adapterLocale of Date Picker /////////////////
     const [locale, setLocale] = useState(language);
+
+///////// Date Format Change /////////////////////////////////////
     const [dateFormated , setDateFormated] = useState(dayjs(initialTicket.date).format("dddd, D MMMM YYYY"))
+
+///////// State Phone number //////////////////////////////////////
     const [phoneInput, setPhoneInput ] = useState()
+
+///////// Alert missing info ///////////////////////////////////////
     const [alertOpen, setAlertOpen] = useState(false)
+
+///////// State Loading ////////////////////////////////////////////
     const [loading, setLoading] = useState(false)
 
+
+///////// useEffets ////////////////////////////////////////////////
     useEffect(() => {
         if(language==='en') {
             setLocale('en')
@@ -102,7 +119,23 @@ const BookNowPage = () => {
         }
     }, [language, ticket.date ])
 
+    useEffect(() => {
+        setTicket({ ...ticket, phone: phoneInput })
+    }, [phoneInput])
 
+    useEffect(() => {
+        if (ticket.time){
+            const timeSelected = TIMES.filter(el => el === ticket.time)
+            const othersTime = TIMES.filter(el => el !== ticket.time)
+            document.getElementById(timeSelected[0]).style.backgroundColor = "#f9c301"
+            othersTime.map((el) => (
+                document.getElementById(el).style.backgroundColor = "#d8d8d8"
+            ))
+        }
+    }, [ticket.time])
+
+
+///////// Functions /////////////////////////////////////////////////
     const disabledDays = (date) => {
         return DISABLED_DAYS.map((el) => dayjs(el).format()).includes(date.format())
     }
@@ -118,22 +151,6 @@ const BookNowPage = () => {
     const hangleChangeDate = (newValue) => {
         setTicket({...ticket, date: newValue});
     }
-
-    useEffect(() => {
-        setTicket({ ...ticket, phone: phoneInput })
-    }, [phoneInput])
-
-
-    useEffect(() => {
-        if (ticket.time){
-            const timeSelected = TIMES.filter(el => el === ticket.time)
-            const othersTime = TIMES.filter(el => el !== ticket.time)
-            document.getElementById(timeSelected[0]).style.backgroundColor = "#f9c301"
-            othersTime.map((el) => (
-                document.getElementById(el).style.backgroundColor = "#d8d8d8"
-            ))
-        }
-    }, [ticket.time])
 
     const handleBuyTicket = async (ticket) => {
         if (!ticket.phone || ticket.time === false){
@@ -151,14 +168,14 @@ const BookNowPage = () => {
                 quantity: ticket.quantity,
                 phone: ticket.phone
             }
-       await axiosStripe(info)
+        await axiosStripe(info)
     //    setLoading(false)
     }
 
 
     return (
-        <Containter id='Book Now' sx={{mt: '20px'}}>
-            <GridContainer id='Book Now' container spacing={1} >
+        <Containter id='Book Now'>
+        <GridContainer container spacing={1} >
 
 {/*--------------------------------  GRID LEFT - TOP -------------------------------- */}
                 <GridItemLeftTop item xs={12} sm={6}>

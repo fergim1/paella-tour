@@ -10,9 +10,13 @@ import {
     ImageIsologo,
     GridItemRightBottom,
     WrapperForm,
+    WrapperInfoContact,
+    WrapperDetail,
+    TextWhatsapp,
+    TextEmail,
 } from "../../styles/contact"
 
-////////////// Logo ////////////////////////////////////////////////
+////////////// isoLogo /////////////////////////////////////////////
 import isoLogo from '../../assets/logo-drawer.png'
 
 ////////////// Context /////////////////////////////////////////////
@@ -23,19 +27,25 @@ import { useLanguage } from "../../hooks/useLanguage";
 ////////////// Text of ContactPage /////////////////////////////////
 import { textContact } from '../../constants/index'
 
-////////////// Form /////////////////////////////////
+////////////// Form ////////////////////////////////////////////////
 import { Form } from "../Form";
 
-////////////// URL to AXIOS ///////////////////////////////////////
+////////////// URL to AXIOS ////////////////////////////////////////
 const url = import.meta.env.VITE_URL_CONTACT_FORM
 
+////////////// Icons ///////////////////////////////////////////////
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
 
+
+////////////// MAIN COMPONENT - Contact ///////////////////////////////////////////
+////////////// MAIN COMPONENT - Contact ///////////////////////////////////////////
 const ContactPage = () => {
-////////////// Context ////////////////////////////////////////////
+///////// Context ///////////////////////////////////////
     const { language } = useContext(AppContext)
 
-////////////// Hook /////////////////////////////////
+////////////// Hook /////////////////////////////////////
     const text = useLanguage(language, textContact)
 
     return (
@@ -50,6 +60,23 @@ const ContactPage = () => {
                         <WrapperIsologo>
                             <ImageIsologo src={isoLogo} alt='isologo-paella-tour'/>
                         </WrapperIsologo>
+
+                        <WrapperInfoContact>
+                            <WrapperDetail id='algo'>
+                                <WhatsAppIcon/>
+                                <TextWhatsapp
+                                    href='https://wa.me/34687489741' target="_blank" rel="noreferrer" aria-label="Whatsapp"
+                                >
+                                    +34 687 48 97 41
+                                </TextWhatsapp>
+                            </WrapperDetail>
+
+                            <WrapperDetail>
+                                <MailOutlineIcon/>
+                                <TextEmail>paellatour.es@gmail.com</TextEmail>
+                            </WrapperDetail>
+                        </WrapperInfoContact>
+
                 </GridItemLeftTop>
 
 {/* ////////////////////////////////////  GRID RIGHT BOTTOM  ////////////////////////////// */}

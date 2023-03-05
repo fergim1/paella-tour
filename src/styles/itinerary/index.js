@@ -62,7 +62,7 @@ export const WrapperInfo = styled(Stack)(({theme})=> ({
     height: '300px',
     position: 'relative',
     [theme.breakpoints.down('sm')]: {
-        marginBottom: '20%',
+        marginBottom: '25%',
         padding: '0 10%'
     }
 }))

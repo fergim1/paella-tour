@@ -16,11 +16,12 @@ import {
 
 export const Containter = styled(Box)(()=>({
     width: '100%',
-    height: '100vh',
+    minHeight: '100vh',
     flexGrow: '1',
 }))
 
 export const GridContainer = styled(Grid)(({})=> ({
+    height: '100%',
 }))
 
 //////////////////////////////////////////////////////////////////
@@ -32,7 +33,8 @@ export const GridItemLeftTop = styled(Grid)(({theme})=> ({
     height: '100vh',
     alignItems: 'center',
     [theme.breakpoints.down('sm')]: {
-        height: '60vh',
+        height: 'auto',
+        minHeight: '60vh',
         alignItems: 'center',
         padding: '0',
     },
@@ -70,7 +72,7 @@ export const TitleBookNow = styled(Typography)(({theme})=> ({
         fontSize: '36px',
     },
     [theme.breakpoints.down('sm')]: {
-        paddingTop: '20px',
+        paddingTop: '60px',
     }
 }))
 
@@ -116,7 +118,8 @@ export const GridItemRightBottom = styled(Grid)(({theme})=> ({
     alignItems: 'start',
     padding: '0px',
     [theme.breakpoints.down('sm')]: {
-        height: '40vh',
+        height: 'auto',
+        minHeight: '40vh',
         padding: '0 0 0 0',
         margin: '0 0',
         alignItems: 'center',
@@ -148,7 +151,7 @@ export const WrapperRightBottom = styled(Stack)(({theme})=> ({
         width: '100%',
         maxWidth: '100%',
         justofyContent: 'space-around',
-        padding: '30px 5px 0 5px',
+        padding: '30px 5px 10px 5px',
     }
 }))
 

@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import {
     Box,
     Grid,
+    Link,
     Paper,
     Typography
 } from "@mui/material";
@@ -9,12 +10,13 @@ import {
 
 export const ContainerContact = styled(Box)(()=> ({
     width: '100%',
-    height: '100vh',
+    minHeight: '100vh',
     flexGrow: '1',
     marginTop: '20px',
 }))
 
 export const GridContainer = styled(Grid)(()=> ({
+    height: '100%',
 }))
 
 //////////////  GRID LEFT TOP //////////////////////////////
@@ -25,7 +27,8 @@ export const GridItemLeftTop = styled(Grid)(({theme})=> ({
     height: '100vh',
     lineHeight: '0',
     [theme.breakpoints.down('sm')]: {
-        height: '40vh',
+        height: 'auto',
+        minHeight: '40vh',
     },
 }))
 
@@ -66,6 +69,50 @@ export const WrapperIsologo = styled(Box)(()=> ({
     justifyContent: 'center',
 }))
 
+export const WrapperInfoContact = styled(Box)(({theme})=> ({
+    marginTop: '10px',
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    [theme.breakpoints.down('sm')]: {
+        marginBottom: '10px',
+    },
+}))
+
+export const WrapperDetail = styled(Box)(({theme})=> ({
+    marginTop: '10px',
+    display: 'flex',
+    justifyContent: 'start',
+    alignItems: 'center',
+    flexDirection: 'row',
+    [theme.breakpoints.down('sm')]: {
+        justifyContent: 'center',
+    },
+}))
+
+export const TextWhatsapp = styled(Link)(({theme})=> ({
+    fontSize: '16px',
+    marginLeft: '10px',
+    color: 'black',
+    cursor: 'pointer',
+    textDecoration: 'none',
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '14px',
+    },
+    '&:hover': {
+        color: theme.palette.secondary.main
+    },
+}))
+
+export const TextEmail = styled(Typography)(({theme})=> ({
+    fontSize: '16px',
+    marginLeft: '10px',
+    color: 'black',
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '14px',
+    },
+}))
+
 export const ImageIsologo = styled('img')(({src, theme})=> ({
   src: `url(${src})`,
   width: '170px',
@@ -82,7 +129,8 @@ export const GridItemRightBottom = styled(Grid)(({theme})=> ({
     placeContent: 'center',
     height: '100vh',
     [theme.breakpoints.down('sm')]: {
-        height: '60vh',
+        height: 'auto',
+        minHeight: '60vh',
     },
 }))
 
@@ -99,6 +147,7 @@ export const WrapperForm = styled(Paper)(({theme}) => ({
 
     [theme.breakpoints.down('sm')]: {
         width: '90vw',
+        marginBottom: '10px',
     },
 
 }))

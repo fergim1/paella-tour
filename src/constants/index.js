@@ -1,8 +1,8 @@
 //////////////  Sections ///////////////////////////////////////////
 /////////////////////////////////////  Sections ////////////////////
 export const Sections = {
-  english: ['Itinerary', 'Book Now', 'Private Tour', 'Who we are', 'FAQ', 'Contact'],
-  spanish: ['Itinerario', 'Reservar', 'Tour Privado', 'Nosotros', 'FAQ', 'Contacto'],
+  english: ['Itinerary', 'Book Now', 'Private Tour', 'FAQ', 'Contact'],
+  spanish: ['Itinerario', 'Reservar', 'Tour Privado', 'FAQ', 'Contacto'],
 }
 ///////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -214,13 +214,13 @@ export const textPrivateTour = {
   english: {
       title: 'Private Tour',
       subtitle: 'We can not make your trip eternal, but unforgettable',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+      text: 'Want an even more personalized culinary adventure? Paella Tour offers private and custom tours and loves developing your special requests and ideas for discovering Alicante through it’s gastronomy. Write us via email at paellatour.es@gmail.com or through the form.',
       titleForm: 'Drop us a line',
   },
   spanish: {
       title: 'Tour Privado',
-      subtitle: 'No podemos hacer que tu viaje sea eterno, pero si inolvidable',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+      subtitle: 'No podemos hacer que tu viaje sea eterno, pero sí inolvidable',
+      text: '¿Quieres una aventura culinaria aún más personalizada? Paella Tour ofrece tours privados y personalizados. Cuéntanos tu idea y nos encantará desarrollar tu propuesta para descubrir Alicante a través de su gastronomía. Puedes hacerlo por email a paellatour.es@gmail.com o desde el formulario.',
       titleForm: 'Escríbanos',
   }
 }
