@@ -3,8 +3,10 @@ import { Container } from '@mui/material'
 
 import { lazy, Suspense } from 'react'
 //////////  Components ///////////////////////////////////////////////
-import DrawerAppBar from '../components/NavBar/DraweAppBar'
-import HomePage from '../components/Home'
+// import DrawerAppBar from '../components/NavBar/DraweAppBar'
+// import HomePage from '../components/Home'
+const DrawerAppBar = lazy(() => import('../components/NavBar/DraweAppBar'))
+const HomePage = lazy(() => import('../components/Home'))
 const ItineraryPage = lazy(() => import('../components/Itinerary'))
 const BookNowPage = lazy(() => import('../components/BookNow'))
 const PrivateTourPage = lazy(() => import('../components/PrivateTour'))
@@ -26,9 +28,9 @@ const OnePage = () => {
                   boxSizing: 'border-box',
                 }}
             >
+              <Suspense fallback={<div></div>}>
                   <DrawerAppBar />
                   <HomePage />
-              <Suspense fallback={<div>Loading</div>}>
                   <ItineraryPage />
                   <BookNowPage />
                   <PrivateTourPage />

@@ -12,12 +12,13 @@ import {
     TextAreaForm,
     ButtomContactForm,
     SpinnerInButton,
-    TextError,
     ImageSent,
     WrapperImageSent,
     WrapperForm,
     TitleForm,
     IconWrapper,
+    TextHelper,
+    TextError,
  } from "../../styles/form";
 
 ////////////// Icons ////////////////////////////////////////////////////////
@@ -110,7 +111,7 @@ const Form = ( { titleForm, url } ) => {
 
     const ErrorHelper = () => {
         if (!error.mobile && !error.email ){
-            return  <TextError> {text.inputMessageTextHelp} </TextError>
+            return  <TextHelper> {text.inputMessageTextHelp} </TextHelper>
         }
         if (error.email && !error.mobile){
             return  <TextError> {text.invalidEmail} </TextError>

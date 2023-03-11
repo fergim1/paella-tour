@@ -64,8 +64,15 @@ export const TextAreaForm = styled(TextField)(() => ({
 export const TextError = styled('span')(() => ({
     color: 'red',
     fontSize: '14px',
-    // fontWeight: 'bold',
     marginLeft: '12px',
+    marginTop: '5px',
+}))
+
+export const TextHelper = styled('span')(() => ({
+    color: 'gray',
+    fontSize: '14px',
+    marginLeft: '12px',
+    marginTop: '5px',
 }))
 
 export const ButtomContactForm = styled(Button)(({theme})=> ({
