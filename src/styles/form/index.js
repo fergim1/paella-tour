@@ -5,8 +5,7 @@ import { Box, Button, CircularProgress, FormControl, FormGroup, IconButton, Inpu
 import { bounceInTop } from "../animation";
 
 
-export const WrapperContainer = styled(Box)(()=> ({
-}))
+
 
 export const WrapperForm = styled(Box)(()=> ({
     width: '100%',

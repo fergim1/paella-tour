@@ -171,10 +171,11 @@ export const textItinerary = [
 export const textBookNow = {
   english: {
       title: 'Book Now',
-      subtitle: '80 € per guest',
+      subtitle: '€ 80 per adult and € 40 per child',
       span: ' Include all food and drink ',
       time: 'Schedule',
-      quantity: 'Guest',
+      adults: 'Adults',
+      children: 'Children',
       phone: 'Phone',
       buttonText: 'Buy TICKETS',
       alertTitle: 'Some field is missing',
@@ -183,10 +184,11 @@ export const textBookNow = {
   },
   spanish: {
       title: 'Reservar',
-      subtitle: '80 € por persona',
+      subtitle: '€ 80 por adulto y € 40 por niño',
       span: ' Incluye bebida y comida ',
       time: 'Horario',
-      quantity: 'Cantidad',
+      adults: 'Adultos',
+      children: 'Niños',
       phone: 'Móvil',
       buttonText: 'Comprar TICKETS',
       alertTitle: 'Falta completar algún campo',
@@ -199,7 +201,8 @@ export const textBookNow = {
 export const TIMES = ['12:00', '19:00']
 
 //  Quantities of tickets available to buy
-export const QUANTITIES = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10' ]
+export const ADULTS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10' ]
+export const CHILDREN = ['0', '1', '2', '3', '4', '5']
 
 //  Days disable (When can't do the tour)
 //      Format: 2023-02-03 = Saturday, 2nd February 2023
@@ -233,28 +236,34 @@ export const textForm = {
   english: {
       inputName: 'Name *',
       inputEmail: 'Email *',
+      inputMobile: 'Mobile *',
       inputMessage: 'Message *',
-      inputMessageTextHelp: '* All fields are required',
+      inputMessageTextHelp: '* Fields required',
       buttonText: 'Just send',
       alertTitle: '⚠️ Some field is missing',
       alertName: "You haven't completed your Name",
       alertEmail: "You haven't completed your Email",
       alertMessage: "You haven't written a message",
       textSent: "Message sent ✔️",
-      invalidEmail: 'Invalid email',
+      // invalidInput: 'Invalid email or mobile',
+      invalidEmail: 'Invalid Email',
+      invalidMobile: 'Invalid Mobile',
   },
   spanish: {
       inputName: 'Nombre *',
       inputEmail: 'Email *',
+      inputMobile: 'Móvil *',
       inputMessage: 'Mensaje *',
-      inputMessageTextHelp: '* Todos los campos son requeridos',
+      inputMessageTextHelp: '* Campos requeridos',
       buttonText: 'Enviar',
       alertTitle: '⚠️ Falta completar algún campo',
       alertName: 'No has escrito tu nombre',
       alertEmail: 'No has escrito tu email',
       alertMessage: 'No has escrito un mensaje',
       textSent: "Mensaje enviado ✔️",
+      // invalidInput: 'Email ó Móvil inválido',
       invalidEmail: 'Email inválido',
+      invalidMobile: 'Móvil inválido',
   }
 }
 /////////////////////////////////////////////////////////////////////

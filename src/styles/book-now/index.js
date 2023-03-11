@@ -287,12 +287,6 @@ export const InputPhoneWithFlags = styled('input')(({theme})=> ({
 export const InputPhone = styled(TextField)(()=> ({
 }))
 
-export const TextTotal = styled(Typography)(()=> ({
-    margin: '0px 12px 0 0px',
-    color: '#666666',
-    fontWeight: 'bold',
-
-}))
 
 export const ButtomBuyTicket = styled(Button)(({theme})=> ({
     background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,

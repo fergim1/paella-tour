@@ -27,6 +27,8 @@ const url = import.meta.env.VITE_URL_PRIVATE_TOUR_FORM
 
 
 
+////////////// MAIN COMPONENT - Private Tour ///////////////////////////////////////////
+////////////// MAIN COMPONENT - Private Tour ///////////////////////////////////////////
 const PrivateTourPage = () => {
 ////////////// Context /////////////////////////////////
     const {language} = useContext(AppContext)

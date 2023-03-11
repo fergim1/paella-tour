@@ -24,7 +24,6 @@ import {
     FormControlQuantity,
     SelectQuantity,
     MenuItemQuantity,
-    TextTotal,
     WrapperButtom,
     ButtomBuyTicket,
     Spinner,
@@ -51,10 +50,9 @@ import InsertInvitationIcon from '@mui/icons-material/InsertInvitation';
 import LocalActivityIcon from '@mui/icons-material/LocalActivity';
 import WatchLaterIcon from '@mui/icons-material/WatchLater';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 ////////////// Constants /////////////////////////////////////////////////////
-import { TIMES, QUANTITIES, DISABLED_DAYS } from '../../constants'
+import { TIMES, ADULTS, CHILDREN, DISABLED_DAYS } from '../../constants'
 
 ////////////// Text of BookNowPage ///////////////////////////////////////////
 import { textBookNow } from '../../constants/index'
@@ -75,7 +73,8 @@ const initialTicket = {
     id: 1,
     date: dayjs().format(),
     time: false,
-    quantity: 1,
+    adults: 1,
+    children: 0,
     phone: '',
 }
 
@@ -140,8 +139,12 @@ const BookNowPage = () => {
         return DISABLED_DAYS.map((el) => dayjs(el).format()).includes(date.format())
     }
 
-    const hangleChangeQuantity = (e) => {
-        setTicket({ ...ticket, quantity : e.target.value })
+    const hangleChangeAdults = (e) => {
+        setTicket({ ...ticket, adults : e.target.value })
+    }
+
+    const hangleChangeChildren = (e) => {
+        setTicket({ ...ticket, children : e.target.value })
     }
 
     const handleChangeTime = (time) => {
@@ -165,10 +168,12 @@ const BookNowPage = () => {
                 id: ticket.id,
                 date: ticketReady.date,
                 time: ticket.time,
-                quantity: ticket.quantity,
+                adults: ticket.adults,
+                children: ticket.children,
                 phone: ticket.phone
             }
         await axiosStripe(info)
+        console.log(info)
     //    setLoading(false)
     }
 
@@ -228,7 +233,6 @@ const BookNowPage = () => {
                             </WrapperIcon>
                             <WrapperDetail >
                             <TextDetail > {text.time} </TextDetail>
-
                                 {
                                     TIMES.map((el)=> (
                                         <Timetable id={el} key={el} onClick={() => handleChangeTime(el)}>
@@ -246,23 +250,40 @@ const BookNowPage = () => {
                                 </Icon>
                             </WrapperIcon>
                             <WrapperDetail >
-                                <TextDetail > {text.quantity} </TextDetail>
+
+                                    <TextDetail > {text.adults} </TextDetail>
                                     <FormControlQuantity size='small'>
                                         <SelectQuantity
                                             variant="standard"
-                                            labelId="quantity-label"
-                                            id="quantity"
-                                            name='quantity'
-                                            value={ticket.quantity}
-                                            label="Quantity"
-                                            onChange={hangleChangeQuantity}
+                                            labelId="adults-label"
+                                            id="adults"
+                                            name='adults'
+                                            value={ticket.adults}
+                                            label="Adults"
+                                            onChange={hangleChangeAdults}
                                         >
-                                            {QUANTITIES.map((el)=> (
+                                            {ADULTS.map((el)=> (
                                                 <MenuItemQuantity key={el} value={el}> {el} </MenuItemQuantity>
                                             ))}
                                         </SelectQuantity>
                                     </FormControlQuantity>
-                                    <TextTotal >Total € {ticket.quantity * 80}</TextTotal>
+
+                                    <TextDetail > {text.children} </TextDetail>
+                                    <FormControlQuantity size='small'>
+                                        <SelectQuantity
+                                            variant="standard"
+                                            labelId="children-label"
+                                            id="children"
+                                            name='children'
+                                            value={ticket.children}
+                                            label="Children"
+                                            onChange={hangleChangeChildren}
+                                        >
+                                            {CHILDREN.map((el)=> (
+                                                <MenuItemQuantity key={el} value={el}> {el} </MenuItemQuantity>
+                                            ))}
+                                        </SelectQuantity>
+                                    </FormControlQuantity>
                             </WrapperDetail>
                         </WrapperInfo>
 
@@ -296,10 +317,13 @@ const BookNowPage = () => {
 
                         <WrapperButtom >
                             <ButtomBuyTicket
-                                endIcon={!loading ? <ShoppingCartIcon/> : ''}
                                 onClick={ () => handleBuyTicket(ticket) }
                             >
-                                {!loading ? text.buttonText : <Spinner size='24px'/>}
+                                {
+                                    !loading
+                                    ? (text.buttonText + '  ( Total : € ' + (ticket.adults * 80 + ticket.children * 40 )+ ' )') 
+                                    : <Spinner size='24px'/>
+                                }
                             </ButtomBuyTicket>
                         </WrapperButtom>
 
