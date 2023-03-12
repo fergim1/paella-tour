@@ -171,8 +171,9 @@ export const textItinerary = [
 export const textBookNow = {
   english: {
       title: 'Book Now',
-      subtitle: '€ 80 per adult and € 40 per child',
-      span: ' Include all food and drink ',
+      adultPrice: '€ 80 per adult ( 14+ )',
+      childPrice: '€ 40 per child ( 3-13 )',
+      // span: ' Include all food and drink ',
       time: 'Schedule',
       adults: 'Adults',
       children: 'Children',
@@ -184,8 +185,9 @@ export const textBookNow = {
   },
   spanish: {
       title: 'Reservar',
-      subtitle: '€ 80 por adulto y € 40 por niño',
-      span: ' Incluye bebida y comida ',
+      adultPrice: '€ 80 por adulto ( 14+ )',
+      childPrice: '€ 40 por niño ( 3-13 )',
+      // span: ' Incluye bebida y comida ',
       time: 'Horario',
       adults: 'Adultos',
       children: 'Niños',

@@ -9,7 +9,6 @@ import {
     TitleBookNow,
     WrapperSubtitles,
     SubtitlePrice,
-    SubtitleDescription,
 
     //  RIGHT - BOTTOM
     GridItemRightBottom,
@@ -188,8 +187,8 @@ const BookNowPage = () => {
                         <WrapperTitleAndSubtitle>
                             <TitleBookNow>{text.title}</TitleBookNow>
                             <WrapperSubtitles >
-                                <SubtitlePrice> {text.subtitle} </SubtitlePrice>
-                                <SubtitleDescription>{text.span}</SubtitleDescription>
+                                <SubtitlePrice> {text.adultPrice} </SubtitlePrice>
+                                <SubtitlePrice> {text.childPrice} </SubtitlePrice>
                             </WrapperSubtitles>
                         </WrapperTitleAndSubtitle>
 
@@ -313,15 +312,13 @@ const BookNowPage = () => {
                             </WrapperDetail>
                         </WrapperInfo>
 
-
-
                         <WrapperButtom >
                             <ButtomBuyTicket
                                 onClick={ () => handleBuyTicket(ticket) }
                             >
                                 {
                                     !loading
-                                    ? (text.buttonText + '  ( Total : € ' + (ticket.adults * 80 + ticket.children * 40 )+ ' )') 
+                                    ? (text.buttonText + '  ( Total : € ' + (ticket.adults * 80 + ticket.children * 40 )+ ' )')
                                     : <Spinner size='24px'/>
                                 }
                             </ButtomBuyTicket>

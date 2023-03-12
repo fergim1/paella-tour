@@ -81,26 +81,14 @@ export const WrapperSubtitles = styled(Stack)(()=> ({
     alignItems: 'center',
 }))
 
-export const SubtitlePrice = styled(Typography)(({theme})=> ({
-    fontSize: '20px',
-    textAlign: 'center',
-    fontWeight: '800',
-    letterSpacing: '-.02em',
-    color: '#7b7b7b',
-    [theme.breakpoints.down('md')]: {
-        fontSize: '18px',
-    }
-}))
 
-export const SubtitleDescription = styled(Typography)(({theme})=> ({
+export const SubtitlePrice = styled(Typography)(({theme})=> ({
     fontSize: '16px',
     textAlign: 'center',
     fontWeight: '400',
     letterSpacing: '-.02em',
     color: '#a8a8a8',
-    [theme.breakpoints.down('md')]: {
-        marginBottom: '20px',
-    },
+    margin: '4px',
     [theme.breakpoints.down('sm')]: {
         marginBottom: '0px',
     }
