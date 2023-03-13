@@ -38,7 +38,7 @@ import { textHome } from "../../constants";
 
 ////////////// MAIN COMPONENT - Home ///////////////////////////////////////////
 ////////////// MAIN COMPONENT - Home ///////////////////////////////////////////
-const HomePage = () => {
+const Home = () => {
     const [isLoaded, setLoaded] = useState(false)
     const [isLoadStarted, setLoadStarted] = useState(false)
 
@@ -126,4 +126,4 @@ return (
 )
 }
 
-export default HomePage
+export default Home

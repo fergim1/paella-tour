@@ -27,7 +27,9 @@ import { FiInstagram } from 'react-icons/fi';
 
 
 
-const FooterPage = () => {
+////////////// MAIN COMPONENT - Footer ///////////////////////////////////////////
+////////////// MAIN COMPONENT - Footer ///////////////////////////////////////////
+const Footer = () => {
     const {language} = useContext(AppContext)
     const items = useLanguage(language, Sections)
 
@@ -87,4 +89,4 @@ const FooterPage = () => {
     )
 }
 
-export default FooterPage
+export default Footer

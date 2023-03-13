@@ -79,7 +79,7 @@ const initialTicket = {
 
 ////////////// MAIN COMPONENT - Book Now ///////////////////////////////////////////
 ////////////// MAIN COMPONENT - Book Now ///////////////////////////////////////////
-const BookNowPage = () => {
+const BookNow = () => {
 ///////// State Ticket information ///////////////////////////////
     const [ticket, setTicket] = useState(initialTicket);
 
@@ -344,4 +344,4 @@ const BookNowPage = () => {
     )
 }
 
-export default BookNowPage
+export default BookNow

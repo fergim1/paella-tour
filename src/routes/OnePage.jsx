@@ -6,13 +6,13 @@ import { lazy, Suspense } from 'react'
 
 //////////  Components ///////////////////////////////////////////////
 const DrawerAppBar = lazy(() => import('../components/NavBar/DraweAppBar'))
-const HomePage = lazy(() => import('../components/Home'))
-const ItineraryPage = lazy(() => import('../components/Itinerary'))
-const BookNowPage = lazy(() => import('../components/BookNow'))
-const PrivateTourPage = lazy(() => import('../components/PrivateTour'))
+const Home = lazy(() => import('../components/Home'))
+const Itinerary = lazy(() => import('../components/Itinerary'))
+const BookNow = lazy(() => import('../components/BookNow'))
+const PrivateTour = lazy(() => import('../components/PrivateTour'))
 const FrequentlyAskedQuestions = lazy(() => import('../components/FAQ'))
-const ContactPage = lazy(() => import('../components/Contact/Index'))
-const FooterPage = lazy(() => import('../components/Footer'))
+const Contact = lazy(() => import('../components/Contact'))
+const Footer = lazy(() => import('../components/Footer'))
 const WhatsappButton = lazy(() => import('../components/Whatsapp'))
 
 
@@ -31,13 +31,13 @@ const OnePage = () => {
             >
               <Suspense fallback={<div></div>}>
                   <DrawerAppBar />
-                  <HomePage />
-                  <ItineraryPage />
-                  <BookNowPage />
-                  <PrivateTourPage />
+                  <Home />
+                  <Itinerary />
+                  <BookNow />
+                  <PrivateTour />
                   <FrequentlyAskedQuestions />
-                  <ContactPage />
-                  <FooterPage />
+                  <Contact />
+                  <Footer />
                   <WhatsappButton />
               </Suspense>
 

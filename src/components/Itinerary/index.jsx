@@ -42,7 +42,7 @@ import { useTheme } from "@mui/material/styles";
 
 ////////////// MAIN COMPONENT - Itinerary ///////////////////////////////////////////
 ////////////// MAIN COMPONENT - Itinerary ///////////////////////////////////////////
-const ItineraryPage = () => {
+const Itinerary = () => {
   ////////////////// States to show image or blur //////////////////////////////////
   const [isLoaded, setLoaded] = useState(false);
   const [isLoadStarted, setLoadStarted] = useState(false);
@@ -138,4 +138,4 @@ const ItineraryPage = () => {
   );
 }
 
-export default ItineraryPage
+export default Itinerary

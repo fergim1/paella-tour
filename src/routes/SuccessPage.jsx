@@ -25,7 +25,9 @@ import logo from '../assets/logo.png'
 import { useNavigate } from "react-router-dom";
 
 
-function Success() {
+//////////  Main Component - SuccessPage /////////////////////////////////////////////
+//////////  Main Component - SuccessPage /////////////////////////////////////////////
+function SuccessPage() {
   const { language } = useContext(AppContext)
   const text = useLanguage(language, textSuccess)
   const navigate = useNavigate();
@@ -52,5 +54,5 @@ function Success() {
   )
 }
 
-export default Success
+export default SuccessPage
 
