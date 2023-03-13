@@ -1,5 +1,10 @@
 import styled from "@emotion/styled";
-import { Box, Link, Stack, Typography } from "@mui/material";
+import {
+    Box,
+    Link,
+    Stack,
+    Typography
+} from "@mui/material";
 
 
 
@@ -72,7 +77,7 @@ export const WrapperThreeItems = styled(Stack)(({theme})=> ({
     }
 }))
 
-export const LinkItem = styled(Link)(({theme})=> ({
+export const LinkItem = styled(Link)(()=> ({
     textDecoration: 'none',
 }))
 
@@ -96,13 +101,8 @@ export const WrapperCopyright = styled(Stack)(()=> ({
     marginTop: '12px',
 }))
 
-export const TextCopyright = styled(Typography)(({theme})=> ({
+export const TextCopyright = styled(Typography)(()=> ({
     fontSize: '12px',
     color: 'grey',
-    // fontWeight: 'bold',
-    // margin: '20px',
-    [theme.breakpoints.down('sm')] : {
-        // fontSize: '10px',
-    }
 }))
 

@@ -1,10 +1,10 @@
 //////////  MUI ///////////////////////////////////////////////
 import { Container } from '@mui/material'
 
+//////////  Lazy Load ///////////////////////////////////////////////
 import { lazy, Suspense } from 'react'
+
 //////////  Components ///////////////////////////////////////////////
-// import DrawerAppBar from '../components/NavBar/DraweAppBar'
-// import HomePage from '../components/Home'
 const DrawerAppBar = lazy(() => import('../components/NavBar/DraweAppBar'))
 const HomePage = lazy(() => import('../components/Home'))
 const ItineraryPage = lazy(() => import('../components/Itinerary'))
@@ -13,6 +13,7 @@ const PrivateTourPage = lazy(() => import('../components/PrivateTour'))
 const FrequentlyAskedQuestions = lazy(() => import('../components/FAQ'))
 const ContactPage = lazy(() => import('../components/Contact/Index'))
 const FooterPage = lazy(() => import('../components/Footer'))
+const WhatsappButton = lazy(() => import('../components/Whatsapp'))
 
 
 
@@ -37,6 +38,7 @@ const OnePage = () => {
                   <FrequentlyAskedQuestions />
                   <ContactPage />
                   <FooterPage />
+                  <WhatsappButton />
               </Suspense>
 
             </Container>
