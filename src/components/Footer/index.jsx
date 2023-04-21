@@ -11,41 +11,41 @@ import {
     Item,
     WrapperCopyright,
     TextCopyright,
- } from "../../styles/footer"
+} from "../../styles/footer"
 
-  ////////////// Context /////////////////////////////////////////////
-  import { AppContext } from '../../context';
-  import { useLanguage } from '../../hooks/useLanguage';
+////////////// Context /////////////////////////////////////////////
+import { AppContext } from '../../context';
+import { useLanguage } from '../../hooks/useLanguage';
 import { useContext } from "react";
 
 ////////////// Icons ///////////////////////////////////////////
 import { SiTripadvisor } from 'react-icons/si';
 import { FiInstagram } from 'react-icons/fi';
 
-  ////////////// Text of Items ///////////////////////////////////////////
-  import { Sections } from '../../constants/index'
+////////////// Text of Items ///////////////////////////////////////////
+import { Sections } from '../../constants/index'
 
 
 
 ////////////// MAIN COMPONENT - Footer ///////////////////////////////////////////
 ////////////// MAIN COMPONENT - Footer ///////////////////////////////////////////
 const Footer = () => {
-    const {language} = useContext(AppContext)
+    const { language } = useContext(AppContext)
     const items = useLanguage(language, Sections)
 
-    const firstThreeItems = items.slice(0,3)
-    const lastThreeItems = items.slice(3,6)
+    const firstThreeItems = items.slice(0, 3)
+    const lastThreeItems = items.slice(3, 6)
 
 
     const itemsInEnglish = [...Sections.english]
 
     const scrollFirstThree = (index) => {
-        document.getElementById(itemsInEnglish[index]).scrollIntoView({behavior: 'smooth'})
+        document.getElementById(itemsInEnglish[index]).scrollIntoView({ behavior: 'smooth' })
     }
 
     const scrollLastThree = (index) => {
         let indexPlusThree = index + 3
-        document.getElementById(itemsInEnglish[indexPlusThree]).scrollIntoView({behavior: 'smooth'})
+        document.getElementById(itemsInEnglish[indexPlusThree]).scrollIntoView({ behavior: 'smooth' })
     }
 
     return (
@@ -54,24 +54,24 @@ const Footer = () => {
 
                 <WrapperSocialNetworks >
                     <LinkInstagram href='https://www.instagram.com/paellatour' target="_blank" rel="noreferrer" aria-label="Instagram">
-                        <FiInstagram/>
+                        <FiInstagram />
                     </LinkInstagram>
 
                     <LinkTripAdvisor href='https://www.tripadvisor.es/' target="_blank" rel="noreferrer" aria-label="Tripadvisor">
-                        <SiTripadvisor/>
+                        <SiTripadvisor />
                     </LinkTripAdvisor>
                 </WrapperSocialNetworks>
 
                 <WrapperAllItems>
                     <WrapperThreeItems >
-                        {firstThreeItems.map((item, index)=> (
+                        {firstThreeItems.map((item, index) => (
                             <LinkItem key={item} onClick={() => scrollFirstThree(index)} >
                                 <Item>{item}</Item>
                             </LinkItem>
                         ))}
                     </WrapperThreeItems>
                     <WrapperThreeItems  >
-                        {lastThreeItems.map((item, index)=> (
+                        {lastThreeItems.map((item, index) => (
                             <LinkItem key={item} onClick={() => scrollLastThree(index)}>
                                 <Item>{item}</Item>
                             </LinkItem>
@@ -89,4 +89,4 @@ const Footer = () => {
     )
 }
 
-export default Footer
+export { Footer }

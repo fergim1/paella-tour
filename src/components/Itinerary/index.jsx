@@ -47,95 +47,95 @@ const Itinerary = () => {
   const [isLoaded, setLoaded] = useState(false);
   const [isLoadStarted, setLoadStarted] = useState(false);
 
-////////////////// Index Slide /////////////////////////////////////////////////////
+  ////////////////// Index Slide /////////////////////////////////////////////////////
   const [activeSlide, setActiveSlide] = useState(0);
 
-////////////////// Context /////////////////////////////////////////////////////////
+  ////////////////// Context /////////////////////////////////////////////////////////
   const { language } = useContext(AppContext)
 
-////////////////// Hook to get text of each slide ///////////////////////////////////
+  ////////////////// Hook to get text of each slide ///////////////////////////////////
   const textInfo = useLanguageItinerary(language, textItinerary, activeSlide)
 
-////////////////// Media Query /////////////////////////////////////////////////////
+  ////////////////// Media Query /////////////////////////////////////////////////////
   const theme = useTheme()
-	const onMobile = useMediaQuery(theme.breakpoints.down('sm'))
+  const onMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
-////////////////// Functions //////////////////////////////////////////////////////
-    const handleMove = (direction) => {
-      if(direction==='right') {
-        setActiveSlide(prev => prev +1)
-      } else {
-        setActiveSlide(prev => prev -1)
-      }
+  ////////////////// Functions //////////////////////////////////////////////////////
+  const handleMove = (direction) => {
+    if (direction === 'right') {
+      setActiveSlide(prev => prev + 1)
+    } else {
+      setActiveSlide(prev => prev - 1)
     }
+  }
 
-    const handleLoad = () => {
-      setLoaded(true);
-    };
+  const handleLoad = () => {
+    setLoaded(true);
+  };
 
-    const handleLoadStarted = () => {
-      setLoadStarted(true);
-    };
+  const handleLoadStarted = () => {
+    setLoadStarted(true);
+  };
 
 
   return (
     <ContainerItinerary id='Itinerary'>
 
-          <WrapperBackground >
-              {
-                (!isLoaded && isLoadStarted) &&
-                (<ImgBlur
-                    src={ onMobile ? textInfo.imgMobileBlur : textInfo.imgDesktopBlur}
-                />)
-              }
+      <WrapperBackground >
+        {
+          (!isLoaded && isLoadStarted) &&
+          (<ImgBlur
+            src={onMobile ? textInfo.imgMobileBlur : textInfo.imgDesktopBlur}
+          />)
+        }
 
-              <ImgOriginal
-                key={`itinerary-image-${activeSlide}`}
-                alt={`itinerary-image-${activeSlide}`}
-                src={ onMobile ? textInfo.imgMobile : textInfo.imgDesktop }
-                height={'100%'}
-                width={'100%'}
-                onLoad={handleLoad}
-                beforeLoad={handleLoadStarted}
-              />
-              <FilterLayer>
-              </FilterLayer>
+        <ImgOriginal
+          key={`itinerary-image-${activeSlide}`}
+          alt={`itinerary-image-${activeSlide}`}
+          src={onMobile ? textInfo.imgMobile : textInfo.imgDesktop}
+          height={'100%'}
+          width={'100%'}
+          onLoad={handleLoad}
+          beforeLoad={handleLoadStarted}
+        />
+        <FilterLayer>
+        </FilterLayer>
 
-              <WrapperInfo>
-                <TitleItineraty>{textInfo.title}</TitleItineraty>
-                        <WrapperCaption>
-                            <Caption> {textInfo.caption} </Caption>
-                        </WrapperCaption>
+        <WrapperInfo>
+          <TitleItineraty>{textInfo.title}</TitleItineraty>
+          <WrapperCaption>
+            <Caption> {textInfo.caption} </Caption>
+          </WrapperCaption>
 
-                        <TitleStop> {textInfo.titleStop} </TitleStop>
+          <TitleStop> {textInfo.titleStop} </TitleStop>
 
-                        <Description> {textInfo.description}  </Description>
+          <Description> {textInfo.description}  </Description>
 
-                        <WrapperArrows>
-                            {
-                              activeSlide !== 0  &&
-                              <ArrowPrev onClick={()=> handleMove('left')}>
-                                  <ArrowBackIcon/>
-                                  <TextArrow> {language ==='en' ? 'Back' : 'Volver'} </TextArrow>
-                              </ArrowPrev>
-                            }
-                            {
-                              activeSlide !== 3  &&
-                              <ArrowNext onClick={()=> handleMove('right')}>
-                                  <TextArrow> {language ==='en' ? 'Next' : 'Sigui.'} </TextArrow>
-                                  <ArrowForwardIcon/>
-                              </ArrowNext>
-                            }
+          <WrapperArrows>
+            {
+              activeSlide !== 0 &&
+              <ArrowPrev onClick={() => handleMove('left')}>
+                <ArrowBackIcon />
+                <TextArrow> {language === 'en' ? 'Back' : 'Volver'} </TextArrow>
+              </ArrowPrev>
+            }
+            {
+              activeSlide !== 3 &&
+              <ArrowNext onClick={() => handleMove('right')}>
+                <TextArrow> {language === 'en' ? 'Next' : 'Sigui.'} </TextArrow>
+                <ArrowForwardIcon />
+              </ArrowNext>
+            }
 
 
-                        </WrapperArrows>
+          </WrapperArrows>
 
-              </WrapperInfo>
+        </WrapperInfo>
 
-          </WrapperBackground>
+      </WrapperBackground>
 
     </ContainerItinerary>
   );
 }
 
-export default Itinerary
+export { Itinerary }

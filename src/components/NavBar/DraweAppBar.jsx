@@ -2,47 +2,47 @@ import { useContext, useState } from 'react';
 
 ///////////////////// Material UI Components ///////////////////////////////////
 import {
-    AppBar,
-    Box,
-    CssBaseline,
-    IconButton,
-    Toolbar,
-    Button,
-    useScrollTrigger,
-    Slide
-  } from '@mui/material';
+  AppBar,
+  Box,
+  CssBaseline,
+  IconButton,
+  Toolbar,
+  Button,
+  useScrollTrigger,
+  Slide
+} from '@mui/material';
 
-  ////////////// Context /////////////////////////////////////////////
-  import { AppContext } from '../../context';
-  import { useLanguage } from '../../hooks/useLanguage';
+////////////// Context /////////////////////////////////////////////
+import { AppContext } from '../../context';
+import { useLanguage } from '../../hooks/useLanguage';
 
-  //////////  UI Icons ///////////////////////////////////////////////
+//////////  UI Icons ///////////////////////////////////////////////
 import MenuIcon from '@mui/icons-material/Menu';
 
-  //////////  Logo ///////////////////////////////////////////////
+//////////  Logo ///////////////////////////////////////////////
 import logo from '../../assets/logo.png'
 
-  //////////  Components //////////////////////////////////////////////
+//////////  Components //////////////////////////////////////////////
 import { SideBar } from '../SideBar/index';
 import { SelectLanguage } from './SelectLanguage';
 
-  ////////////// Text of NavItems ///////////////////////////////////////////
+////////////// Text of NavItems ///////////////////////////////////////////
 import { Sections } from '../../constants/index'
 
 ////////////// Slide ///////////////////////////////////////////
-function HideOnScroll({children}) {
-    return (
-      <Slide appear={false} direction="down" in={!useScrollTrigger()}>
-        {children}
-      </Slide>
-    );
+function HideOnScroll ({ children }) {
+  return (
+    <Slide appear={false} direction="down" in={!useScrollTrigger()}>
+      {children}
+    </Slide>
+  );
 }
 
 
 
-function DrawerAppBar(props) {
+function DrawerAppBar (props) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const {language} = useContext(AppContext)
+  const { language } = useContext(AppContext)
   const navItems = useLanguage(language, Sections)
 
 
@@ -53,7 +53,7 @@ function DrawerAppBar(props) {
   const handleClickScroll = (index) => {
     const allItemsInEnglish = [...Sections.english]
     const itemInEnglish = allItemsInEnglish[index]
-    document.getElementById(itemInEnglish).scrollIntoView({block: "start", behavior: "smooth"})
+    document.getElementById(itemInEnglish).scrollIntoView({ block: "start", behavior: "smooth" })
   }
 
   const scroollToTop = () => {
@@ -61,50 +61,50 @@ function DrawerAppBar(props) {
   }
 
   return (
-    <Box sx={{ display: 'flex', height: '44px'}} >
-        <CssBaseline />
-        <HideOnScroll {...props}>
-            <AppBar component="nav" >
-                <Toolbar sx={{backgroundColor: 'black'}} >
-                    <IconButton
-                    color="secondary"
-                    aria-label="open drawer"
-                    edge="start"
-                    onClick={handleDrawerToggle}
-                    sx={{ display: { sm: 'none' } }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
+    <Box sx={{ display: 'flex', height: '44px' }} >
+      <CssBaseline />
+      <HideOnScroll {...props}>
+        <AppBar component="nav" >
+          <Toolbar sx={{ backgroundColor: 'black' }} >
+            <IconButton
+              color="secondary"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ display: { sm: 'none' } }}
+            >
+              <MenuIcon />
+            </IconButton>
 
-                    <Box sx={{ my: 1, flexGrow: {xs: 1}, display: { xs: 'grid'}, placeContent: {xs: 'center', sm: 'start'}, cursor: 'pointer'}} >
-                        <img onClick={scroollToTop} src={ logo } width='100px' alt='logo-paella-tour' loading='lazy'/>
-                    </Box>
+            <Box sx={{ my: 1, flexGrow: { xs: 1 }, display: { xs: 'grid' }, placeContent: { xs: 'center', sm: 'start' }, cursor: 'pointer' }} >
+              <img onClick={scroollToTop} src={logo} width='100px' alt='logo-paella-tour' loading='lazy' />
+            </Box>
 
-                    <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                        {navItems.map((item, index) => (
-                            <Button
-                                onClick={() => handleClickScroll(index)}
-                                key={item}
-                                variant='customItemsNav'
-                            >
-                                {item}
-                            </Button>
-                        ))}
-                    </Box>
+            <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+              {navItems.map((item, index) => (
+                <Button
+                  onClick={() => handleClickScroll(index)}
+                  key={item}
+                  variant='customItemsNav'
+                >
+                  {item}
+                </Button>
+              ))}
+            </Box>
 
-                    <SelectLanguage />
+            <SelectLanguage />
 
-                </Toolbar>
-            </AppBar>
-        </HideOnScroll>
+          </Toolbar>
+        </AppBar>
+      </HideOnScroll>
 
-        <SideBar
-            mobileOpen={mobileOpen}
-            handleDrawerToggle={handleDrawerToggle} 
-        />
-        <Toolbar />
+      <SideBar
+        mobileOpen={mobileOpen}
+        handleDrawerToggle={handleDrawerToggle}
+      />
+      <Toolbar />
     </Box>
   );
 }
 
-export default DrawerAppBar;
+export { DrawerAppBar }

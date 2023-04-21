@@ -30,10 +30,10 @@ const url = import.meta.env.VITE_URL_PRIVATE_TOUR_FORM
 ////////////// MAIN COMPONENT - Private Tour ///////////////////////////////////////////
 ////////////// MAIN COMPONENT - Private Tour ///////////////////////////////////////////
 const PrivateTour = () => {
-////////////// Context /////////////////////////////////
-    const {language} = useContext(AppContext)
+    ////////////// Context /////////////////////////////////
+    const { language } = useContext(AppContext)
 
-////////////// Hook /////////////////////////////////
+    ////////////// Hook /////////////////////////////////
     const text = useLanguage(language, textPrivateTour)
 
 
@@ -41,20 +41,20 @@ const PrivateTour = () => {
         <ContainerPrivateTour id='Private Tour'>
             <GridContainer container spacing={2} >
 
-{/* ////////////////////////////////////  GRID LEFT TOP ////////////////////////////// */}
+                {/* ////////////////////////////////////  GRID LEFT TOP ////////////////////////////// */}
                 <GridItemLeftTop item xs={12} sm={6} >
-                        <WrapperItemLeftTop>
-                            <Title> { text.title } </Title>
-                            <SubTitle> { text.subtitle }  🍛 </SubTitle>
-                            <Text> { text.text } </Text><br></br>
-                        </WrapperItemLeftTop>
+                    <WrapperItemLeftTop>
+                        <Title> {text.title} </Title>
+                        <SubTitle> {text.subtitle}  🍛 </SubTitle>
+                        <Text> {text.text} </Text><br></br>
+                    </WrapperItemLeftTop>
                 </GridItemLeftTop>
 
-{/* ////////////////////////////////////  GRID RIGHT BOTTOM  ////////////////////////////// */}
+                {/* ////////////////////////////////////  GRID RIGHT BOTTOM  ////////////////////////////// */}
                 <GridItemRightBottom item xs={12} sm={6} >
-                        <PaperForm elevation={2} >
-                            <Form  titleForm={text.titleForm} url={ url } />
-                        </PaperForm>
+                    <PaperForm elevation={2} >
+                        <Form titleForm={text.titleForm} url={url} />
+                    </PaperForm>
                 </GridItemRightBottom>
 
             </GridContainer>
@@ -62,4 +62,4 @@ const PrivateTour = () => {
     )
 }
 
-export default PrivateTour
+export { PrivateTour }

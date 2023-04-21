@@ -12,11 +12,11 @@ import {
     ImageSmoke3,
     ImgBlur,
     ImgOriginal,
- } from "../../styles/home";
+} from "../../styles/home";
 
- //////////  Media Query   /////////////////////////////////////////////////////
- import { useTheme } from "@emotion/react";
- import { useMediaQuery } from "@mui/material";
+//////////  Media Query   /////////////////////////////////////////////////////
+import { useTheme } from "@emotion/react";
+import { useMediaQuery } from "@mui/material";
 
 //////////  Context   //////////////////////////////////////////////////////////
 import { useContext, useState } from "react";
@@ -42,88 +42,88 @@ const Home = () => {
     const [isLoaded, setLoaded] = useState(false)
     const [isLoadStarted, setLoadStarted] = useState(false)
 
-////////////////// Context /////////////////////////////////////////////////////
-    const {language} = useContext(AppContext)
+    ////////////////// Context /////////////////////////////////////////////////////
+    const { language } = useContext(AppContext)
 
-////////////////// Hook to get text ////////////////////////////////////////////
+    ////////////////// Hook to get text ////////////////////////////////////////////
     const text = useLanguage(language, textHome)
 
-////////////////// Media Query /////////////////////////////////////////////////
+    ////////////////// Media Query /////////////////////////////////////////////////
     const theme = useTheme()
     const moibleOrTablet = useMediaQuery(theme.breakpoints.down('md'))
 
-////////////////// Functions ///////////////////////////////////////////////////
+    ////////////////// Functions ///////////////////////////////////////////////////
     const handleSeeItinerary = () => {
-        document.getElementById('Itinerary').scrollIntoView({behavior: 'smooth'})
+        document.getElementById('Itinerary').scrollIntoView({ behavior: 'smooth' })
     }
 
     const handleLoad = () => {
-      setLoaded(true);
+        setLoaded(true);
     };
-  
+
     const handleLoadStarted = () => {
-      setLoadStarted(true);
+        setLoadStarted(true);
     };
 
 
-return (
-    <ContainerHome id='Home'>
-        <BackgroundHome >
+    return (
+        <ContainerHome id='Home'>
+            <BackgroundHome >
 
+                {
+                    (!isLoaded && isLoadStarted) &&
+                    (<ImgBlur
+                        src={moibleOrTablet ? urlImages.homeMobileBlur : urlImages.homeDesktopBlur}
+                    />)
+                }
+
+                <ImgOriginal
+                    key={'home'}
+                    alt={'home'}
+                    src={moibleOrTablet ? urlImages.homeMobile : urlImages.homeDesktop}
+                    height={'100%'}
+                    width={'100%'}
+                    onLoad={handleLoad}
+                    beforeLoad={handleLoadStarted}
+                />
+            </BackgroundHome>
             {
-                (!isLoaded && isLoadStarted) &&
-                (<ImgBlur
-                    src={moibleOrTablet ? urlImages.homeMobileBlur : urlImages.homeDesktopBlur}
-                />)
+                moibleOrTablet
+                &&
+                <>
+                    <WrapperSmoke>
+                        <ImageSmoke1 src={urlImages.smoke} alt='smoke' />
+                    </WrapperSmoke>
+
+                    <WrapperSmoke>
+                        <ImageSmoke2 src={urlImages.smoke} alt='smoke' />
+                    </WrapperSmoke>
+
+                    <WrapperSmoke>
+                        <ImageSmoke3 src={urlImages.smoke} alt='smoke' />
+                    </WrapperSmoke>
+                </>
             }
 
-            <ImgOriginal
-                key={'home'}
-                alt={'home'}
-                src={moibleOrTablet ? urlImages.homeMobile : urlImages.homeDesktop}
-                height={'100%'}
-                width={'100%'}
-                onLoad={handleLoad}
-                beforeLoad={handleLoadStarted}
-            />
-        </BackgroundHome>
-        {
-            moibleOrTablet
-            &&
-            <>
-                <WrapperSmoke>
-                    <ImageSmoke1 src={urlImages.smoke} alt='smoke' />
-                </WrapperSmoke>
 
-                <WrapperSmoke>
-                    <ImageSmoke2 src={urlImages.smoke} alt='smoke' />
-                </WrapperSmoke>
+            <Content>
+                <HomeText variant="subtitle">
+                    {text.subtitle}
+                    <HomeTextAlicante variant='span'>
+                        <br></br>
+                        Alicante
+                    </HomeTextAlicante>
+                </HomeText>
+                <ButtonHome
+                    onClick={handleSeeItinerary}
+                    endIcon={<KeyboardDoubleArrowDownIcon />}
+                >
+                    {text.button}
+                </ButtonHome>
+            </Content>
 
-                <WrapperSmoke>
-                    <ImageSmoke3 src={urlImages.smoke} alt='smoke' />
-                </WrapperSmoke>
-            </>
-        }
-
-
-        <Content>
-            <HomeText variant="subtitle">
-                { text.subtitle }
-                <HomeTextAlicante variant='span'>
-                <br></br>
-                Alicante
-                </HomeTextAlicante>
-            </HomeText>
-            <ButtonHome
-                onClick={handleSeeItinerary}
-                endIcon={<KeyboardDoubleArrowDownIcon />}
-            >
-                {text.button}
-            </ButtonHome>
-        </Content>
-
-    </ContainerHome>
-)
+        </ContainerHome>
+    )
 }
 
-export default Home
+export { Home }

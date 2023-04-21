@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
     Containter,
     GridContainer,
@@ -34,7 +34,7 @@ import { AppContext } from "../../context";
 import { useLanguage } from "../../hooks/useLanguage";
 
 ////////////// DatePicker////////////////////////////////////////////////////
-import {  LocalizationProvider  } from '@mui/x-date-pickers';
+import { LocalizationProvider } from '@mui/x-date-pickers';
 import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 import { TextField } from "@mui/material";
 
@@ -65,7 +65,7 @@ import PhoneInput from 'react-phone-number-input'
 import { InputPhoneWithFlags } from "../../styles/book-now"
 
 ////////////// Alert ////////////////////////////////////////////////////////
-const AlertInfo = lazy(() => import('./Alert'))
+import { AlertInfo } from "./Alert";
 
 
 const initialTicket = {
@@ -80,49 +80,49 @@ const initialTicket = {
 ////////////// MAIN COMPONENT - Book Now ///////////////////////////////////////////
 ////////////// MAIN COMPONENT - Book Now ///////////////////////////////////////////
 const BookNow = () => {
-///////// State Ticket information ///////////////////////////////
+    ///////// State Ticket information ///////////////////////////////
     const [ticket, setTicket] = useState(initialTicket);
 
-///////// Context ////////////////////////////////////////////////
+    ///////// Context ////////////////////////////////////////////////
     const { language } = useContext(AppContext)
 
-///////// Hook to set language of text ///////////////////////////
+    ///////// Hook to set language of text ///////////////////////////
     const text = useLanguage(language, textBookNow)
 
-///////// Locale to adapterLocale of Date Picker /////////////////
+    ///////// Locale to adapterLocale of Date Picker /////////////////
     const [locale, setLocale] = useState(language);
 
-///////// Date Format Change /////////////////////////////////////
-    const [dateFormated , setDateFormated] = useState(dayjs(initialTicket.date).format("dddd, D MMMM YYYY"))
+    ///////// Date Format Change /////////////////////////////////////
+    const [dateFormated, setDateFormated] = useState(dayjs(initialTicket.date).format("dddd, D MMMM YYYY"))
 
-///////// State Phone number //////////////////////////////////////
-    const [phoneInput, setPhoneInput ] = useState()
+    ///////// State Phone number //////////////////////////////////////
+    const [phoneInput, setPhoneInput] = useState()
 
-///////// Alert missing info ///////////////////////////////////////
+    ///////// Alert missing info ///////////////////////////////////////
     const [alertOpen, setAlertOpen] = useState(false)
 
-///////// State Loading ////////////////////////////////////////////
+    ///////// State Loading ////////////////////////////////////////////
     const [loading, setLoading] = useState(false)
 
 
-///////// useEffets ////////////////////////////////////////////////
+    ///////// useEffets ////////////////////////////////////////////////
     useEffect(() => {
-        if(language==='en') {
+        if (language === 'en') {
             setLocale('en')
             setDateFormated(dayjs(ticket.date).locale('en').format("dddd, D MMMM YYYY"))
         }
-        if(language==='es') {
+        if (language === 'es') {
             setLocale('es')
             setDateFormated(dayjs(ticket.date).locale('es').format("dddd, D MMMM YYYY"))
         }
-    }, [language, ticket.date ])
+    }, [language, ticket.date])
 
     useEffect(() => {
         setTicket({ ...ticket, phone: phoneInput })
     }, [phoneInput])
 
     useEffect(() => {
-        if (ticket.time){
+        if (ticket.time) {
             const timeSelected = TIMES.filter(el => el === ticket.time)
             const othersTime = TIMES.filter(el => el !== ticket.time)
             document.getElementById(timeSelected[0]).style.backgroundColor = "#f9c301"
@@ -133,17 +133,17 @@ const BookNow = () => {
     }, [ticket.time])
 
 
-///////// Functions /////////////////////////////////////////////////
+    ///////// Functions /////////////////////////////////////////////////
     const disabledDays = (date) => {
         return DISABLED_DAYS.map((el) => dayjs(el).format()).includes(date.format())
     }
 
     const hangleChangeAdults = (e) => {
-        setTicket({ ...ticket, adults : e.target.value })
+        setTicket({ ...ticket, adults: e.target.value })
     }
 
     const hangleChangeChildren = (e) => {
-        setTicket({ ...ticket, children : e.target.value })
+        setTicket({ ...ticket, children: e.target.value })
     }
 
     const handleChangeTime = (time) => {
@@ -151,37 +151,37 @@ const BookNow = () => {
     }
 
     const hangleChangeDate = (newValue) => {
-        setTicket({...ticket, date: newValue});
+        setTicket({ ...ticket, date: newValue });
     }
 
     const handleBuyTicket = async (ticket) => {
-        if (!ticket.phone || ticket.time === false){
+        if (!ticket.phone || ticket.time === false) {
             return setAlertOpen(!alertOpen)
         }
         setLoading(true)
         const ticketReady = {
-                    ...ticket,
-                    date: dayjs(ticket.date).format("dddd, D MMMM YYYY")
-                }
+            ...ticket,
+            date: dayjs(ticket.date).format("dddd, D MMMM YYYY")
+        }
         const info = {
-                id: ticket.id,
-                date: ticketReady.date,
-                time: ticket.time,
-                adults: ticket.adults,
-                children: ticket.children,
-                phone: ticket.phone
-            }
+            id: ticket.id,
+            date: ticketReady.date,
+            time: ticket.time,
+            adults: ticket.adults,
+            children: ticket.children,
+            phone: ticket.phone
+        }
         await axiosStripe(info)
         console.log(info)
-    //    setLoading(false)
+        //    setLoading(false)
     }
 
 
     return (
         <Containter id='Book Now'>
-        <GridContainer container spacing={1} >
+            <GridContainer container spacing={1} >
 
-{/*--------------------------------  GRID LEFT - TOP -------------------------------- */}
+                {/*--------------------------------  GRID LEFT - TOP -------------------------------- */}
                 <GridItemLeftTop item xs={12} sm={6}>
                     <WrapperLeftTop spacing={2}>
                         <WrapperTitleAndSubtitle>
@@ -207,11 +207,11 @@ const BookNow = () => {
                         </LocalizationProvider>
                     </WrapperLeftTop>
                 </GridItemLeftTop>
-{/*--------------------------------  End of GRID LEFT - TOP -------------------------------- */}
+                {/*--------------------------------  End of GRID LEFT - TOP -------------------------------- */}
 
-{/*--------------------------------  GRID RIGHT - BOTTOM -------------------------------- */}
+                {/*--------------------------------  GRID RIGHT - BOTTOM -------------------------------- */}
                 <GridItemRightBottom item xs={12} sm={6}>
-                    <WrapperRightBottom spacing={{xs: 0, sm: 2}} >
+                    <WrapperRightBottom spacing={{ xs: 0, sm: 2 }} >
 
                         <WrapperInfo >
                             <WrapperIcon >
@@ -220,7 +220,7 @@ const BookNow = () => {
                                 </Icon>
                             </WrapperIcon>
                             <WrapperDetail >
-                                <TextDate> { dateFormated } </TextDate>
+                                <TextDate> {dateFormated} </TextDate>
                             </WrapperDetail>
                         </WrapperInfo>
 
@@ -231,9 +231,9 @@ const BookNow = () => {
                                 </Icon>
                             </WrapperIcon>
                             <WrapperDetail >
-                            <TextDetail > {text.time} </TextDetail>
+                                <TextDetail > {text.time} </TextDetail>
                                 {
-                                    TIMES.map((el)=> (
+                                    TIMES.map((el) => (
                                         <Timetable id={el} key={el} onClick={() => handleChangeTime(el)}>
                                             {el} hs
                                         </Timetable>
@@ -245,44 +245,44 @@ const BookNow = () => {
                         <WrapperInfo >
                             <WrapperIcon >
                                 <Icon>
-                                    <LocalActivityIcon/>
+                                    <LocalActivityIcon />
                                 </Icon>
                             </WrapperIcon>
                             <WrapperDetail >
 
-                                    <TextDetail > {text.adults} </TextDetail>
-                                    <FormControlQuantity size='small'>
-                                        <SelectQuantity
-                                            variant="standard"
-                                            labelId="adults-label"
-                                            id="adults"
-                                            name='adults'
-                                            value={ticket.adults}
-                                            label="Adults"
-                                            onChange={hangleChangeAdults}
-                                        >
-                                            {ADULTS.map((el)=> (
-                                                <MenuItemQuantity key={el} value={el}> {el} </MenuItemQuantity>
-                                            ))}
-                                        </SelectQuantity>
-                                    </FormControlQuantity>
+                                <TextDetail > {text.adults} </TextDetail>
+                                <FormControlQuantity size='small'>
+                                    <SelectQuantity
+                                        variant="standard"
+                                        labelId="adults-label"
+                                        id="adults"
+                                        name='adults'
+                                        value={ticket.adults}
+                                        label="Adults"
+                                        onChange={hangleChangeAdults}
+                                    >
+                                        {ADULTS.map((el) => (
+                                            <MenuItemQuantity key={el} value={el}> {el} </MenuItemQuantity>
+                                        ))}
+                                    </SelectQuantity>
+                                </FormControlQuantity>
 
-                                    <TextDetail > {text.children} </TextDetail>
-                                    <FormControlQuantity size='small'>
-                                        <SelectQuantity
-                                            variant="standard"
-                                            labelId="children-label"
-                                            id="children"
-                                            name='children'
-                                            value={ticket.children}
-                                            label="Children"
-                                            onChange={hangleChangeChildren}
-                                        >
-                                            {CHILDREN.map((el)=> (
-                                                <MenuItemQuantity key={el} value={el}> {el} </MenuItemQuantity>
-                                            ))}
-                                        </SelectQuantity>
-                                    </FormControlQuantity>
+                                <TextDetail > {text.children} </TextDetail>
+                                <FormControlQuantity size='small'>
+                                    <SelectQuantity
+                                        variant="standard"
+                                        labelId="children-label"
+                                        id="children"
+                                        name='children'
+                                        value={ticket.children}
+                                        label="Children"
+                                        onChange={hangleChangeChildren}
+                                    >
+                                        {CHILDREN.map((el) => (
+                                            <MenuItemQuantity key={el} value={el}> {el} </MenuItemQuantity>
+                                        ))}
+                                    </SelectQuantity>
+                                </FormControlQuantity>
                             </WrapperDetail>
                         </WrapperInfo>
 
@@ -295,53 +295,51 @@ const BookNow = () => {
                                 </Icon>
                             </WrapperIcon>
                             <WrapperDetail >
-                            <TextDetail > {text.phone}</TextDetail>
-                            <PhoneInput
-                                international
-                                defaultCountry="ES"
-                                style={{
-                                    backgroundColor: '#d8d8d8',
-                                    borderRadius: '20px',
-                                    padding: '0 0 0 18px',
-                                }}
-                                // limitMaxLength={true}
-                                inputComponent={InputPhoneWithFlags}
-                                value={phoneInput}
-                                onChange={setPhoneInput}
-                            />
+                                <TextDetail > {text.phone}</TextDetail>
+                                <PhoneInput
+                                    international
+                                    defaultCountry="ES"
+                                    style={{
+                                        backgroundColor: '#d8d8d8',
+                                        borderRadius: '20px',
+                                        padding: '0 0 0 18px',
+                                    }}
+                                    // limitMaxLength={true}
+                                    inputComponent={InputPhoneWithFlags}
+                                    value={phoneInput}
+                                    onChange={setPhoneInput}
+                                />
                             </WrapperDetail>
                         </WrapperInfo>
 
                         <WrapperButtom >
                             <ButtomBuyTicket
-                                onClick={ () => handleBuyTicket(ticket) }
+                                onClick={() => handleBuyTicket(ticket)}
                             >
                                 {
                                     !loading
-                                    ? (text.buttonText + '  ( Total : € ' + (ticket.adults * 80 + ticket.children * 40 )+ ' )')
-                                    : <Spinner size='24px'/>
+                                        ? (text.buttonText + '  ( Total : € ' + (ticket.adults * 80 + ticket.children * 40) + ' )')
+                                        : <Spinner size='24px' />
                                 }
                             </ButtomBuyTicket>
                         </WrapperButtom>
 
                     </WrapperRightBottom>
                 </GridItemRightBottom>
-{/*--------------------------------  End of GRID RIGHT - BOTTOM -------------------------------- */}
-            {
-                alertOpen
-                &&
-                <Suspense fallback={<div></div>}>
+                {/*--------------------------------  End of GRID RIGHT - BOTTOM -------------------------------- */}
+                {
+                    alertOpen
+                    &&
                     <AlertInfo
                         open={alertOpen}
                         setOpen={setAlertOpen}
                         ticket={ticket}
                         language={language}
-                        />
-                </Suspense>
-            }
+                    />
+                }
             </GridContainer>
         </Containter>
     )
 }
 
-export default BookNow
+export { BookNow }

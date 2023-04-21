@@ -1,10 +1,10 @@
 import {
-    Button,
-    Dialog,
-    DialogActions,
-    DialogContent,
-    DialogContentText,
-    DialogTitle,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
 } from '@mui/material'
 
 ////////////// Context /////////////////////////////////////////////
@@ -24,9 +24,9 @@ import { IconAlert, WrapperAlertText } from '../../styles/alert';
 
 
 
-const AlertInfo= ({ open, setOpen, ticket }) => {
-    const { language } = useContext(AppContext)
-    const text = useLanguage(language, textBookNow)
+const AlertInfo = ({ open, setOpen, ticket }) => {
+  const { language } = useContext(AppContext)
+  const text = useLanguage(language, textBookNow)
 
   const handleClose = () => { setOpen(false) };
 
@@ -40,33 +40,33 @@ const AlertInfo= ({ open, setOpen, ticket }) => {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle>
-            {text.alertTitle}
+          {text.alertTitle}
         </DialogTitle>
 
         <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-                {
-                    ticket.time === false
-                    &&
-                    <WrapperAlertText>
-                        <IconAlert>
-                            <WatchLaterIcon />
-                        </IconAlert>
-                        {text.alertTime}
-                    </WrapperAlertText>
-                }
-                <br></br>
-                {
-                    !ticket.phone
-                    &&
-                    <WrapperAlertText>
-                        <IconAlert>
-                            <PhoneIphoneIcon/>
-                        </IconAlert>
-                        {text.alertPhone}
-                    </WrapperAlertText>
-                }
-            </DialogContentText>
+          <DialogContentText id="alert-dialog-description">
+            {
+              ticket.time === false
+              &&
+              <WrapperAlertText>
+                <IconAlert>
+                  <WatchLaterIcon />
+                </IconAlert>
+                {text.alertTime}
+              </WrapperAlertText>
+            }
+            <br></br>
+            {
+              !ticket.phone
+              &&
+              <WrapperAlertText>
+                <IconAlert>
+                  <PhoneIphoneIcon />
+                </IconAlert>
+                {text.alertPhone}
+              </WrapperAlertText>
+            }
+          </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} autoFocus> OK </Button>
@@ -76,4 +76,4 @@ const AlertInfo= ({ open, setOpen, ticket }) => {
   );
 }
 
-export default AlertInfo
+export { AlertInfo }

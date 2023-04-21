@@ -1,6 +1,6 @@
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import {
-    LinkWhatsapp
+  LinkWhatsapp
 } from '../../styles/whatsapp';
 
 
@@ -12,10 +12,10 @@ const WhatsappButton = () => {
         target="_blank"
         rel="noreferrer"
       >
-            <WhatsAppIcon sx={{fontSize: {xs: '30px', sm: '36px'}, color: 'white'}}/>
+        <WhatsAppIcon sx={{ fontSize: { xs: '30px', sm: '36px' }, color: 'white' }} />
       </LinkWhatsapp>
     </>
   );
 };
 
-export default WhatsappButton
+export { WhatsappButton }

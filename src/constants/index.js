@@ -85,7 +85,7 @@ export const textItinerary = [
       imgMobileBlur: urlImages.itineraryStep0MobileBlur,
       caption: 'Punto de Encuentro',
       titleStop: 'Encuentro + Info ',
-      description: "Introducción con su gurú local, caminaremos a las áreas más enigmáticas de Alicante mientras aprendes sobre su historia.",
+      description: "Introducción con su gurú local, caminaremos a las áreas más enigmáticas de Alicante mientras aprenderás sobre su historia.",
     }
   },
   {

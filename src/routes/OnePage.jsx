@@ -1,20 +1,16 @@
 //////////  MUI ///////////////////////////////////////////////
 import { Container } from '@mui/material'
 
-//////////  Lazy Load ///////////////////////////////////////////////
-import { lazy, Suspense } from 'react'
-
 //////////  Components ///////////////////////////////////////////////
-const DrawerAppBar = lazy(() => import('../components/NavBar/DraweAppBar'))
-const Home = lazy(() => import('../components/Home'))
-const Itinerary = lazy(() => import('../components/Itinerary'))
-const BookNow = lazy(() => import('../components/BookNow'))
-const PrivateTour = lazy(() => import('../components/PrivateTour'))
-const FrequentlyAskedQuestions = lazy(() => import('../components/FAQ'))
-const Contact = lazy(() => import('../components/Contact/index'))
-const Footer = lazy(() => import('../components/Footer'))
-const WhatsappButton = lazy(() => import('../components/Whatsapp'))
-
+import { DrawerAppBar } from '../components/NavBar/DraweAppBar'
+import { Home } from '../components/Home'
+import { Itinerary } from '../components/Itinerary'
+import { BookNow } from '../components/BookNow'
+import { PrivateTour } from '../components/PrivateTour'
+import { FrequentlyAskedQuestions } from '../components/FAQ'
+import { Contact } from '../components/Contact'
+import { Footer } from '../components/Footer'
+import { WhatsappButton } from '../components/Whatsapp'
 
 
 const OnePage = () => {
@@ -29,18 +25,15 @@ const OnePage = () => {
         boxSizing: 'border-box',
       }}
     >
-      <Suspense fallback={<div></div>}>
-        <DrawerAppBar />
-        <Home />
-        <Itinerary />
-        <BookNow />
-        <PrivateTour />
-        <FrequentlyAskedQuestions />
-        <Contact />
-        <Footer />
-        <WhatsappButton />
-      </Suspense>
-
+      <DrawerAppBar />
+      <Home />
+      <Itinerary />
+      <BookNow />
+      <PrivateTour />
+      <FrequentlyAskedQuestions />
+      <Contact />
+      <Footer />
+      <WhatsappButton />
     </Container>
   )
 }

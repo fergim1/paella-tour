@@ -17,7 +17,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 ////////////// Context /////////////////////////////////////////////
 import { useContext } from 'react';
-import {AppContext} from '../../context/index'
+import { AppContext } from '../../context/index'
 import { useLanguage } from '../../hooks/useLanguage';
 
 ////////////// Text of FAQs ///////////////////////////////////////////
@@ -25,16 +25,16 @@ import { textFAQ } from '../../constants/index'
 
 
 const FrequentlyAskedQuestions = () => {
-    const {language} = useContext(AppContext)
+    const { language } = useContext(AppContext)
     const text = useLanguage(language, textFAQ)
 
-  return (
-    <ContainerFAQ id='FAQ'>
-        <Wrapper>
-            <Title> {text.title} </Title>
+    return (
+        <ContainerFAQ id='FAQ'>
+            <Wrapper>
+                <Title> {text.title} </Title>
                 {
                     text.FAQ.map((oneFaq, index) => {
-                        return(
+                        return (
                             <AccordionQuestion key={index}>
                                 <AccordionSummary expandIcon={<ExpandMoreIcon color='secondary' />} >
                                     <Question>{oneFaq.question}</Question>
@@ -44,11 +44,12 @@ const FrequentlyAskedQuestions = () => {
                                     <Answer> {oneFaq.answer} </Answer>
                                 </AccordionDetails>
                             </AccordionQuestion>
-                    )})
+                        )
+                    })
                 }
-        </Wrapper>
-    </ContainerFAQ>
-  );
+            </Wrapper>
+        </ContainerFAQ>
+    );
 }
 
-export default FrequentlyAskedQuestions
+export { FrequentlyAskedQuestions }

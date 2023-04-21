@@ -9,26 +9,21 @@ import { theme } from './styles/theme'
 import { HashRouter } from "react-router-dom";
 import { Routes, Route } from 'react-router-dom'
 
-////////////// Lazy Load ///////////////////////////////////////////
-import { lazy, Suspense } from 'react';
-
 ////////////// Pages ///////////////////////////////////////////
 import { OnePage } from './routes/OnePage'
-const SuccessPage = lazy( () => import('./routes/SuccessPage.jsx') )
+import { SuccessPage } from './routes/SuccessPage';
 
 
-function App() {
+function App () {
   return (
     <AppProvider>
       <ThemeProvider theme={theme}>
-        <Suspense fallback={<div></div>}>
-          <HashRouter>
-              <Routes>
-                  <Route path='/' element={< OnePage />} />
-                  <Route path='/success' element={< SuccessPage />} />
-              </Routes>
-          </HashRouter>
-        </Suspense>
+        <HashRouter>
+          <Routes>
+            <Route path='/' element={< OnePage />} />
+            <Route path='/success' element={< SuccessPage />} />
+          </Routes>
+        </HashRouter>
       </ThemeProvider>
     </AppProvider>
   )
