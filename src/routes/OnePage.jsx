@@ -8,7 +8,7 @@ import { Itinerary } from '../components/Itinerary'
 import { BookNow } from '../components/BookNow'
 import { PrivateTour } from '../components/PrivateTour'
 import { FrequentlyAskedQuestions } from '../components/FAQ'
-import { Contact } from '../components/Contact'
+import { Contact } from '../components/Contact/index.jsx'
 import { Footer } from '../components/Footer'
 import { WhatsappButton } from '../components/Whatsapp'
 
