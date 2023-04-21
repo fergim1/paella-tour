@@ -42,47 +42,47 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 ////////////// MAIN COMPONENT - Contact ///////////////////////////////////////////
 ////////////// MAIN COMPONENT - Contact ///////////////////////////////////////////
 const Contact = () => {
-///////// Context ///////////////////////////////////////
+    ///////// Context ///////////////////////////////////////
     const { language } = useContext(AppContext)
 
-////////////// Hook /////////////////////////////////////
+    ////////////// Hook /////////////////////////////////////
     const text = useLanguage(language, textContact)
 
     return (
         <ContainerContact id='Contact'>
             <GridContainer container spacing={2} >
 
-{/* ////////////////////////////////////  GRID LEFT TOP ////////////////////////////// */}
+                {/* ////////////////////////////////////  GRID LEFT TOP ////////////////////////////// */}
                 <GridItemLeftTop item xs={12} sm={6} >
-                        <TitleSection > { text.titleSection } </TitleSection>
-                        <SubtitleOne> { text.subtitleOne }</SubtitleOne><br></br>
-                        <SubtitleTwo > { text.subtitleTwo } 👋 </SubtitleTwo>
-                        <WrapperIsologo>
-                            <ImageIsologo src={isoLogo} alt='isologo-paella-tour'/>
-                        </WrapperIsologo>
+                    <TitleSection > {text.titleSection} </TitleSection>
+                    <SubtitleOne> {text.subtitleOne}</SubtitleOne><br></br>
+                    <SubtitleTwo > {text.subtitleTwo} 👋 </SubtitleTwo>
+                    <WrapperIsologo>
+                        <ImageIsologo src={isoLogo} alt='isologo-paella-tour' />
+                    </WrapperIsologo>
 
-                        <WrapperInfoContact>
-                            <WrapperDetail id='algo'>
-                                <WhatsAppIcon/>
-                                <TextWhatsapp
-                                    href='https://wa.me/34687489741' target="_blank" rel="noreferrer" aria-label="Whatsapp"
-                                >
-                                    +34 687 48 97 41
-                                </TextWhatsapp>
-                            </WrapperDetail>
+                    <WrapperInfoContact>
+                        <WrapperDetail id='algo'>
+                            <WhatsAppIcon />
+                            <TextWhatsapp
+                                href='https://wa.me/34687489741' target="_blank" rel="noreferrer" aria-label="Whatsapp"
+                            >
+                                +34 687 48 97 41
+                            </TextWhatsapp>
+                        </WrapperDetail>
 
-                            <WrapperDetail>
-                                <MailOutlineIcon/>
-                                <TextEmail>paellatour.es@gmail.com</TextEmail>
-                            </WrapperDetail>
-                        </WrapperInfoContact>
+                        <WrapperDetail>
+                            <MailOutlineIcon />
+                            <TextEmail>paellatour.es@gmail.com</TextEmail>
+                        </WrapperDetail>
+                    </WrapperInfoContact>
 
                 </GridItemLeftTop>
 
-{/* ////////////////////////////////////  GRID RIGHT BOTTOM  ////////////////////////////// */}
+                {/* ////////////////////////////////////  GRID RIGHT BOTTOM  ////////////////////////////// */}
                 <GridItemRightBottom item xs={12} sm={6} >
                     <WrapperForm elevation={2} >
-                        <Form  titleForm= { text.titleForm } url={ url } />
+                        <Form titleForm={text.titleForm} url={url} />
                     </WrapperForm>
                 </GridItemRightBottom>
 

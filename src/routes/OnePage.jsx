@@ -11,7 +11,7 @@ const Itinerary = lazy(() => import('../components/Itinerary'))
 const BookNow = lazy(() => import('../components/BookNow'))
 const PrivateTour = lazy(() => import('../components/PrivateTour'))
 const FrequentlyAskedQuestions = lazy(() => import('../components/FAQ'))
-const Contact = lazy(() => import('../components/Contact'))
+const Contact = lazy(() => import('../components/Contact/index'))
 const Footer = lazy(() => import('../components/Footer'))
 const WhatsappButton = lazy(() => import('../components/Whatsapp'))
 
@@ -20,28 +20,28 @@ const WhatsappButton = lazy(() => import('../components/Whatsapp'))
 const OnePage = () => {
 
   return (
-            <Container maxWidth='false'
-                sx={{
-                  width: '100%',
-                  height: 'auto',
-                  margin: {xs: '0px auto'},
-                  padding: {xs: '0px'},
-                  boxSizing: 'border-box',
-                }}
-            >
-              <Suspense fallback={<div></div>}>
-                  <DrawerAppBar />
-                  <Home />
-                  <Itinerary />
-                  <BookNow />
-                  <PrivateTour />
-                  <FrequentlyAskedQuestions />
-                  <Contact />
-                  <Footer />
-                  <WhatsappButton />
-              </Suspense>
+    <Container maxWidth='false'
+      sx={{
+        width: '100%',
+        height: 'auto',
+        margin: { xs: '0px auto' },
+        padding: { xs: '0px' },
+        boxSizing: 'border-box',
+      }}
+    >
+      <Suspense fallback={<div></div>}>
+        <DrawerAppBar />
+        <Home />
+        <Itinerary />
+        <BookNow />
+        <PrivateTour />
+        <FrequentlyAskedQuestions />
+        <Contact />
+        <Footer />
+        <WhatsappButton />
+      </Suspense>
 
-            </Container>
+    </Container>
   )
 }
 
