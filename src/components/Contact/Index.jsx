@@ -41,7 +41,7 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
 ////////////// MAIN COMPONENT - Contact ///////////////////////////////////////////
 ////////////// MAIN COMPONENT - Contact ///////////////////////////////////////////
-const Contact = () => {
+const ContactSection = () => {
     ///////// Context ///////////////////////////////////////
     const { language } = useContext(AppContext)
 
@@ -91,4 +91,4 @@ const Contact = () => {
     )
 }
 
-export { Contact }
+export { ContactSection }

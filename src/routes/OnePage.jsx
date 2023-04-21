@@ -8,7 +8,7 @@ import { Itinerary } from '../components/Itinerary'
 import { BookNow } from '../components/BookNow'
 import { PrivateTour } from '../components/PrivateTour'
 import { FrequentlyAskedQuestions } from '../components/FAQ'
-import { Contact } from '../components/Contact/index.jsx'
+import { ContactSection } from '../components/Contact'
 import { Footer } from '../components/Footer'
 import { WhatsappButton } from '../components/Whatsapp'
 
@@ -31,7 +31,7 @@ function OnePage () {
       <BookNow />
       <PrivateTour />
       <FrequentlyAskedQuestions />
-      <Contact />
+      <ContactSection />
       <Footer />
       <WhatsappButton />
     </Container>
