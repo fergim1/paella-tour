@@ -54,5 +54,5 @@ function SuccessPage () {
   )
 }
 
-export { SuccessPage }
+export default SuccessPage
 

@@ -10,8 +10,11 @@ import { HashRouter } from "react-router-dom";
 import { Routes, Route } from 'react-router-dom'
 
 ////////////// Pages ///////////////////////////////////////////
-import { OnePage } from './routes/OnePage'
-import { SuccessPage } from './routes/SuccessPage';
+import OnePage from './routes/OnePage';
+import SuccessPage from './routes/SuccessPage';
+
+
+
 
 
 function App () {
@@ -22,6 +25,7 @@ function App () {
           <Routes>
             <Route path='/' element={< OnePage />} />
             <Route path='/success' element={< SuccessPage />} />
+            <Route path="*" element={<OnePage />} />
           </Routes>
         </HashRouter>
       </ThemeProvider>

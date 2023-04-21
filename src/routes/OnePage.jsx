@@ -13,7 +13,7 @@ import { Footer } from '../components/Footer'
 import { WhatsappButton } from '../components/Whatsapp'
 
 
-const OnePage = () => {
+function OnePage () {
 
   return (
     <Container maxWidth='false'
@@ -38,4 +38,4 @@ const OnePage = () => {
   )
 }
 
-export { OnePage }
+export default OnePage
