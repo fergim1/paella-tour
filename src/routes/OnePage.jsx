@@ -8,9 +8,9 @@ import { Itinerary } from '../components/Itinerary'
 import { BookNow } from '../components/BookNow'
 import { PrivateTour } from '../components/PrivateTour'
 import { FrequentlyAskedQuestions } from '../components/FAQ'
-import { ContactSection } from '../components/Contact'
 import { Footer } from '../components/Footer'
 import { WhatsappButton } from '../components/Whatsapp'
+import { ContactSection } from '../components/ContactSection'
 
 
 function OnePage () {
